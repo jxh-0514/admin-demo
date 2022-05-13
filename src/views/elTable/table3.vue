@@ -299,7 +299,7 @@ export default {
       }
     },
     handleCheckedChangelist(data) {
-      console.log('data',data);
+      // console.log('data',data);
       this.tableLabel = [];
       this.hiddenHeader.forEach(element => {
         data.forEach(index => {

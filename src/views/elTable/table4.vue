@@ -184,7 +184,7 @@ export default {
           },
         ]
         this.templateData = this.handleAlarmList(data)
-      },1500)
+      },500)
     },
     handleEdit(e) {
       console.log("编辑", e);
@@ -210,7 +210,6 @@ export default {
       return data;
     },
     cellStyle ({row, column, rowIndex, columnIndex}) {
-      console.log(111,row,column,columnIndex);
       if (column.property == 'state') {
         if (row.state == '已提交') {
           return 'color:rgb(105 221 233)'
