@@ -359,7 +359,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/calendar/day1',
     name: 'Calendar',
-    meta: { title: '日历示例' },
+    meta: { title: '日历示例',icon: 'el-icon-s-help' },
     children: [
       {
         path: 'day1',
@@ -379,6 +379,12 @@ export const constantRoutes = [
         component: () => import('@/views/calendar/day3'),
         meta: { title: '日历3' }
       },
+      {
+        path: 'countDowm1',
+        name: 'CountDowm1',
+        component: () => import('@/views/calendar/countDowm1'),
+        meta: { title: '倒计时1' }
+      },
     ]
   },
   {
@@ -386,7 +392,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/elTable/table1',
     name: 'ElTable',
-    meta: { title: '动态表格' },
+    meta: { title: '动态表格',icon: 'el-icon-s-help' },
     children: [
       {
         path: 'table1',
@@ -410,7 +416,7 @@ export const constantRoutes = [
         path: 'table4',
         name: 'Table4',
         component: () => import('@/views/elTable/table4'),
-        meta: { title: '测试表格' }
+        meta: { title: '自定义表头' }
       },
       {
         path: 'table5',
@@ -418,6 +424,33 @@ export const constantRoutes = [
         component: () => import('@/views/elTable/table5'),
         meta: { title: '循环表头' }
       },
+    ]
+  },
+  {
+    path: '/richText',
+    component: Layout,
+    redirect: '/richText/text1',
+    name: 'RichText',
+    meta: { title: '富文本',icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'text1',
+        name: 'Text1',
+        component: () => import('@/views/richText/text1'),
+        meta: { title: 'vue2-editor' }
+      },  
+      {
+        path: 'text2',
+        name: 'Text2',
+        component: () => import('@/views/richText/text2'),
+        meta: { title: 'vue-quill-editor' }
+      },     
+      {
+        path: 'text3',
+        name: 'Text3',
+        component: () => import('@/views/richText/text3'),
+        meta: { title: '文本3' }
+      },  
     ]
   },
   

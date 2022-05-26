@@ -568,7 +568,7 @@
         </el-form-item> -->
 
         <el-form-item label="房源详细介绍">
-          <editor v-model="house.detail" :init="editorInit" />
+          <Editor v-model="house.detail" :init="editorInit" />
         </el-form-item>
 
         <el-form-item label="预览富文本">
@@ -795,6 +795,7 @@ export default {
         language: "zh_CN",
         height: 500,
         convert_urls: false,
+        content_style:'.mce-content-body{background-color:#33384b;color:#fff;}',
         plugins: [
           "advlist anchor autolink autosave code codesample colorpicker colorpicker contextmenu directionality emoticons fullscreen hr image imagetools importcss insertdatetime link lists media nonbreaking noneditable pagebreak paste preview print save searchreplace spellchecker tabfocus table template textcolor textpattern visualblocks visualchars wordcount"
         ],

@@ -210,12 +210,12 @@ export default {
       return data;
     },
     cellStyle ({row, column, rowIndex, columnIndex}) {
-      if (column.property == 'state') {
-        if (row.state == '已提交') {
+      if (column.property == 'stateT') {
+        if (row.stateT == '已提交') {
           return 'color:rgb(105 221 233)'
-        } else if (row.state == '审核中') {
+        } else if (row.stateT == '审核中') {
           return 'color:#00fc08'
-        } else if (row.state == '已完成') {
+        } else if (row.stateT == '已完成') {
           return 'color:rgb(14 100 229)'
         } else {
           return 'color:#000'
