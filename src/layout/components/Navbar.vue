@@ -3,8 +3,12 @@
     <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
     <breadcrumb class="breadcrumb-container" />
-
+    
     <div class="right-menu">
+      <!-- 全屏组件 -->
+      <screen-full class="right-menu-item" />
+      <!-- 主题组件 -->
+      <theme-picker class="right-menu-item" />
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
@@ -35,11 +39,14 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
-
+import themePicker from '@/components/Themepicker'
+import screenFull from '@/components/ScreenFull'
 export default {
   components: {
     Breadcrumb,
-    Hamburger
+    Hamburger,
+    themePicker,
+    screenFull
   },
   computed: {
     ...mapGetters([
@@ -133,6 +140,10 @@ export default {
           font-size: 12px;
         }
       }
+    }
+
+    .right-menu-item {
+      vertical-align: middle;
     }
   }
 }

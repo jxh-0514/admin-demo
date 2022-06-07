@@ -57,6 +57,23 @@ module.exports = {
   //       }
   //   }
   // },
+  //===============================================================
+  // module.exports = {
+  //   devServer: {
+  //    proxy: {
+  //       'api/private/v1/': {
+  //         target: 'http://127.0.0.1:8888', // 我们要代理的地址,当匹配到上面的'api/private/v1/'时，会将http://localhost:9528 替换成 http://127.0.0.1:8888
+  //         changeOrigin: true, // 是否跨越 需要设置此值为 true 才可以让本地服务代理我们发送请求
+  //         pathRewrite: {
+  //         // 重新路由  localhost:8888/api/login  => http://127.0.0.1:8888/api/login
+  //           '^/api': '/api',
+  //           '/hr': ''
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.

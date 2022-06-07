@@ -453,6 +453,66 @@ export const constantRoutes = [
       },  
     ]
   },
+  {
+    path: '/excel',
+    component: Layout,
+    redirect: '/excel/exc1',
+    name: 'Excel',
+    meta: { title: '导入表格',icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'exc1',
+        name: 'Exc1',
+        component: () => import('@/views/excel/exc1'),
+        meta: { title: '导入导出表格' }
+      },
+      {
+        path: 'upload-excel',
+        name: 'Upload-excel',
+        component: () => import('@/views/excel/upload-excel'),
+        meta: { title: '导入表格' }
+      }, 
+    ]
+  },
+  {
+    path: '/canvas',
+    component: Layout,
+    redirect: '/canvas/can1',
+    name: 'Canvas',
+    meta: { title: '画布',icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'can1',
+        name: 'Can1',
+        component: () => import('@/views/canvas/can1'),
+        meta: { title: '签名' }
+      },    
+      {
+        path: 'can2',
+        name: 'Can2',
+        component: () => import('@/views/canvas/can2'),
+        meta: { title: '签名' }
+      },   
+      {
+        path: 'can3',
+        name: 'Can3',
+        component: () => import('@/views/canvas/can3'),
+        meta: { title: '签名' }
+      }, 
+      {
+        path: 'can4',
+        name: 'Can4',
+        component: () => import('@/views/canvas/can4'),
+        meta: { title: '签名' }
+      },
+      {
+        path: 'superFlow',
+        name: 'SuperFlow',
+        component: () => import('@/views/canvas/superFlow'),
+        meta: { title: '流程图' }
+      },
+    ]
+  },
   
   
 
