@@ -424,6 +424,18 @@ export const constantRoutes = [
         component: () => import('@/views/elTable/table5'),
         meta: { title: '循环表头' }
       },
+      {
+        path: 'db6',
+        name: 'Db6',
+        component: () => import('@/views/elTable/db6'),
+        meta: { title: '双击表单编辑' }
+      },
+      {
+        path: 'db7',
+        name: 'Db7',
+        component: () => import('@/views/elTable/db7'),
+        meta: { title: '拖拽list' }
+      },
     ]
   },
   {
