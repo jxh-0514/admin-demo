@@ -74,7 +74,7 @@
 
       <el-table-column align="center" property="thumbnail" label="图片">
         <template slot-scope="scope">
-          <img :src="scope.row.thumbnail" width="40" />
+          <img :src="scope.row.thumbnail" width="40" @click="ShowpreviewPic(scope.row.thumbnail)" />
         </template>
       </el-table-column>
 
@@ -174,6 +174,12 @@
       <back-to-top :visibility-height="100" />
     </el-tooltip>
 
+    <!-- 图片预览   放在表格外面，这是个弹出狂-->
+    <el-dialog :visible.sync="lookdialogVisible" :modal="false" title="图片预览" width="20%">
+        <img :src="previewpic" alt=""  width="100%" />
+    </el-dialog>
+    <!-- 图片预览 -->
+
     <router-view />
     
   </div>
@@ -211,7 +217,7 @@ export default {
   data() {
     return {
       list: [
-        { id: 1, name: '碧桂园', address: '苏州创业园'},
+        { id: 1, name: '碧桂园', address: '苏州创业园', thumbnail: 'https://himg.bdimg.com/sys/portraitn/item/75b46a7868c4b0bba2daae',},
         { id: 2, name: '碧桂园', address: '苏州创业园'},
         { id: 3, name: '碧桂园', address: '苏州创业园'},
         // { id: 4, name: '碧桂园', address: '苏州创业园'},
@@ -248,7 +254,9 @@ export default {
       },
       houseDetail: "",
       detailDialogVisible: false,
-      downloadLoading: false
+      downloadLoading: false,
+      lookdialogVisible: false,
+      previewpic: ""
     };
   },
   created() {
@@ -320,6 +328,10 @@ export default {
     //         message: "已取消删除"
     //       });
     //     });
+    },
+    ShowpreviewPic(url) {
+      this.previewpic = url;
+      this.lookdialogVisible = true;
     },
     handleDownload() {
       this.downloadLoading = true;

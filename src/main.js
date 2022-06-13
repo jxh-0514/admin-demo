@@ -17,6 +17,10 @@ import VueI18n from 'vue-i18n' // 引入国际化的包
 import SuperFlow from 'vue-super-flow'
 import 'vue-super-flow/lib/index.css'
 Vue.use(SuperFlow) 
+//全局引入
+// import VueCron from 'vue-cron'
+// Vue.use(VueCron);
+
 
 import '@/icons' // icon
 import '@/permission' // permission control
