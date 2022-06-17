@@ -169,6 +169,18 @@ export const constantRoutes = [
         component: () => import('@/views/nested/menu2/index'),
         name: 'Menu2',
         meta: { title: 'menu2' }
+      },
+      {
+        path: 'corn1',
+        component: () => import('@/views/nested/corn/corn1'),
+        name: 'Corn1',
+        meta: { title: 'corn表达式' }
+      },
+      {
+        path: 'corn2',
+        component: () => import('@/views/nested/corn/corn2'),
+        name: 'Corn2',
+        meta: { title: 'corn表达式' }
       }
     ]
   },

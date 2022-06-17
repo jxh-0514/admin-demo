@@ -830,7 +830,7 @@ export default {
   },
   created() {
     // this.init();
-    this.getList();
+    // this.getList();
     console.log('房源创建');
   },
 
