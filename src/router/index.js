@@ -308,6 +308,12 @@ export const constantRoutes = [
   //       component: () => import('@/views/3D/cesium_draw'),
   //       meta: { title: 'cesium_draw' }
   //     }, 
+  //     {
+  //       path: 'three',
+  //       name: 'Three',
+  //       component: () => import('@/views/3D/three'),
+  //       meta: { title: 'three' }
+  //     }
   //   ]
   // },
   {
