@@ -236,18 +236,18 @@ export const constantRoutes = [
         component: () => import('@/views/demo/leaflet'),
         meta: { title: 'leaflet', icon: 'table'}
       },
-      {
-        path: 'leafletCanvas',
-        name: 'LeafletCanvas',
-        component: () => import('@/views/demo/leafletCanvas'),
-        meta: { title: 'leafletCanvas', icon: 'table'}
-      },
-      {
-        path: 'leafletCanvas2',
-        name: 'LeafletCanvas2',
-        component: () => import('@/views/demo/leafletCanvas2'),
-        meta: { title: 'leafletCanvas2', icon: 'table'}
-      },
+      // {
+      //   path: 'leafletCanvas',
+      //   name: 'LeafletCanvas',
+      //   component: () => import('@/views/demo/leafletCanvas'),
+      //   meta: { title: 'leafletCanvas', icon: 'table'}
+      // },
+      // {
+      //   path: 'leafletCanvas2',
+      //   name: 'LeafletCanvas2',
+      //   component: () => import('@/views/demo/leafletCanvas2'),
+      //   meta: { title: 'leafletCanvas2', icon: 'table'}
+      // },
       // {
       //   path: 'baidu1',
       //   name: 'Baidu1',
@@ -266,18 +266,24 @@ export const constantRoutes = [
       //   component: () => import('@/views/demo/baiduMapV'),
       //   meta: { title: '百度MapV点聚合', icon: 'table'}
       // },
+      // {
+      //   path: 'websocket',
+      //   name: 'Websoclet',
+      //   component: () => import('@/views/demo/websocket'),
+      //   meta: { title: 'websocket', icon: 'table'}
+      // },
+      // {
+      //   path: 'chart',
+      //   name: 'Chart',
+      //   component: () => import('@/views/demo/chart'),
+      //   meta: { title: 'chartJs', icon: 'table'}
+      // },    
       {
-        path: 'websocket',
-        name: 'Websoclet',
-        component: () => import('@/views/demo/websocket'),
-        meta: { title: 'websocket', icon: 'table'}
-      },
-      {
-        path: 'chart',
-        name: 'Chart',
-        component: () => import('@/views/demo/chart'),
-        meta: { title: 'chartJs', icon: 'table'}
-      },      
+        path: 'dragDialog',
+        name: 'DragDialog',
+        component: () => import('@/views/demo/dragDialog'),
+        meta: { title: '拖拽对话框', icon: 'table'}
+      },   
     ]
   },
   // {
@@ -447,6 +453,12 @@ export const constantRoutes = [
         name: 'Table4',
         component: () => import('@/views/elTable/table4'),
         meta: { title: '自定义表头' }
+      },
+      {
+        path: 'dynamic-table',
+        name: 'Dynamic',
+        component: () => import('@/views/elTable/dynamic-table'),
+        meta: { title: '动态表' }
       },
       {
         path: 'table5',
