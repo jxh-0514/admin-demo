@@ -478,6 +478,12 @@ export const constantRoutes = [
         component: () => import('@/views/elTable/db7'),
         meta: { title: '拖拽list' }
       },
+      {
+        path: 'tree',
+        name: 'Tree',
+        component: () => import('@/views/elTable/tree'),
+        meta: { title: '树型结构' }
+      },
     ]
   },
   {
