@@ -35,7 +35,7 @@
           :prop="item.prop"
           :label="item.label"
           :width="item.width"
-          :key="i">
+          :key="item.id">
             <template slot-scope="scope">              
               <img :src="scope.row[item.prop]" alt="">
             </template>
@@ -46,7 +46,9 @@
           :prop="item.prop"
           :label="item.label"
           :width="item.width"
-          :sortable="item.sort" :key="i">
+          :sortable="item.sort" 
+          :key="i"
+          >
           </el-table-column>
         </template>
 		<!-- 操作按钮 -->

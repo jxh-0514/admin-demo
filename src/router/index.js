@@ -184,90 +184,108 @@ export const constantRoutes = [
       }
     ]
   },
-  // {
-  //   path: '/demo',
-  //   component: Layout,
-  //   redirect: '/demo/Home',
-  //   name: 'Demo',
-  //   meta: {
-  //     title: '演示',
-  //     icon: 'el-icon-s-help'
-  //   },
-  //   children: [
-  //     {
-  //       path: 'Home',
-  //       name: 'Home',
-  //       component: () => import('@/views/demo/Home'),
-  //       meta: { title: '首页', icon: 'table'}
-  //     },
-  //     {
-  //       path: 'fmap2',
-  //       name: 'Fmap2',
-  //       component: () => import('@/views/demo/fmap2/fmap2'),
-  //       meta: { title: 'fmap2', icon: 'table'}
-  //     },
-  //     {
-  //       path: 'fmap3',
-  //       name: 'Fmap3',
-  //       component: () => import('@/views/demo/fmap3'),
-  //       meta: { title: 'fmap3', icon: 'table'}
-  //     },
-  //     {
-  //       path: 'fmap4',
-  //       name: 'Fmap4',
-  //       component: () => import('@/views/demo/fmap4'),
-  //       meta: { title: 'fmap4', icon: 'table'}
-  //     },
-  //     {
-  //       path: 'fmap5',
-  //       name: 'Fmap5',
-  //       component: () => import('@/views/demo/fmap5/fmap5'),
-  //       meta: { title: 'fmap5', icon: 'table'}
-  //     },
-  //     {
-  //       path: 'fmap6',
-  //       name: 'Fmap6',
-  //       component: () => import('@/views/demo/fmap5/fmap6'),
-  //       meta: { title: 'fmap6', icon: 'table'}
-  //     },
-  //     {
-  //       path: 'leaflet',
-  //       name: 'Leaflet',
-  //       component: () => import('@/views/demo/leaflet'),
-  //       meta: { title: 'leaflet', icon: 'table'}
-  //     },
-  //     {
-  //       path: 'baidu1',
-  //       name: 'Baidu1',
-  //       component: () => import('@/views/demo/baidu1'),
-  //       meta: { title: '百度点聚合', icon: 'table'}
-  //     },
-  //     {
-  //       path: 'baidu2',
-  //       name: 'Baidu2',
-  //       component: () => import('@/views/demo/baidu2'),
-  //       meta: { title: '百度批量坐标点', icon: 'table'}
-  //     },
-  //     {
-  //       path: 'baiduMapV',
-  //       name: 'BaiduMapV',
-  //       component: () => import('@/views/demo/baiduMapV'),
-  //       meta: { title: '百度MapV点聚合', icon: 'table'}
-  //     },
-  //     {
-  //       path: 'websocket',
-  //       name: 'Websoclet',
-  //       component: () => import('@/views/demo/websocket'),
-  //       meta: { title: 'websocket', icon: 'table'}
-  //     },
-  //     {
-  //       path: 'chart',
-  //       name: 'Chart',
-  //       component: () => import('@/views/demo/chart'),
-  //       meta: { title: 'chartJs', icon: 'table'}
-  //     },      
-  //   ]
-  // },
+  {
+    path: '/demo',
+    component: Layout,
+    redirect: '/demo/Home',
+    name: 'Demo',
+    meta: {
+      title: '演示',
+      icon: 'el-icon-s-help'
+    },
+    children: [
+      {
+        path: 'Home',
+        name: 'Home',
+        component: () => import('@/views/demo/Home'),
+        meta: { title: '首页', icon: 'table'}
+      },
+      // {
+      //   path: 'fmap2',
+      //   name: 'Fmap2',
+      //   component: () => import('@/views/demo/fmap2/fmap2'),
+      //   meta: { title: 'fmap2', icon: 'table'}
+      // },
+      // {
+      //   path: 'fmap3',
+      //   name: 'Fmap3',
+      //   component: () => import('@/views/demo/fmap3'),
+      //   meta: { title: 'fmap3', icon: 'table'}
+      // },
+      // {
+      //   path: 'fmap4',
+      //   name: 'Fmap4',
+      //   component: () => import('@/views/demo/fmap4'),
+      //   meta: { title: 'fmap4', icon: 'table'}
+      // },
+      // {
+      //   path: 'fmap5',
+      //   name: 'Fmap5',
+      //   component: () => import('@/views/demo/fmap5/fmap5'),
+      //   meta: { title: 'fmap5', icon: 'table'}
+      // },
+      // {
+      //   path: 'fmap6',
+      //   name: 'Fmap6',
+      //   component: () => import('@/views/demo/fmap5/fmap6'),
+      //   meta: { title: 'fmap6', icon: 'table'}
+      // },
+      {
+        path: 'leaflet',
+        name: 'Leaflet',
+        component: () => import('@/views/demo/leaflet'),
+        meta: { title: 'leaflet', icon: 'table'}
+      },
+      // {
+      //   path: 'leafletCanvas',
+      //   name: 'LeafletCanvas',
+      //   component: () => import('@/views/demo/leafletCanvas'),
+      //   meta: { title: 'leafletCanvas', icon: 'table'}
+      // },
+      // {
+      //   path: 'leafletCanvas2',
+      //   name: 'LeafletCanvas2',
+      //   component: () => import('@/views/demo/leafletCanvas2'),
+      //   meta: { title: 'leafletCanvas2', icon: 'table'}
+      // },
+      // {
+      //   path: 'baidu1',
+      //   name: 'Baidu1',
+      //   component: () => import('@/views/demo/baidu1'),
+      //   meta: { title: '百度点聚合', icon: 'table'}
+      // },
+      // {
+      //   path: 'baidu2',
+      //   name: 'Baidu2',
+      //   component: () => import('@/views/demo/baidu2'),
+      //   meta: { title: '百度批量坐标点', icon: 'table'}
+      // },
+      // {
+      //   path: 'baiduMapV',
+      //   name: 'BaiduMapV',
+      //   component: () => import('@/views/demo/baiduMapV'),
+      //   meta: { title: '百度MapV点聚合', icon: 'table'}
+      // },
+      // {
+      //   path: 'websocket',
+      //   name: 'Websoclet',
+      //   component: () => import('@/views/demo/websocket'),
+      //   meta: { title: 'websocket', icon: 'table'}
+      // },
+      // {
+      //   path: 'chart',
+      //   name: 'Chart',
+      //   component: () => import('@/views/demo/chart'),
+      //   meta: { title: 'chartJs', icon: 'table'}
+      // },    
+      {
+        path: 'dragDialog',
+        name: 'DragDialog',
+        component: () => import('@/views/demo/dragDialog'),
+        meta: { title: '拖拽对话框', icon: 'table'}
+      },   
+    ]
+  },
   // {
   //   path: '/3D',
   //   component: Layout,
@@ -437,6 +455,12 @@ export const constantRoutes = [
         meta: { title: '自定义表头' }
       },
       {
+        path: 'dynamic-table',
+        name: 'Dynamic',
+        component: () => import('@/views/elTable/dynamic-table'),
+        meta: { title: '动态表' }
+      },
+      {
         path: 'table5',
         name: 'Table5',
         component: () => import('@/views/elTable/table5'),
@@ -453,6 +477,12 @@ export const constantRoutes = [
         name: 'Db7',
         component: () => import('@/views/elTable/db7'),
         meta: { title: '拖拽list' }
+      },
+      {
+        path: 'tree',
+        name: 'Tree',
+        component: () => import('@/views/elTable/tree'),
+        meta: { title: '树型结构' }
       },
     ]
   },

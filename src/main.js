@@ -5,7 +5,7 @@ import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en' // lang i18n
-// import 'leaflet/dist/leaflet.css';
+import 'leaflet/dist/leaflet.css';
 import '@/styles/index.scss' // global css
 import './utils/dialog' // 引入拖拽
 
