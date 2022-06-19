@@ -7,6 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en' // lang i18n
 // import 'leaflet/dist/leaflet.css';
 import '@/styles/index.scss' // global css
+import './utils/dialog' // 引入拖拽
 
 import App from './App'
 import store from './store'
