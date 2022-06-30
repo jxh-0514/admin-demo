@@ -22,6 +22,11 @@ Vue.use(SuperFlow)
 // import VueCron from 'vue-cron'
 // Vue.use(VueCron);
 
+// mavon-editor 编辑器
+import mavonEditor from 'mavon-editor';
+import 'mavon-editor/dist/css/index.css';
+Vue.use(mavonEditor);
+
 
 import '@/icons' // icon
 import '@/permission' // permission control
