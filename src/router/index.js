@@ -484,6 +484,12 @@ export const constantRoutes = [
         component: () => import('@/views/elTable/tree'),
         meta: { title: '树型结构' }
       },
+      {
+        path: 'treePopover',
+        name: 'TreePopover',
+        component: () => import('@/views/elTable/treePopover'),
+        meta: { title: '树型弹出框' }
+      },
     ]
   },
   {
