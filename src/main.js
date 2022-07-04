@@ -7,6 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en' // lang i18n
 import 'leaflet/dist/leaflet.css';
 import '@/styles/index.scss' // global css
+import './utils/dialog' // 引入拖拽
 
 import App from './App'
 import store from './store'
@@ -20,6 +21,11 @@ Vue.use(SuperFlow)
 //全局引入
 // import VueCron from 'vue-cron'
 // Vue.use(VueCron);
+
+// mavon-editor 编辑器
+import mavonEditor from 'mavon-editor';
+import 'mavon-editor/dist/css/index.css';
+Vue.use(mavonEditor);
 
 
 import '@/icons' // icon
