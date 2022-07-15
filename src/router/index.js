@@ -369,6 +369,24 @@ export const constantRoutes = [
     ],
   },
   {
+    path: "/echarts",
+    component: Layout,
+    redirect: "/echarts/index",
+    name: "Echarts",
+    meta: {
+      title: "echarts",
+      icon: "el-icon-s-help",
+    },
+    children: [
+      {
+        path: "index",
+        name: "Index",
+        component: () => import("@/views/echarts/index"),
+        meta: { title: "echarts", icon: "table" },
+      },
+    ],
+  },
+  {
     path: "/zhangyu",
     component: Layout,
     redirect: "/zhangyu/dashboard",
@@ -512,6 +530,18 @@ export const constantRoutes = [
         component: () => import('@/views/elTable/treePopover'),
         meta: { title: '树型弹出框' }
       },
+      {
+        path: 'keyUpTable',
+        name: 'KeyUpTable',
+        component: () => import('@/views/elTable/keyUpTable'),
+        meta: { title: '键盘控制' }
+      },
+      {
+        path: 'keyUpTableB',
+        name: 'KeyUpTableB',
+        component: () => import('@/views/elTable/keyUpTableB'),
+        meta: { title: '键盘控制B' }
+      },
     ]
   },
   {
@@ -592,6 +622,18 @@ export const constantRoutes = [
         name: "Can4",
         component: () => import("@/views/canvas/can4"),
         meta: { title: "签名" },
+      },
+      {
+        path: "can5",
+        name: "Can5",
+        component: () => import("@/views/canvas/can5"),
+        meta: { title: "vue-esign签名" },
+      },
+      {
+        path: "signature_pad",
+        name: "Signature_pad",
+        component: () => import("@/views/canvas/signature_pad"),
+        meta: { title: "signature_pad签名" },
       },
       {
         path: "superFlow",

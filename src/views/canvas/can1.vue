@@ -159,8 +159,12 @@ export default {
 <style lang="scss" scoped>
 .signHandle {
   width: 100%;
+  height: 100%;
+  // background-color: red;
   canvas {
     display: blick;
+    width: 100%;
+    height: 100%;
   }
   .btn-box {
     width: 100%;

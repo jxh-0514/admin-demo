@@ -27,6 +27,11 @@ import mavonEditor from 'mavon-editor';
 import 'mavon-editor/dist/css/index.css';
 Vue.use(mavonEditor);
 
+// 电子签名 https://github.com/neighborhood999/vue-signature-pad#readme
+import VueSignaturePad from "vue-signature-pad";
+Vue.use(VueSignaturePad);
+import vueEsign from 'vue-esign'
+Vue.use(vueEsign);
 
 import '@/icons' // icon
 import '@/permission' // permission control

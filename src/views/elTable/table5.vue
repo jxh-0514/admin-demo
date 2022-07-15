@@ -35,7 +35,7 @@ export default {
         developer: '浏览',
         project: '函数',
         product: '手机',
-        img: 'https://himg.bdimg.com/sys/portraitn/item/75b46a7868c4b0bba2daae',
+        img: 'https://fuss10.elemecdn.com/8/27/f01c15bb73e1ef3793e64e6b7bbccjpeg.jpeg',
         cooperation: true,
         personnel: '技术',
         remark: '二级标签'

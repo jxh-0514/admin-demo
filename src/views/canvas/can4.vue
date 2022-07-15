@@ -7,6 +7,7 @@
     </canvas>
     <el-button @click="clearCanvas()">清除画板</el-button>
     <el-button @click="saveCanvas()">保存</el-button>
+    <img class="imgCanvas" :src="dataURL">
 </div>
 </template>
 
@@ -19,7 +20,8 @@ export default {
             x: 0,
             y: 0
         },
-        moving: false   // 是否正在绘制中且移动
+        moving: false,   // 是否正在绘制中且移动
+        dataURL:'',
     };
 },
 mounted() {
@@ -61,8 +63,8 @@ methods: {
         this.ctx.clearRect(0, 0, this.$refs.board.width, this.$refs.board.height);
     },
     saveCanvas() {
-        let dataURL = this.$refs.board.toDataURL();
-        console.log(dataURL);
+        this.dataURL = this.$refs.board.toDataURL();
+        console.log(this.dataURL);
     }
 },
 }

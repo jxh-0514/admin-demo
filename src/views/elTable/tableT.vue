@@ -37,7 +37,23 @@
           :width="item.width"
           :key="item.id">
             <template slot-scope="scope">              
-              <img :src="scope.row[item.prop]" alt="">
+              <!-- <img :src="scope.row[item.prop]" alt=""> -->
+              <!-- 鼠标移入放大 -->
+              <el-popover
+                  placement="right"
+                  title=""
+                  trigger="hover"
+              >
+                <!-- 放大的图片 -->
+                  <el-image style= "max-height: 20rem; max-width: 28rem" :src="scope.row[item.prop]" />
+                  <!-- 表格中的 -->
+                  <el-image
+                      slot="reference"
+                      :src="scope.row[item.prop]"
+                      :alt="scope.row[item.prop]"
+                      style="width:6.25rem;height:3.75rem;"
+                  />
+              </el-popover>
             </template>
           </el-table-column>
           <!-- 普通数据 -->

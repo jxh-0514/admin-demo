@@ -56,7 +56,12 @@
                 v-model="scope.row[item.prop]"
                 @change="switchFn">
               </el-switch> -->
-              <img style="width: 100px;height: 60px;" :src="scope.row[item.prop]" alt="">
+              <!-- <img style="width: 100px;height: 60px;" :src="scope.row[item.prop]" alt=""> -->
+              <el-image 
+                style="width: 100px; height: 60px"
+                :src="scope.row[item.prop]" 
+                :preview-src-list="[scope.row[item.prop]]">
+              </el-image>
             </template>
           </el-table-column>
           <el-table-column
