@@ -1,26 +1,20 @@
 <!-- 树型控件 + 弹出框 -->
 <template>
   <div>
-    <el-tree :data="data" node-key="id" default-expand-all :default-checked-keys="[1]" :expand-on-click-node="false"
-      ref="tree" @node-click="handleNodeClick" :highlight-current="true">
-      <!-- <template v-slot="{node, data}"> -->
+    <el-tree :data="data" node-key="id" default-expand-all :default-checked-keys="[1]" :expand-on-click-node="false" ref="tree" @node-click="handleNodeClick" :highlight-current="true">
       <span class="custom-tree-node" slot-scope="{node, data}">
-        <!-- <el-button @click="visiblePopover(node, data)">点击</el-button> -->
-        <span class="tree-lable">{{
-            node.label
-        }}</span>
+        <span class="tree-lable">{{ node.label }}</span>
         <span>
           <el-button type="text" size="mini" @click.prevent="visiblePopover(data.$treeNodeId)">
             <el-popover placement="right" trigger="click" v-model="visibles[data.$treeNodeId]" @hide="hidePopover(data.$treeNodeId)">
               <a>
-                <li>编辑</li>
+                <li>编辑 {{node.label}}</li>
               </a>
               <span slot="reference">设置</span>
             </el-popover>
           </el-button>
         </span>
       </span>
-      <!-- </template> -->
     </el-tree>
   </div>
 </template>
@@ -90,22 +84,22 @@ export default {
       console.log(a, this.visibles);
       console.log('====================================');
       // 方法一
-      for (let i = 1; i < this.visibles.length; i++) {
-        //有延迟
-        if (i == a) {
-          this.visibles[i] = true          
-        } else {
-          this.visibles[i] = false
-        }               
-      }
+      // for (let i = 1; i < this.visibles.length; i++) {
+      //   //有延迟
+      //   if (i == a) {
+      //     this.visibles[i] = false          
+      //   } else {
+      //     this.visibles[i] = false
+      //   }               
+      // }
       // 方法二
-      // if(treeId == a) {
+      // if (treeId == a) {
       //     this.visibles[a] = false 
       // } else {
-      //   // this.visibles[treeId] = false          
-      //   this.visibles[a] = true                          
+      //   this.visibles[a] = false                          
       //   treeId = a
       // }
+      this.visibles[a] = false 
     },
     // 隐藏时触发
     hidePopover(i) {
