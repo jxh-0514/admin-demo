@@ -531,6 +531,12 @@ export const constantRoutes = [
         meta: { title: '树型弹出框' }
       },
       {
+        path: 'treePopoverB',
+        name: 'TreePopoverB',
+        component: () => import('@/views/elTable/treePopoverB'),
+        meta: { title: '树型弹出框B' }
+      },
+      {
         path: 'keyUpTable',
         name: 'KeyUpTable',
         component: () => import('@/views/elTable/keyUpTable'),

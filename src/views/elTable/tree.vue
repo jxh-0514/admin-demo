@@ -24,6 +24,10 @@
   export default {
     data () {
       return {
+        defaultProps: {
+          children: 'children',
+          label: 'label'
+        },
           data: [
         {
           id: 1,
@@ -135,7 +139,11 @@
 //生命周期 - 挂载完成（可以访问DOM元素）
     mounted() {},
 
-    methods: {}
+    methods: {
+      handleNodeClick(data) {
+        console.log(data);
+      }
+    }
   }
 
 </script>

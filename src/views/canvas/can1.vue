@@ -19,12 +19,12 @@
 const { clientWidth, clientHeight } = document.documentElement;
 export default {
   props: {
-    //canvas 宽度
+    // canvas 宽度
     canvasWidth: {
       type: Number,
-      default: clientWidth,
+      default: clientWidth
     },
-    //canvas 高度
+    // canvas 高度
     canvasHeight: {
       type: Number,
       default: clientHeight,

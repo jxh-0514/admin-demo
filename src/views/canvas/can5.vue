@@ -15,6 +15,7 @@
         :bgColor.sync="bgColor"
       />
       <span slot="footer" class="dialog-footer">
+        <el-checkbox v-model="isCrop">是否裁剪</el-checkbox>
         <el-button @click="handleGenerate" type="primary">生成签字图片</el-button>
         <el-button @click="handleReset">清空画板</el-button>
         <el-button @click="dialogVisible = false">取消</el-button>
@@ -40,7 +41,7 @@ export default {
       lineColor: "#000000", // 画笔的颜色
       bgColor: "", // 画布的背景颜色
       resultImg: "", // 最终画布生成的base64图片
-      isCrop: true, // 是否裁剪，在画布设定尺寸基础上裁掉四周空白部分
+      isCrop: false, // 是否裁剪，在画布设定尺寸基础上裁掉四周空白部分
     };
   },
   methods: {

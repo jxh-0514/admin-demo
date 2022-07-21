@@ -17,8 +17,8 @@ import i18n from 'i18n'
 import VueI18n from 'vue-i18n' // 引入国际化的包
 import SuperFlow from 'vue-super-flow'
 import 'vue-super-flow/lib/index.css'
-Vue.use(SuperFlow) 
-//全局引入
+Vue.use(SuperFlow)
+// 全局引入
 // import VueCron from 'vue-cron'
 // Vue.use(VueCron);
 
@@ -28,10 +28,10 @@ import 'mavon-editor/dist/css/index.css';
 Vue.use(mavonEditor);
 
 // 电子签名 https://github.com/neighborhood999/vue-signature-pad#readme
-import VueSignaturePad from "vue-signature-pad";
-Vue.use(VueSignaturePad);
+import VueSignaturePad from 'vue-signature-pad'
+Vue.use(VueSignaturePad)
 import vueEsign from 'vue-esign'
-Vue.use(vueEsign);
+Vue.use(vueEsign)
 
 import '@/icons' // icon
 import '@/permission' // permission control
@@ -47,11 +47,11 @@ import '@/permission' // permission control
  * Currently MockJs will be used in the production environment,
  * please remove it before going online ! ! !
  */
- Vue.prototype.bus = new Vue()
+Vue.prototype.bus = new Vue()
 //  Vue.prototype.cesium = Cesium;
 //  Vue.prototype.widgets = widget;
 // Vue.use(cesiumDrawViewer)
-// Vue.use(VueCesium, { 
+// Vue.use(VueCesium, {
 //   cesiumPath: 'https://cdn.jsdelivr.net/npm/cesium@latest/Build/Cesium/Cesium.js',
 //   accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyYjZlM2I0MS0wMGI0LTQ0NjUtOTZjNy01NWZlYjhmMzU4ODciLCJpZCI6ODkyMjcsImlhdCI6MTY0OTY2ODA2MX0.Y5Bz32xq7WtR_CNH6sdrfbEhEzlsSktGhSRtbR9MLjc'
 // })
