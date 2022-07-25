@@ -187,6 +187,16 @@ export default {
             Actions: "333",
             Img: 'https://ms.bdimg.com/pacific/0/pic/-376596018_1488442200.jpg?x=0&y=0&h=150&w=242&vh=150.00&vw=242.00&oh=150.00&ow=242.00'
           },
+          {
+            Des: "44",
+            CreateTime: "2012",
+            FinishedTime: "2013",
+            CreateUser: "深度",
+            per: "35",
+            state: 2,
+            Actions: "444",
+            Img: 'https://files.catbox.moe/umferr.svg'
+          },
         ]
         this.templateData = this.handleAlarmList(data)
       },500)
