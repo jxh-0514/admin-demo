@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    font-size: 14px;
+    font-family: 'Microsoft YaHei', 微软雅黑, 'MicrosoftJhengHei', 华文细黑,
+    STHeiti, MingLiu;
+}
+
+ul li {
+    list-style: none;
+}
+
+#fengMap {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    touch-action: none;
+    -ms-touch-action: none;
+}
+
+/* 信息窗链接内容 */
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+.btnsdevice {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+/* 按钮组样式 */
+.btnsGroup {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    display: none;
+}
+
+.btnsGroup button {
+    cursor: pointer;
+    padding: 8px;
+}
+
+.btnsGroup button.active {
+    background-color: #3385ff;
+    border: none;
+    color: #fff;
+}
+
+/* 放大缩小提示信息 */
+.message {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 15px;
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+    display: none;
+}
+
+.message.active {
+    display: block;
+}
+
+/* 自定义工具控件 */
+.btnsFloor {
+    width: 40px;
+    position: absolute;
+    right: 20px;
+    top: 120px !important;
+    display: none;
+    -moz-box-shadow: 10px 10px 5px #888888;
+    /* 老的 Firefox */
+    box-shadow: 2px 2px 2px #888888;
+    background-color: #fff;
+}
+
+.btnsFloor span {
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    background: url('../images/layer.png') no-repeat center;
+    background-size: 80% 80%;
+}
+
+.btnsFloor span.multi {
+    background: url('../images/layers.png') no-repeat center;
+    background-size: 60% 60%;
+}
+
+.btnsFloor ul {
+    width: 100%;
+}
+
+.btnsFloor ul li {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.btnsFloor ul li.active {
+    color: #fff;
+    background-color: #1e82fa;
+    border-bottom: 1px solid #1e82fa;
+}
+
+.btnsSwitch {
+    width: 40px;
+    position: absolute;
+    right: 20px;
+    top: 70px;
+    display: none;
+    -moz-box-shadow: 10px 10px 5px #888888;
+    /* 老的 Firefox */
+    box-shadow: 2px 2px 2px #888888;
+    background-color: #fff;
+}
+
+.btnsSwitch span {
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    background: url('../images/3D.png') center center no-repeat;
+}
+
+.btnsSwitch span.planar {
+    background: url('../images/2D.png') center center no-repeat;
+}
+
+
+
+.queryconditions {
+    width: 40px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: none;
+    -moz-box-shadow: 10px 10px 5px #888888;
+    /* 老的 Firefox */
+    box-shadow: 2px 2px 2px #888888;
+    background-color: #fff;
+}
+
+.queryconditions span {
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    background: url('../images/sz-1.png') center center no-repeat;
+}
+
+.queryconditions span.isshow {
+    background: url('../images/sz-3.png') center center no-repeat;
+}
+
+#tcquery {
+    width: calc(100% - 140px);
+    height: 40px;
+    position: absolute;
+    left: 35px;
+    top: 6px;
+    /*display: none;*/
+    /*background-color: #fff;*/
+    float: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.istcquery {
+    display: none;
+}
+
+
+
+.firdiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.marg {
+    margin-right: 16px;
+}

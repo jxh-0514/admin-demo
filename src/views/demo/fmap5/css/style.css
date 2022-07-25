@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    font-size: 14px;
+    font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu
+}
+
+#fengMap {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    touch-action: none;
+    -ms-touch-action: none;
+}
+
+/* 按钮组 */
+.btnsGroup {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: none;
+}
+
+.btnsGroup button {
+    padding: 8px;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    background-color: #3385ff;
+}
+
+.btnsGroup button.active {
+    background-color: #3385ff;
+    border: 1px solid #3385ff;
+    color: #fff;
+}
+
+.btnsGroup button.disabled {
+    background-color: #ccc;
+    border: none;
+}
+
+/*模拟导航*/
+.description {
+    position: absolute;
+    left: 70px;
+    top: 20px;
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    display: none;
+}
+
+.description p {
+    padding-bottom: 10px;
+}
+
+/*路径描述*/
+.pathInfo {
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+    width: 220px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    max-height: 360px;
+    overflow: auto;
+    border: 1px solid #ccc;
+    display: none;
+}
+
+.pathInfo ul li {
+    list-style: none;
+    height: 26px;
+    line-height: 26px;
+    cursor: pointer;
+}
+
+.focusNaviDesc {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 220px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: none;
+}
+
+.focusNaviDesc p {
+    height: 26px;
+    line-height: 26px;
+}
+
+/*滚动条样式*/
+.scroll::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 4px;
+    /*高宽分别对应横竖滚动条的尺寸*/
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 5px;
+    /*-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);*/
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.scroll::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    /*-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);*/
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* 提示语 */
+.tip {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    line-height: 32px;
+    background: rgba(204, 204, 204, 0.26);
+    padding: 10px 20px;
+    display: none;
+    color: #fff;
+}
