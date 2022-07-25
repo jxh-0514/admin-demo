@@ -16,7 +16,7 @@
   "dependencies": {
     "@tinymce/tinymce-vue": "^3.2.8",
     "axios": "0.18.1",
-    "core-js": "3.6.5",
+    "core-js": "^3.6.5",
     "czr-vue-cron": "^1.0.4",
     "echarts": "^4.9.0",
     "element-ui": "2.13.2",
