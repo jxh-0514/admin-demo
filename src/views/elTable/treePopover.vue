@@ -6,9 +6,9 @@
         <span class="tree-lable">{{ node.label }}</span>
         <span>
           <el-button type="text" size="mini" @click.prevent="visiblePopover(data.$treeNodeId)">
-            <el-popover placement="right" trigger="click" v-model="visibles[data.$treeNodeId]" @hide="hidePopover(data.$treeNodeId)">
+            <el-popover placement="left" trigger="click" v-model="visibles[data.$treeNodeId]" @hide="hidePopover(data.$treeNodeId)">
               <a>
-                <li>编辑 {{node.label}}</li>
+                <li>编辑231231231231231231 {{node.label}}</li>
               </a>
               <span slot="reference">设置</span>
             </el-popover>
