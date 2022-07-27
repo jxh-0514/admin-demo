@@ -240,18 +240,24 @@ export const constantRoutes = [
         component: () => import("@/views/demo/leaflet"),
         meta: { title: "leaflet", icon: "table" },
       },
-      // {
-      //   path: 'leafletCanvas',
-      //   name: 'LeafletCanvas',
-      //   component: () => import('@/views/demo/leafletCanvas'),
-      //   meta: { title: 'leafletCanvas', icon: 'table'}
-      // },
-      // {
-      //   path: 'leafletCanvas2',
-      //   name: 'LeafletCanvas2',
-      //   component: () => import('@/views/demo/leafletCanvas2'),
-      //   meta: { title: 'leafletCanvas2', icon: 'table'}
-      // },
+      {
+        path: "leafletB",
+        name: "LeafletB",
+        component: () => import("@/views/demo/leafletB"),
+        meta: { title: "leafletB", icon: "table" },
+      },
+      {
+        path: 'leafletCanvas',
+        name: 'LeafletCanvas',
+        component: () => import('@/views/demo/leafletCanvas'),
+        meta: { title: 'leafletCanvas', icon: 'table'}
+      },
+      {
+        path: 'leafletCanvas2',
+        name: 'LeafletCanvas2',
+        component: () => import('@/views/demo/leafletCanvas2'),
+        meta: { title: 'leafletCanvas2', icon: 'table'}
+      },
       // {
       //   path: 'baidu1',
       //   name: 'Baidu1',

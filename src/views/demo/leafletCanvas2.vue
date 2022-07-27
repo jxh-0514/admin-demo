@@ -1,5 +1,5 @@
 <template>
-  <div id="map"></div>
+  <div id="mapB"></div>
 </template>
 
 <script>
@@ -13,6 +13,7 @@ export default {
             bounds: [
                 [0,0],[1014,556]
             ],
+            imageOverLay: null,
         }
     },
     mounted() {
@@ -23,14 +24,18 @@ export default {
             // if (this.map) {
             //     this.map.remove()
             // }
-            // this.map = this.initLeafletMap('map')
-            this.map = L.map('map', {           
+            // this.map = this.initLeafletMap('mapB')
+            this.map = L.map('mapB', {           
                 center: [39.905963, 116.390813],
                 zoom: 15,                
                 // continuousWorld: true,
-                preferCanvas: true //使用canvas模式渲染矢量图形 
+                preferCanvas: true, //使用canvas模式渲染矢量图形                 
             });
-            this.tiles = L.tileLayer(this.mapUrl,{continuousWorld: true}).addTo(this.map);
+            // this.tiles = L.tileLayer(this.mapUrl,{continuousWorld: true}).addTo(this.map);
+            this.tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',).addTo(this.map);
+            // this.imageOverLay = L.imageOverlay(this.mapUrl, this.bounds, {
+            //     interactive: true, //允许地图触发事件
+            // }).addTo(this.map);
         },
 
         // initLeafletMap  (id, zoom = 16)  {
@@ -114,7 +119,7 @@ export default {
         })
         },
         //海量点点击事件============
-        loadMarkers () {
+        loadMarkersB () {
             // 清除海量点
             if (this.ciLayer) {
                 this.map.removeLayer(this.ciLayer)
@@ -168,5 +173,12 @@ export default {
 </script>
 
 <style>
-
+#mapB{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
 </style>
