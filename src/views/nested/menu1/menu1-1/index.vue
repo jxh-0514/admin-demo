@@ -5,3 +5,24 @@
     </el-alert>
   </div>
 </template>
+<script>
+export default{
+  data() {
+    return{
+      list: [
+        
+      ],
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+
+  },
+  methods: {
+
+  }
+}
+</script>
+

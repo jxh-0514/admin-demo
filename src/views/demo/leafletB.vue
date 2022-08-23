@@ -7,28 +7,27 @@
 import L from "leaflet";
 //window.a = this.func //将vue方法挂载到window对象
 export default {
-    
   components: {},
-    
+
   data() {
     return {
       map: null,
-    //   mapUrl: require("@/assets/404_images/404.png"),
+      //   mapUrl: require("@/assets/404_images/404.png"),
       bounds: [
         [0, 0],
         [1014, 556],
       ],
       imageOverLay: null,
-      curData:'',
+      curData: "",
       gem: [],
       mapUrl: L.icon({
         iconUrl: require("@/assets/404_images/404.png"),
         iconSize: [34, 34],
         iconAnchor: [12, 25],
         popupAnchor: [1, -34],
-        shadowSize: [41, 41]
+        shadowSize: [41, 41],
       }),
-      pFlag: false,
+      iconUrl: 'https://ms.bdimg.com/pacific/0/pic/-84529569_189684464.jpg?x=0&y=0&h=150&w=242&vh=150.00&vw=242.00&oh=150.00&ow=242.00',
     };
   },
 
@@ -37,11 +36,12 @@ export default {
   watch: {},
 
   //生命周期 - 创建完成（可以访问当前this实例）
-  created() {},
+  created() {
+    window.aa = this.func
+  },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
     this.initLeaflet();
-    
   },
 
   methods: {
@@ -56,8 +56,8 @@ export default {
       this.tiles = L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(
         this.map
       );
-    //   this.map.on("click", this.addEventMarker);
-    this.markerPopup()
+      //   this.map.on("click", this.addEventMarker);
+      this.markerPopup();
     },
     // 方法一  只能一个marker
     //添加点marker
@@ -109,9 +109,31 @@ export default {
     //     });
     //   });
     // },
-    // 方法二 
+    // 方法二
+    // markerPopup() {
+    //     let arr = [
+    //         {point:[39.905530, 116.391305],data:'1111'},
+    //         {point:[39.905530, 116.491305],data:'2222'}
+    //     ] //模拟数据
+    //     this.gem = []
+    //     for (let i = 0; i < arr.length; i++){
+    //         const marker = L.marker(arr[i].point, {icon: this.mapUrl}).addTo(this.map);
+    //         this.gem.push(marker)
+    //         //监听marker点击事件，通过curData绑定点击事件需要传递的数据
+    //         marker.on('click',()=>{
+    //             this.curData = arr[i]
+    //         })
+    //         //给marker绑定标牌
+    //         //标牌上按钮的点击事件绑定window上的a方法，这样就能调用vue的方法，并且通过marker点击事件能获取到循环传递的参数
+    //         marker.bindPopup(
+    //         `<div style='width:138px'><a id='aa' style='color:red'>收藏</a></div>`);
+    //         console.log('循环', i, arr[i].point);
+    //     }
+    //     this.showPopup()
+    // },
+    // 方法三
     markerPopup() {
-        let arr = [
+      let arr = [
             {point:[39.905530, 116.391305],data:'1111'},
             {point:[39.905530, 116.491305],data:'2222'}
         ] //模拟数据
@@ -126,37 +148,29 @@ export default {
             //给marker绑定标牌
             //标牌上按钮的点击事件绑定window上的a方法，这样就能调用vue的方法，并且通过marker点击事件能获取到循环传递的参数
             marker.bindPopup(
-            `<div style='width:138px'><a id='aa' style='color:red'>收藏</a></div>`);
+            `<div style='width:138px;background:red;'><a id='aa' onclick='aa()' style='color:red'>收藏</a></div>`);
             console.log('循环', i, arr[i].point);
         }
-        this.showPopup()
+    },
+    func() {
+      console.log('123',this.curData);
     },
     showPopup() {
-        this.gem.map(item => {
-            item.on('click', e => {
-                if(this.pFlag) {
-                    this.popupFlag()
-                }
-                this.$nextTick(() => {
-                    const editRegion = document.getElementById("aa");
-                    // const editRegion = document.getElementsByClassName("editRegion");
-                    // const editRegion = document.querySelector(".editRegion");
-                    console.log(editRegion);
-                    editRegion.onclick = (e) => {
-                    console.log('====================================');
-                    console.log('点击', this.curData.data, e);
-                    console.log('====================================');
-                    this.pFlag = true
-                    };
-                })
-            })
-        })
+      this.gem.map((item) => {
+        item.on("click", (e) => {
+          const editRegion = document.getElementById("aa");
+          // const editRegion = document.getElementsByClassName("editRegion");
+          // const editRegion = document.querySelector(".editRegion");
+          console.log(editRegion);
+          editRegion.onclick = (e) => {
+            console.log("====================================");
+            console.log("点击", this.curData.data, e);
+            console.log("====================================");
+          };
+        });
+      });
     },
-    popupFlag() {
-        this.map.closePopup();
-        this.pFlag = false
-    }  
-  }     
+  },
 };
 </script>
 <style lang='scss' scoped>

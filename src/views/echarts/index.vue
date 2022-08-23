@@ -486,8 +486,7 @@ export default {
                       // top :'40px',
                       backgroundColor: "#ffffff",
                       color: "rgba(249, 125, 153, 1)"
-                  },
-                  
+                  },             
                   xAxis:  {
                       type: 'value',
                       // scale :true,

@@ -11,7 +11,7 @@
 
 		<el-button @click="add">增加</el-button>
 		<el-table ref="multipleTable" :data="datalist2" border v-loading="loadings" element-loading-text="拼命加载中"
-			style='margin-top: 0.1rem;' :row-style="rowStyle" @row-dblclick="handledbsupplier">
+			style='margin-top: 0.1rem;'  @row-dblclick="handledbsupplier">
 			<el-table-column type="index" label="序号" width="70" align="center"></el-table-column>
 
 			<el-table-column label="名称" prop="company">
