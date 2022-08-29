@@ -17,6 +17,8 @@ import i18n from 'i18n'
 import VueI18n from 'vue-i18n' // 引入国际化的包
 import SuperFlow from 'vue-super-flow'
 import 'vue-super-flow/lib/index.css'
+// 引入rem.js
+// import '@/utils/rem.js'
 Vue.use(SuperFlow)
 // 全局引入
 // import VueCron from 'vue-cron'

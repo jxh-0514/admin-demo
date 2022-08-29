@@ -250,13 +250,13 @@ export const constantRoutes = [
         path: 'leafletCanvas',
         name: 'LeafletCanvas',
         component: () => import('@/views/demo/leafletCanvas'),
-        meta: { title: 'leafletCanvas', icon: 'table'}
+        meta: { title: 'leafletCanvas', icon: 'table' }
       },
       {
         path: 'leafletCanvas2',
         name: 'LeafletCanvas2',
         component: () => import('@/views/demo/leafletCanvas2'),
-        meta: { title: 'leafletCanvas2', icon: 'table'}
+        meta: { title: 'leafletCanvas2', icon: 'table' }
       },
       // {
       //   path: 'baidu1',
@@ -270,6 +270,12 @@ export const constantRoutes = [
       //   component: () => import('@/views/demo/baidu2'),
       //   meta: { title: '百度批量坐标点', icon: 'table'}
       // },
+      {
+        path: 'bdLuShu',
+        name: 'BdLuShu',
+        component: () => import('@/views/demo/bdLuShu'),
+        meta: { title: '百度路书', icon: 'table' }
+      },
       // {
       //   path: 'baiduMapV',
       //   name: 'BaiduMapV',
@@ -277,22 +283,36 @@ export const constantRoutes = [
       //   meta: { title: '百度MapV点聚合', icon: 'table'}
       // },
       // {
-      //   path: 'websocket',
-      //   name: 'Websoclet',
-      //   component: () => import('@/views/demo/websocket'),
-      //   meta: { title: 'websocket', icon: 'table'}
-      // },
-      // {
       //   path: 'chart',
       //   name: 'Chart',
       //   component: () => import('@/views/demo/chart'),
       //   meta: { title: 'chartJs', icon: 'table'}
       // },
+      // {
+      //   path: "dragDialog",
+      //   name: "DragDialog",
+      //   component: () => import("@/views/demo/dragDialog"),
+      //   meta: { title: "拖拽对话框", icon: "table" },
+      // },
       {
-        path: "dragDialog",
-        name: "DragDialog",
-        component: () => import("@/views/demo/dragDialog"),
-        meta: { title: "拖拽对话框", icon: "table" },
+        path: "chat",
+        name: "Chat",
+        component: () => import("@/views/demo/chat"),
+        meta: { title: "通信" },
+        children: [
+          {
+            path: 'websocket',
+            name: 'Websoclet',
+            component: () => import('@/views/demo/chat/websocket'),
+            meta: { title: 'websocket', icon: 'table' }
+          },
+          {
+            path: 'mqtt',
+            name: 'Mqtt',
+            component: () => import('@/views/demo/chat/mqtt'),
+            meta: { title: 'mqtt', icon: 'table' }
+          },
+        ]
       },
     ],
   },
