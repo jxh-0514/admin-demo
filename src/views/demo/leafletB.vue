@@ -142,7 +142,7 @@ export default {
       const marker = L.marker([39.90953, 116.391305], {
         icon: this.mapUrl,
       }).addTo(this.map);
-
+      // 自定义弹窗
       let popup = L.popup()
         .setLatLng([39.90953, 116.391305])
         .setContent(

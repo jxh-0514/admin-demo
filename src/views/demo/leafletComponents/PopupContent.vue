@@ -2,7 +2,7 @@
 <template>
   <div>
     <!--这里写需要的弹窗内容 -->
-    {{ popupData.aa }}
+    <!-- {{ popupData.aa }} -->
     <el-carousel height="150px">
       <el-carousel-item v-for="item in 3" :key="item">
         <h3 class="small">{{ item }}</h3>
