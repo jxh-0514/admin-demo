@@ -320,6 +320,32 @@ export const constantRoutes = [
           },
         ]
       },
+      {
+        path: "transfer",
+        name: "Transfer",
+        component: () => import("@/views/demo/transfer"),
+        meta: { title: "表格穿梭框" },
+        children: [
+          // {
+          //   path: 'transferA',
+          //   name: 'TransferA',
+          //   component: () => import('@/views/demo/transfer/transferA'),
+          //   meta: { title: 'transferA', icon: 'table' }
+          // },
+          // {
+          //   path: 'transferB',
+          //   name: 'TransferB',
+          //   component: () => import('@/views/demo/transfer/transferB'),
+          //   meta: { title: 'transferB', icon: 'table' }
+          // },
+          {
+            path: 'transferC',
+            name: 'TransferC',
+            component: () => import('@/views/demo/transfer/transferC'),
+            meta: { title: '穿梭框C', icon: 'table' }
+          },
+        ]
+      },
     ],
   },
   // {

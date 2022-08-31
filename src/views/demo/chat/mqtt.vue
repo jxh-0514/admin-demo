@@ -82,6 +82,7 @@ export default {
      * @return {*}
      */
     mqttReceive() {
+      // 订阅主题 字符串（订阅单个主题）、数组或者对象（订阅多个主题）
       let topic = "/Epat/StationServer/4G000005"; //要接收的主题
       const vm = this;
       vm.client.subscribe(topic, function (err) {
