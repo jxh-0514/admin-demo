@@ -18,7 +18,10 @@
         >
           <!-- <l-popup :content="cardTemplate" :options="popupOptions" /> -->
           <!-- 优化 -->
-          <l-popup :content="cardTemplate[0] + marker.id + cardTemplate[1]" />
+          <l-popup
+            :content="cardTemplate[0] + marker.id + cardTemplate[1]"
+            :options="popupOptions"
+          />
         </l-marker>
       </template>
       <!-- </v-marker-cluster> -->
@@ -59,21 +62,39 @@ export default {
         shadowSize: [41, 41],
         shadowAnchor: [13, 41],
       }),
-      cardTemplate: "测试",
-      popupOptions: "",
+      // cardTemplate: "<div id='pane'>",
+      // 优化
+      cardTemplate: ['<div id="pane_', '" />'],
+      popupOptions: {
+        className: "mypopup",
+      },
       pane: null,
+      stationAlarmNum: { 1: 10, 2: 8 },
     };
+  },
+  created() {
+    // this.setMarkers();
   },
   mounted() {
     this.setMarkers();
     var that = this;
     this.$refs.map.mapObject.on("popupopen", function (e) {
-      //   that.pane.$mount("#pane");
+      // that.pane.$mount("#pane");
       // 优化
       that.pane.$mount("#pane_" + that.pane.id);
     });
   },
   methods: {
+    setMarkers() {
+      this.$nextTick(() => {
+        let arr = [
+          { id: 1, name: "测试站点1", lat: 39.90553, lng: 116.391305 },
+          { id: 2, name: "测试站点2", lat: 40.90553, lng: 116.393305 },
+          { id: 3, name: "测试站点3", lat: 41.90553, lng: 116.395305 },
+        ];
+        this.markers = arr;
+      });
+    },
     handleMarkerClick(station) {
       console.log("点击", station);
       if (this.pane != null) {
@@ -81,8 +102,8 @@ export default {
       }
       var Component = Vue.extend(Pane);
       this.pane = new Component();
-      //   this.pane.alarmNum = this.stationAlarmNum[station.id];
-      //   this.pane.name = station.name;
+      this.pane.alarmNum = this.stationAlarmNum[station.id];
+      this.pane.name = station.name;
       this.pane.id = station.id;
     },
     // setMarkers() {
@@ -98,18 +119,20 @@ export default {
     //       });
     //     });
     // },
-    setMarkers() {
-      let arr = [
-        { id: 1, lat: 39.90553, lng: 116.391305 },
-        { id: 2, lat: 40.90553, lng: 116.393305 },
-        { id: 3, lat: 41.90553, lng: 116.395305 },
-      ];
-      this.markers = arr;
-    },
   },
 };
 </script>
 <style>
+/* 弹出层内容 */
+#lmap >>> .mypopup .leaflet-popup-content-wrapper .leaflet-popup-content {
+  margin: 0 auto !important;
+  text-align: center;
+  width: 120px !important;
+  height: 100px !important;
+  font-size: 14px;
+}
+</style>
+<style lang="scss" scoped>
 @import "~leaflet.markercluster/dist/MarkerCluster.css";
 @import "~leaflet.markercluster/dist/MarkerCluster.Default.css";
 </style>

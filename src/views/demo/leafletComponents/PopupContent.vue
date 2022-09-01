@@ -3,11 +3,18 @@
   <div>
     <!--这里写需要的弹窗内容 -->
     <!-- {{ popupData.aa }} -->
-    <el-carousel height="150px">
+    <!-- <el-carousel width="200px" height="150px">
       <el-carousel-item v-for="item in 3" :key="item">
         <h3 class="small">{{ item }}</h3>
       </el-carousel-item>
-    </el-carousel>
+    </el-carousel> -->
+    <div id="staionPane">
+      <div id="stationName">{{ name }}</div>
+      <div>
+        <span>告警数量：</span>
+        <a id="alarmNum" @click="handleClick">{{ alarmNum }}</a>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -24,7 +31,11 @@ export default {
   components: {},
 
   data() {
-    return {};
+    return {
+      name: "",
+      id: null,
+      alarmNum: 0,
+    };
   },
 
   computed: {},
@@ -36,7 +47,11 @@ export default {
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
 
-  methods: {},
+  methods: {
+    handleClick() {
+      alert(this.alarmNum);
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -54,5 +69,9 @@ export default {
 
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
+}
+
+#stationName {
+  margin-top: 20px;
 }
 </style>
