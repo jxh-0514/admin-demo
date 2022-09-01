@@ -67,7 +67,7 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-  height: 65px;
+  height: 50px;
   overflow: hidden;
   position: relative;
   background: #fff;
@@ -102,7 +102,7 @@ export default {
     .right-menu-item {
       display: inline-block;
       padding: 0 8px;
-      height: 100%;
+      // height: 100%;
       font-size: 18px;
       color: #5a5e66;
       vertical-align: text-bottom;

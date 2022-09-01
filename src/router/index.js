@@ -654,6 +654,12 @@ export const constantRoutes = [
         component: () => import("@/views/excel/upload-excel"),
         meta: { title: "导入表格" },
       },
+      {
+        path: "exportTable",
+        name: "ExportTable",
+        component: () => import("@/views/excel/exportTable"),
+        meta: { title: "导出表格" },
+      },
     ],
   },
   {

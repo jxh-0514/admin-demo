@@ -3,7 +3,7 @@
     <l-map
       id="lmap"
       ref="map"
-      style="width: 100%; height: 80vh"
+      style="width: 100%; height: 94vh"
       :zoom="zoom"
       :center="center"
     >
@@ -16,15 +16,15 @@
           :lat-lng="[marker.lat, marker.lng]"
           @click="handleMarkerClick(marker)"
         >
-          <!-- <l-popup :content="cardTemplate" :options="popupOptions" /> -->
+          <l-popup :content="cardTemplate" :options="popupOptions" />
           <!-- 优化 -->
-          <l-popup
+          <!-- <l-popup
             :content="cardTemplate[0] + marker.id + cardTemplate[1]"
             :options="popupOptions"
-          />
+          /> -->
         </l-marker>
       </template>
-      <!-- </v-marker-cluster> -->
+      <!-- </v-marker-cluster>  -->
     </l-map>
   </div>
 </template>
@@ -62,9 +62,10 @@ export default {
         shadowSize: [41, 41],
         shadowAnchor: [13, 41],
       }),
-      // cardTemplate: "<div id='pane'>",
+      cardTemplate:
+        "<div id='pane' style='width: 300px; height: 200px;'></div>",
       // 优化
-      cardTemplate: ['<div id="pane_', '" />'],
+      // cardTemplate: ['<div id="pane_', '" />'],
       popupOptions: {
         className: "mypopup",
       },
@@ -79,9 +80,9 @@ export default {
     this.setMarkers();
     var that = this;
     this.$refs.map.mapObject.on("popupopen", function (e) {
-      // that.pane.$mount("#pane");
+      that.pane.$mount("#pane");
       // 优化
-      that.pane.$mount("#pane_" + that.pane.id);
+      // that.pane.$mount("#pane_" + that.pane.id);
     });
   },
   methods: {
@@ -124,13 +125,13 @@ export default {
 </script>
 <style>
 /* 弹出层内容 */
-#lmap >>> .mypopup .leaflet-popup-content-wrapper .leaflet-popup-content {
+/* #lmap >>> .mypopup .leaflet-popup-content-wrapper .leaflet-popup-content {
   margin: 0 auto !important;
   text-align: center;
   width: 120px !important;
   height: 100px !important;
   font-size: 14px;
-}
+} */
 </style>
 <style lang="scss" scoped>
 @import "~leaflet.markercluster/dist/MarkerCluster.css";
