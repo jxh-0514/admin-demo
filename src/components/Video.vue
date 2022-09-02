@@ -67,7 +67,9 @@ export default {
     },
     // videoData: {
     //   type: Object,
-    //   required: () => {},
+    //   default: () => {
+    //     return {};
+    //   },
     // },
   },
   mounted() {

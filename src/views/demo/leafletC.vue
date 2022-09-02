@@ -78,6 +78,9 @@ export default {
   },
   mounted() {
     this.setMarkers();
+    console.log("====================================");
+    console.log(123, this.$refs.map);
+    console.log("====================================");
     var that = this;
     this.$refs.map.mapObject.on("popupopen", function (e) {
       that.pane.$mount("#pane");

@@ -21,16 +21,26 @@
       style="width: 300px; height: 200px"
       src="https://tutorialehtml.com/assets_tutorials/media/Shaun-the-Sheep-The-Movie-Official-Trailer.mp4"
     ></video> -->
-    <Video
+    <!-- <Video
       src="https://tutorialehtml.com/assets_tutorials/media/Shaun-the-Sheep-The-Movie-Official-Trailer.mp4"
       :videoData="true"
-    ></Video>
+    ></Video> -->
+    <video
+      id="videoElement"
+      controls
+      autoplay
+      muted
+      width="300px"
+      height="200px"
+    ></video>
+    <button @click="play">播放</button>
   </div>
 </template>
 
 <script>
 import echarts from "echarts";
 import Video from "@/components/Video";
+import flvjs from "flv.js";
 export default {
   name: "PopupContent",
   props: {
@@ -65,6 +75,7 @@ export default {
           },
         ],
       },
+      flvPlayer: null,
     };
   },
 
@@ -77,6 +88,18 @@ export default {
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
     // this.initEchats();
+    if (flvjs.isSupported()) {
+      var videoElement = document.getElementById("videoElement");
+      this.flvPlayer = flvjs.createPlayer({
+        type: "flv",
+        isLive: true,
+        hasAudio: false,
+        url: "http://192.168.1.100:8080/hdl/34020000001110000002/34020000001310000003.flv", // 自己的flv视频流
+      });
+      this.flvPlayer.attachMediaElement(videoElement);
+      this.flvPlayer.load();
+      this.flvPlayer.play();
+    }
   },
 
   methods: {
@@ -87,6 +110,9 @@ export default {
       var chartDom = document.getElementById("echarts");
       var myChart = echarts.init(chartDom);
       this.options && myChart.setOption(this.options);
+    },
+    play() {
+      this.flvPlayer.play();
     },
   },
 };
