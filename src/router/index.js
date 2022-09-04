@@ -424,6 +424,12 @@ export const constantRoutes = [
         component: () => import("@/views/fy-demo/manvon-editor"),
         meta: { title: "ManvonEditor", icon: "table" },
       },
+      {
+        path: "danmu",
+        name: "DanMu",
+        component: () => import("@/views/fy-demo/danmu"),
+        meta: { title: "弹幕组件", icon: "table" },
+      },
     ],
   },
   {
