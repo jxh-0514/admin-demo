@@ -5,6 +5,7 @@
 
 <script>
 import L from "leaflet";
+import iconA from "leaflet/dist/images/marker-icon-2x.png";
 import Vue from "vue";
 import popupContent from "./leafletComponents/PopupContent";
 export default {
@@ -30,8 +31,18 @@ export default {
         popupAnchor: [1, -34],
         shadowSize: [41, 41],
       }),
+      mapUrlB: L.icon({
+        iconUrl: iconA,
+        iconSize: [26, 42],
+        iconAnchor: [13, 42],
+        shadowSize: [41, 41],
+        shadowAnchor: [13, 41],
+      }),
       iconUrl:
         "https://ms.bdimg.com/pacific/0/pic/-84529569_189684464.jpg?x=0&y=0&h=150&w=242&vh=150.00&vw=242.00&oh=150.00&ow=242.00",
+      content:
+        '<div id="mapDialog_container" ref="mapDialog_container" style="width: 300px;height:200px;"></div>',
+      markerData: { test: "测试" },
     };
   },
 
@@ -139,35 +150,64 @@ export default {
     // 方法三
     extendPopup() {
       // let point = new Bmap.Point(39.90563, 116.391305);
-      const marker = L.marker([39.90953, 116.391305], {
-        icon: this.mapUrl,
-      }).addTo(this.map);
+      let arr = [
+        { point: [39.91553, 116.391305], data: "1111" },
+        { point: [39.91553, 116.395305], data: "2222" },
+      ];
+      this.gem = [];
+      for (let i = 0; i < arr.length; i++) {
+        const marker = L.marker(arr[i].point, { icon: this.mapUrlB }).addTo(
+          this.map
+        );
+        this.gem.push(marker);
+        let popup = L.popup().setContent(this.content);
+        marker.bindPopup(popup);
+        marker.on("click", () => {
+          console.log("点击marker");
+          // 点击marker显示弹窗并显示flv监控视频
+          // 判断有pane时，则销毁
+          if (this.pane != null) {
+            this.pane.$destroy();
+          }
+          // 创建构造器
+          let Profile = Vue.extend(popupContent);
+          // 创建 Profile 实例，并挂载到一个元素上。
+          this.pane = new Profile({
+            propsData: { popupData: this.markerData },
+          });
+          // 加定时器解决第二次点击marker视频报错问题
+          setTimeout(() => {
+            this.pane.$mount("#mapDialog_container");
+          }, 200);
+        });
+      }
+      // const marker = L.marker([39.90953, 116.391305], {
+      //   icon: this.mapUrl,
+      // }).addTo(this.map);
       // 自定义弹窗
-      let popup = L.popup()
-        .setLatLng([39.90953, 116.391305])
-        .setContent(
-          '<div id="mapDialog-container" style="width: 260px">123</div>'
-        )
-        .openOn(this.map);
+      // let popup = L.popup()
+      //   .setLatLng([39.90953, 116.391305])
+      //   .setContent(this.content)
+      //   .openOn(this.map);
 
-      // 创建构造器
-      let Profile = Vue.extend(popupContent);
-      // 创建 Profile 实例，并挂载到一个元素上。
-      let data = { aa: "弹窗" };
-      new Profile({ propsData: { popupData: data } }).$mount(
-        "#mapDialog-container"
-      );
+      // // 创建构造器
+      // let Profile = Vue.extend(popupContent);
+      // // 创建 Profile 实例，并挂载到一个元素上。
+      // let data = { aa: "弹窗" };
+      // new Profile({ propsData: { popupData: data } }).$mount(
+      //   "#mapDialog-container"
+      // );
 
-      marker.on("click", () => {
-        console.log("点击");
-        popup.openOn(this.map);
-      });
+      // marker.on("click", () => {
+      //   console.log("点击");
+      //   popup.openOn(this.map);
+      // });
     },
     // 方法四
     markerPopup() {
       let arr = [
         { point: [39.90553, 116.391305], data: "1111" },
-        { point: [39.90553, 116.491305], data: "2222" },
+        { point: [39.90553, 116.395305], data: "2222" },
       ]; //模拟数据
       this.gem = [];
       for (let i = 0; i < arr.length; i++) {
@@ -182,7 +222,7 @@ export default {
         //给marker绑定标牌
         //标牌上按钮的点击事件绑定window上的a方法，这样就能调用vue的方法，并且通过marker点击事件能获取到循环传递的参数
         marker.bindPopup(
-          `<div style='width:138px;'><a id='aa' onclick='aa()' style='color:red'>收藏</a></div>`
+          `<div style='width:138px;'><a id='aa' onclick='aa()' style='color:red'>收藏${i}</a></div>`
         );
         console.log("循环", i, arr[i].point);
       }

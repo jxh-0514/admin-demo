@@ -34,6 +34,9 @@
       height="200px"
     ></video>
     <button @click="play">播放</button>
+    <!--SkeyeWebPlayer播放器容器-->
+    <!-- <div id="WebMediaPlayer" style="width: 300px; height: 240px"></div>
+    <button @click="handlePlay">播放</button> -->
   </div>
 </template>
 
@@ -41,6 +44,7 @@
 import echarts from "echarts";
 import Video from "@/components/Video";
 import flvjs from "flv.js";
+import mpegts from "mpegts.js";
 export default {
   name: "PopupContent",
   props: {
@@ -76,6 +80,7 @@ export default {
         ],
       },
       flvPlayer: null,
+      palyer: null, //SkeyeWebPlayer播放器
     };
   },
 
@@ -88,18 +93,15 @@ export default {
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
     // this.initEchats();
-    if (flvjs.isSupported()) {
-      var videoElement = document.getElementById("videoElement");
-      this.flvPlayer = flvjs.createPlayer({
-        type: "flv",
-        isLive: true,
-        hasAudio: false,
-        url: "http://192.168.1.100:8080/hdl/34020000001110000002/34020000001310000003.flv", // 自己的flv视频流
-      });
-      this.flvPlayer.attachMediaElement(videoElement);
-      this.flvPlayer.load();
-      this.flvPlayer.play();
-    }
+    // flv播放器
+    // this.initFlv();
+    // mpegts.js播放器
+    this.initMpegts();
+    // SkeyeWebPlayer 播放器
+    // this.$nextTick(() => {
+    //   this.initPlayer();
+    //   this.handlePlay();
+    // });
   },
 
   methods: {
@@ -111,8 +113,122 @@ export default {
       var myChart = echarts.init(chartDom);
       this.options && myChart.setOption(this.options);
     },
+    //flv播放器
+    initFlv() {
+      if (flvjs.isSupported()) {
+        var videoElement = document.getElementById("videoElement");
+        this.flvPlayer = flvjs.createPlayer({
+          type: "flv",
+          isLive: true,
+          hasAudio: false,
+          url: "http://192.168.1.222:8080/hdl/34020000001110000002/34020000001310000003.flv", // 自己的flv视频流
+        });
+        this.flvPlayer.attachMediaElement(videoElement);
+        this.flvPlayer.load();
+        // this.flvPlayer.play();
+        var playPromise = this.flvPlayer.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then((_) => {
+              console.log("播放", _);
+              // Automatic playback started!
+              // Show playing UI.
+              this.flvPlayer.play();
+            })
+            .catch((error) => {
+              console.log("暂停", error);
+              // Auto-play was prevented
+              // Show paused UI.
+              // this.muted = false;
+              // 销毁flv
+              this.flvPlayer.pause();
+              this.flvPlayer.unload();
+              this.flvPlayer.detachMediaElement();
+              this.flvPlayer.destroy();
+              this.flvPlayer = null;
+              // 重新加载
+              this.initFlv();
+            });
+        }
+      }
+    },
     play() {
       this.flvPlayer.play();
+    },
+    // mpegts播放器
+    initMpegts() {
+      if (mpegts.getFeatureList().mseLivePlayback) {
+        var videoElement = document.getElementById("videoElement");
+        this.flvPlayer = mpegts.createPlayer({
+          type: "flv", // could also be mpegts, m2ts, flv
+          isLive: true,
+          url: "http://192.168.1.222:8080/hdl/34020000001110000002/34020000001310000003.flv",
+        });
+        this.flvPlayer.attachMediaElement(videoElement);
+        this.flvPlayer.load();
+        this.flvPlayer.play();
+        // var playPromise = this.flvPlayer.play();
+        // if (playPromise !== undefined) {
+        //   playPromise
+        //     .then((_) => {
+        //       console.log("播放", _);
+        //       // Automatic playback started!
+        //       // Show playing UI.
+        //       this.flvPlayer.play();
+        //     })
+        //     .catch((error) => {
+        //       console.log("暂停", error);
+        //       // Auto-play was prevented
+        //       // Show paused UI.
+        //       // this.muted = false;
+        //       // 销毁flv
+        //       this.flvPlayer.pause();
+        //       this.flvPlayer.unload();
+        //       this.flvPlayer.detachMediaElement();
+        //       this.flvPlayer.destroy();
+        //       this.flvPlayer = null;
+        //       // 重新加载
+        //       this.initFlv();
+        //     });
+        // }
+      }
+    },
+    //===============SkeyeWebPlayer播放器===============
+    initPlayer() {
+      this.player = new WebMediaPlayer(
+        "",
+        `WebMediaPlayer`,
+        this.callbackFunc,
+        {
+          cbUserPtr: this,
+          decodeType: "auto",
+          height: true,
+        }
+      );
+    },
+    // 播放器回调方法
+    callbackFunc(cbType, cbParams) {
+      if (cbType === "playbackTime") {
+        //console.log("当前回放时间: " + cbParams);
+      } else if (cbType === "ended") {
+        console.log("播放结束");
+      }
+      console.log("Callback " + cbType + ":  " + cbParams);
+    },
+    // 播放
+    handlePlay() {
+      let url =
+        "http://192.168.1.222:8080/hdl/34020000001110000002/34020000001310000003.flv";
+      if (this.player) {
+        this.player.destroy();
+        this.initPlayer();
+        this.player.play(url, 1, 0);
+      }
+    },
+    handleClick(type) {
+      if (type === "stop") {
+        this.player.stop();
+      }
     },
   },
 };

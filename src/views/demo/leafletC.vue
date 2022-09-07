@@ -16,12 +16,12 @@
           :lat-lng="[marker.lat, marker.lng]"
           @click="handleMarkerClick(marker)"
         >
-          <l-popup :content="cardTemplate" :options="popupOptions" />
+          <!-- <l-popup :content="cardTemplate" :options="popupOptions" /> -->
           <!-- 优化 -->
-          <!-- <l-popup
+          <l-popup
             :content="cardTemplate[0] + marker.id + cardTemplate[1]"
             :options="popupOptions"
-          /> -->
+          />
         </l-marker>
       </template>
       <!-- </v-marker-cluster>  -->
@@ -62,15 +62,18 @@ export default {
         shadowSize: [41, 41],
         shadowAnchor: [13, 41],
       }),
-      cardTemplate:
-        "<div id='pane' style='width: 300px; height: 200px;'></div>",
+      // cardTemplate:
+      //   "<div id='pane' style='width: 300px; height: 240px;'></div>",
       // 优化
-      // cardTemplate: ['<div id="pane_', '" />'],
+      cardTemplate: [
+        '<div style="width: 300px; height: 240px;" id="pane_',
+        '" />',
+      ],
       popupOptions: {
         className: "mypopup",
       },
       pane: null,
-      stationAlarmNum: { 1: 10, 2: 8 },
+      stationAlarmNum: { 1: 10, 2: 8, 3: 12 },
     };
   },
   created() {
@@ -82,10 +85,14 @@ export default {
     console.log(123, this.$refs.map);
     console.log("====================================");
     var that = this;
-    this.$refs.map.mapObject.on("popupopen", function (e) {
-      that.pane.$mount("#pane");
+    this.$refs.map.mapObject.on("popupopen", (e) => {
+      // this.pane.$mount("#pane");
       // 优化
-      // that.pane.$mount("#pane_" + that.pane.id);
+      console.log("监听弹窗");
+      // 加定时器解决多次点击播放器报错问题
+      setTimeout(() => {
+        that.pane.$mount("#pane_" + that.pane.id);
+      }, 200);
     });
   },
   methods: {
@@ -102,13 +109,20 @@ export default {
     handleMarkerClick(station) {
       console.log("点击", station);
       if (this.pane != null) {
+        console.log("销毁弹窗");
+        // this.$refs.map.mapObject.closePopup();
         this.pane.$destroy();
+        this.pane = null;
       }
       var Component = Vue.extend(Pane);
       this.pane = new Component();
       this.pane.alarmNum = this.stationAlarmNum[station.id];
       this.pane.name = station.name;
       this.pane.id = station.id;
+      // setTimeout(() => {
+      //   this.pane.$mount("#pane_" + this.pane.id);
+      // }, 200);
+      // console.log("构造完成");
     },
     // setMarkers() {
     //   fetch(

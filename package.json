@@ -32,6 +32,7 @@
     "less-loader": "^5.0.0",
     "lodash": "^4.17.21",
     "mavon-editor": "^2.10.4",
+    "mpegts.js": "^1.6.10",
     "mqtt": "^4.3.7",
     "normalize.css": "7.0.0",
     "nprogress": "0.2.0",
