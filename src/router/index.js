@@ -346,6 +346,32 @@ export const constantRoutes = [
           },
         ]
       },
+      {
+        path: "dragBox",
+        name: "DragBox",
+        component: () => import("@/views/demo/dragBox"),
+        meta: { title: "拖拽盒子" },
+        children: [
+          {
+            path: 'dragBoxA',
+            name: 'DragBoxA',
+            component: () => import('@/views/demo/dragBox/dragBoxA'),
+            meta: { title: '拖拽盒子A', icon: 'table' }
+          },
+          {
+            path: 'dragBoxB',
+            name: 'DragBoxB',
+            component: () => import('@/views/demo/dragBox/dragBoxB'),
+            meta: { title: '拖拽盒子组件', icon: 'table' }
+          },
+          {
+            path: 'dragBoxC',
+            name: 'DragBoxC',
+            component: () => import('@/views/demo/dragBox/dragBoxC'),
+            meta: { title: '拖拽盒子组件B', icon: 'table' }
+          },
+        ]
+      },
     ],
   },
   // {
