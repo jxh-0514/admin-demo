@@ -299,7 +299,35 @@ export const constantRoutes = [
       //   name: "DragDialog",
       //   component: () => import("@/views/demo/dragDialog"),
       //   meta: { title: "拖拽对话框", icon: "table" },
-      // },
+      // },      
+      {
+        path: "transfer",
+        name: "Transfer",
+        component: () => import("@/views/demo/transfer"),
+        meta: { title: "表格穿梭框" },
+        children: [
+          {
+            path: 'transferA',
+            name: 'TransferA',
+            component: () => import('@/views/demo/transfer/transferA'),
+            meta: { title: '穿梭框C', icon: 'table' }
+          },
+        ]
+      },
+      {
+        path: "fullScreen",
+        name: "FullScreen",
+        component: () => import("@/views/demo/fullScreen"),
+        meta: { title: "全屏视频" },
+        children: [
+          {
+            path: 'fullScreenA',
+            name: 'fullScreenA',
+            component: () => import('@/views/demo/fullScreen/fullScreenA'),
+            meta: { title: '全屏视频', icon: 'table' }
+          },
+        ]
+      },
       {
         path: "chat",
         name: "Chat",
@@ -317,32 +345,6 @@ export const constantRoutes = [
             name: 'Mqtt',
             component: () => import('@/views/demo/chat/mqtt'),
             meta: { title: 'mqtt', icon: 'table' }
-          },
-        ]
-      },
-      {
-        path: "transfer",
-        name: "Transfer",
-        component: () => import("@/views/demo/transfer"),
-        meta: { title: "表格穿梭框" },
-        children: [
-          // {
-          //   path: 'transferA',
-          //   name: 'TransferA',
-          //   component: () => import('@/views/demo/transfer/transferA'),
-          //   meta: { title: 'transferA', icon: 'table' }
-          // },
-          // {
-          //   path: 'transferB',
-          //   name: 'TransferB',
-          //   component: () => import('@/views/demo/transfer/transferB'),
-          //   meta: { title: 'transferB', icon: 'table' }
-          // },
-          {
-            path: 'transferC',
-            name: 'TransferC',
-            component: () => import('@/views/demo/transfer/transferC'),
-            meta: { title: '穿梭框C', icon: 'table' }
           },
         ]
       },
