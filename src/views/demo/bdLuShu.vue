@@ -49,7 +49,8 @@
 </template>
 
 <script>
-import img from "@/assets/arrow.png";
+// import img from "@/assets/arrow.png";
+import img from "leaflet/dist/images/marker-icon-2x.png";
 export default {
   components: {},
 

@@ -326,6 +326,18 @@ export const constantRoutes = [
             component: () => import('@/views/demo/fullScreen/fullScreenA'),
             meta: { title: '全屏视频', icon: 'table' }
           },
+          {
+            path: 'tcplayer',
+            name: 'Tcplayer',
+            component: () => import('@/views/demo/fullScreen/tcplayer'),
+            meta: { title: '腾讯web播放器', icon: 'table' }
+          },
+          {
+            path: 'liveplayer',
+            name: 'Liveplayer',
+            component: () => import('@/views/demo/fullScreen/liveplayer'),
+            meta: { title: 'live播放器', icon: 'table' }
+          },
         ]
       },
       {

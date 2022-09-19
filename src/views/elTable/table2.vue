@@ -70,8 +70,7 @@
           :prop="item.prop"
           :label="item.label"
           :column-key="item.prop"
-          :min-width="item.minWidth"
-          :width="item.width"
+          :width="item.label.length * 20 + 50"
           show-overflow-tooltip
           sortable
         >
@@ -137,12 +136,12 @@ export default {
       ],
       // 表格遍历
       tableHeaders: [
-        { label: "描述", prop: "Des", width: "auto", minWidth: 150 },
-        { label: "创建时间", prop: "CreateTime", width: "auto" },
-        { label: "结束时间", prop: "FinishedTime", width: "auto" },
-        { label: "创造者", prop: "CreateUser", width: "auto" },
-        { label: "进度", prop: "per", width: "auto" },
-        { label: "行动", prop: "Actions", width: "80" },
+        { label: "描述", prop: "Des" },
+        { label: "创建时间", prop: "CreateTime" },
+        { label: "结束时间", prop: "FinishedTime" },
+        { label: "创造者", prop: "CreateUser" },
+        { label: "进度", prop: "per" },
+        { label: "行动", prop: "Actions" },
       ],
       // 过滤表格
       filters: [
