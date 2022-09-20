@@ -677,7 +677,7 @@ export const constantRoutes = [
         path: "text3",
         name: "Text3",
         component: () => import("@/views/richText/text3"),
-        meta: { title: "文本3" },
+        meta: { title: "tinyMce" },
       },
     ],
   },

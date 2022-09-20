@@ -1,13 +1,15 @@
 <template>
-  <div class='tinymce-container'>
+  <div class="tinymce-container">
     <editor id="tinymce" v-model="value" :init="init"></editor>
   </div>
 </template>
- 
+
 <script>
 import tinymce from "tinymce";
 import Editor from "@tinymce/tinymce-vue";
 import "tinymce/themes/silver/theme";
+// 引入icon解决组件icon无法显示的问题
+import "tinymce/icons/default/icons.min.js";
 import "tinymce/plugins/image";
 import "tinymce/plugins/link";
 import "tinymce/plugins/code";
@@ -22,14 +24,14 @@ import "tinymce/plugins/wordcount";
 export default {
   name: "MyTinymce",
   props: {
-    tinymceHtml: '',
+    tinymceHtml: "",
     tinymceHeight: {
       type: Number,
-      default: 500
-    }
+      default: 500,
+    },
   },
   components: {
-    Editor
+    Editor,
   },
   data() {
     return {
@@ -49,8 +51,8 @@ export default {
         statusbar: false, // 隐藏编辑器底部的状态栏
         paste_data_images: true, // 允许粘贴图像
         menubar: false, // 隐藏最上方menu
- 
-        file_picker_types: 'image',
+
+        file_picker_types: "image",
         images_upload_credentials: true,
         fontsize_formats: "14px 16px 18px 20px 24px 26px 28px 30px 32px 36px", //字体大小
         font_formats:
@@ -60,34 +62,33 @@ export default {
          * 借助iview的Upload组件,将图片先上传到存储云上，再将图片的存储地址放入编辑器内容
          */
         // 图片上传三个参数，图片数据，成功时的回调函数，失败时的回调函数
-        images_upload_handler: function(blobInfo, success, failure) {
+        images_upload_handler: function (blobInfo, success, failure) {
           let formdata = new FormData();
           formdata.append("image", blobInfo.blob());
- 
+
           uploadImg(formdata)
-            .then(res => {
+            .then((res) => {
               console.log(res);
               success("https://qnsjk.huabeisky.com/" + res.data);
             })
-            .catch(res => {
+            .catch((res) => {
               failure("error");
             });
-        }
-      }
+        },
+      },
     };
   },
   watch: {
-    tinymceHtml(newV,oldV) {
-      this.value = newV
-    }
+    tinymceHtml(newV, oldV) {
+      this.value = newV;
+    },
   },
   computed: {},
   created() {},
   mounted() {
     tinymce.init({});
   },
-  methods: {}
+  methods: {},
 };
 </script>
-<style  scoped>
-</style>
+<style scoped></style>
