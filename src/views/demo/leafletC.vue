@@ -99,8 +99,20 @@ export default {
     setMarkers() {
       this.$nextTick(() => {
         let arr = [
-          { id: 1, name: "测试站点1", lat: 39.90553, lng: 116.391305 },
-          { id: 2, name: "测试站点2", lat: 40.90553, lng: 116.393305 },
+          {
+            id: 1,
+            name: "测试站点1",
+            lat: 39.90553,
+            lng: 116.391305,
+            data: "http://192.168.1.71:8080/hdl/34020000001110000002/34020000001310000003.flv",
+          },
+          {
+            id: 2,
+            name: "测试站点2",
+            lat: 40.90553,
+            lng: 116.393305,
+            data: "http://192.168.1.71:8080/hls/34020000001110000002/34020000001310000003.m3u8",
+          },
           { id: 3, name: "测试站点3", lat: 41.90553, lng: 116.395305 },
         ];
         this.markers = arr;
@@ -115,7 +127,7 @@ export default {
         this.pane = null;
       }
       var Component = Vue.extend(Pane);
-      this.pane = new Component();
+      this.pane = new Component({ propsData: { popupData: station.data } });
       this.pane.alarmNum = this.stationAlarmNum[station.id];
       this.pane.name = station.name;
       this.pane.id = station.id;

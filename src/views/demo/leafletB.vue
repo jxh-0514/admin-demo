@@ -151,19 +151,26 @@ export default {
     extendPopup() {
       // let point = new Bmap.Point(39.90563, 116.391305);
       let arr = [
-        { point: [39.91553, 116.391305], data: "1111" },
-        { point: [39.91553, 116.395305], data: "2222" },
+        {
+          point: [39.91553, 116.391305],
+          data: "http://192.168.1.71:8080/hdl/34020000001110000002/34020000001310000003.flv",
+        },
+        {
+          point: [39.91553, 116.395305],
+          data: "http://192.168.1.71:8080/hls/34020000001110000002/34020000001310000003.m3u8",
+        },
       ];
       this.gem = [];
       for (let i = 0; i < arr.length; i++) {
         const marker = L.marker(arr[i].point, { icon: this.mapUrlB }).addTo(
           this.map
         );
+        marker.info = arr[i].data;
         this.gem.push(marker);
         let popup = L.popup().setContent(this.content);
         marker.bindPopup(popup);
-        marker.on("click", () => {
-          console.log("点击marker");
+        marker.on("click", (e) => {
+          console.log("点击marker", e);
           // 点击marker显示弹窗并显示flv监控视频
           // 判断有pane时，则销毁
           if (this.pane != null) {
@@ -173,7 +180,7 @@ export default {
           let Profile = Vue.extend(popupContent);
           // 创建 Profile 实例，并挂载到一个元素上。
           this.pane = new Profile({
-            propsData: { popupData: this.markerData },
+            propsData: { popupData: e.target.info },
           });
           // 加定时器解决第二次点击marker视频报错问题
           setTimeout(() => {

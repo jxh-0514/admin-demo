@@ -25,7 +25,7 @@
       src="https://tutorialehtml.com/assets_tutorials/media/Shaun-the-Sheep-The-Movie-Official-Trailer.mp4"
       :videoData="true"
     ></Video> -->
-    <video
+    <!-- <video
       id="videoElement"
       controls
       autoplay
@@ -33,10 +33,12 @@
       width="300px"
       height="200px"
     ></video>
-    <button @click="play">播放</button>
+    <button @click="play">播放</button> -->
     <!--SkeyeWebPlayer播放器容器-->
     <!-- <div id="WebMediaPlayer" style="width: 300px; height: 240px"></div>
     <button @click="handlePlay">播放</button> -->
+    <!-- 腾讯web播放器 -->
+    <div id="tcplayer"></div>
   </div>
 </template>
 
@@ -50,8 +52,10 @@ export default {
   props: {
     // 接收传来的数据
     popupData: {
-      type: Object,
-      default: () => {},
+      // type: Object,
+      // default: () => {},
+      type: String,
+      default: "",
     },
   },
   components: {
@@ -80,7 +84,7 @@ export default {
         ],
       },
       flvPlayer: null,
-      palyer: null, //SkeyeWebPlayer播放器
+      palyer: null, //SkeyeWebPlayer播放器 / 腾讯web播放器
     };
   },
 
@@ -96,12 +100,15 @@ export default {
     // flv播放器
     // this.initFlv();
     // mpegts.js播放器
-    this.initMpegts();
+    // this.initMpegts();
     // SkeyeWebPlayer 播放器
     // this.$nextTick(() => {
     //   this.initPlayer();
     //   this.handlePlay();
     // });
+    // 腾讯web播放器
+    this.initplayer();
+    console.log("接收", this.popupData);
   },
 
   methods: {
@@ -229,6 +236,35 @@ export default {
       if (type === "stop") {
         this.player.stop();
       }
+    },
+    // 腾讯web播放器
+    initplayer() {
+      if (this.player) {
+        this.player.destroy();
+        this.player = null;
+      }
+      var breakTime = 60 * 10;
+      this.player = new TcPlayer("tcplayer", {
+        m3u8: this.popupData,
+        flv: this.popupData,
+        autoplay: true, //iOS 下 safari 浏览器，以及大部分移动端浏览器是不开放视频自动播放这个能力的
+        //"poster": this.anchor.cover,
+        width: "100%", //480视频的显示宽度，请尽量使用视频分辨率宽度
+        height: "180", //320视频的显示高度，请尽量使用视频分辨率高度
+        wording: {
+          2: "未直播",
+          2032: "未直播", //"请求视频失败，请检查网络",
+          2048: "未直播", // "请求m3u8文件失败，可能是网络错误或者跨域问题"
+        },
+        listener(msg) {
+          // if (this.player.currentTime() > breakTime) {
+          //   //播放，且超过10分钟，暂停且提示！
+          //   player.pause();
+          //   // that.tipVisible = true;
+          //   console.log("播放超过10分钟");
+          // }
+        },
+      });
     },
   },
 };

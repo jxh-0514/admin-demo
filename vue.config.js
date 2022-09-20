@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // const TerserPlugin = require('terser-webpack-olugin')
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -101,6 +102,13 @@ module.exports = {
       //   }
       // ],
     },
+    plugins: [
+      new CopyWebpackPlugin([
+        { from: 'node_modules/@liveqing/liveplayer/dist/component/crossdomain.xml' },
+        { from: 'node_modules/@liveqing/liveplayer/dist/component/liveplayer.swf' },
+        { from: 'node_modules/@liveqing/liveplayer/dist/component/liveplayer-lib.min.js', to: 'js/' },
+      ])
+    ]
   },
   chainWebpack(config) {
     // it can improve the speed of the first screen, it is recommended to turn on preload
