@@ -47,12 +47,7 @@
     ></tc-player-unit> -->
     <!-- </div> -->
 
-    <timeLine
-      ref="timeLienRef"
-      :colorVal="'#000000'"
-      @handleClickTimeLineFn="handleClickTimeLineFn"
-      :dateArr="dateArr"
-    ></timeLine>
+    <progressBar @handleClickTimeLineFn="handleClickTimeLineFn"></progressBar>
   </div>
 </template>
 
@@ -60,14 +55,12 @@
 import axios from "axios";
 import tcPlayer from "@/components/Tcplayer/indexA.vue";
 import tcPlayerUnit from "@/components/Tcplayer"; //多个
-// import progressBar from "@/components/ProgressBar";
-import timeLine from "as-time-line";
-import "as-time-line/lib/timeline.css";
+import progressBar from "@/components/ProgressBar";
 export default {
   components: {
     tcPlayer,
     tcPlayerUnit,
-    timeLine,
+    progressBar,
   },
 
   data() {
@@ -121,7 +114,6 @@ export default {
         // },
       ],
       video: "",
-      dateArr: [1663735205, 1663735505],
     };
   },
 
