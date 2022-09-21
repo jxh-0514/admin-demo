@@ -46,6 +46,13 @@
       :widthHeigt="[100, 100]"
     ></tc-player-unit> -->
     <!-- </div> -->
+
+    <timeLine
+      ref="timeLienRef"
+      :colorVal="'#000000'"
+      @handleClickTimeLineFn="handleClickTimeLineFn"
+      :dateArr="dateArr"
+    ></timeLine>
   </div>
 </template>
 
@@ -53,10 +60,14 @@
 import axios from "axios";
 import tcPlayer from "@/components/Tcplayer/indexA.vue";
 import tcPlayerUnit from "@/components/Tcplayer"; //多个
+// import progressBar from "@/components/ProgressBar";
+import timeLine from "as-time-line";
+import "as-time-line/lib/timeline.css";
 export default {
   components: {
     tcPlayer,
     tcPlayerUnit,
+    timeLine,
   },
 
   data() {
@@ -64,15 +75,15 @@ export default {
       player: null,
       anchor: {
         pullUrl:
-          // "http://192.168.1.71:8080/hdl/34020000001110000002/34020000001310000003.flv",
-          "http://192.168.1.71:8080/hls/34020000001110000002/34020000001310000003.m3u8",
+          "http://192.168.1.71:8080/hdl/34020000001110000002/34020000001310000003.flv",
+        // "http://192.168.1.71:8080/hls/34020000001110000002/34020000001310000003.m3u8",
         // "rtmp://192.168.1.71:8080/34020000001110000002/34020000001310000003",
         // "rtsp://192.168.1.71:8080/34020000001110000002/34020000001310000003",
         // "http://192.168.1.71:8080/webrtc/play/34020000001110000002/34020000001310000003",
       },
       currentItem: {
-        // url: "http://192.168.1.71:8080/hdl/34020000001110000002/34020000001310000003/1663652703-1663653063.flv",
-        // url: "http://192.168.1.71:8080/hls/34020000001110000002/34020000001310000003/1663652703-1663653063.m3u8",
+        // url: "http://192.168.1.71:8080/hdl/34020000001110000002/34020000001310000003/1663735205-1663735505.flv",
+        // url: "http://192.168.1.71:8080/hls/34020000001110000002/34020000001310000003/1663735205-1663735505.m3u8",
         // url: "https://tutorialehtml.com/assets_tutorials/media/Shaun-the-Sheep-The-Movie-Official-Trailer.mp4",
       },
       options: [
@@ -86,11 +97,15 @@ export default {
         },
         {
           value:
-            "http://192.168.1.71:8080/hdl/34020000001110000002/34020000001310000003/1663652703-1663653063.flv",
+            "http://192.168.1.71:8080/hdl/34020000001110000002/34020000001310000003/1663735205-1663735505.flv",
         },
         {
           value:
-            "http://192.168.1.71:8080/hls/34020000001110000002/34020000001310000003/1663652703-1663653063.m3u8",
+            "http://192.168.1.71:8080/hls/34020000001110000002/34020000001310000003/1663735205-1663735505.m3u8",
+        },
+        {
+          value:
+            "http://192.168.1.71:8081/hdl/34020000001110000002/34020000001310000003/1663735205-1663735505.flv",
         },
         // {
         //   value:
@@ -106,6 +121,7 @@ export default {
         // },
       ],
       video: "",
+      dateArr: [1663735205, 1663735505],
     };
   },
 
@@ -160,11 +176,17 @@ export default {
     beforeBtn() {
       // 先调用
       axios({
-        url: "http://192.168.1.71:8080/gb28181/api/invite?id=34020000001110000002&channel=34020000001310000003&startTime=1663652703&endTime=1663653063",
+        // url: "http://192.168.1.71:8080/api/gb28181/query/records?id=34020000001110000002&channel=34020000001310000003&startTime=2022-9-21T10:22:02&endTime=2022-9-21T10:25:02",
+        // url: "http://192.168.1.71:8080/gb28181/api/invite?id=34020000001110000002&channel=34020000001310000003&startTime=1663735205&endTime=1663735505",
+        url: "http://192.168.1.71:8081/gb28181/api/invite?id=34020000001110000002&channel=34020000001310000003&startTime=1663735205&endTime=1663735505",
         // url: "http://192.168.1.61:6798/gb28181/api/invite?id=" + id + "&channel=" + channel + "&startTime=" + startTime + "&endTime=" + endTime,
       }).then((res) => {
         console.log("axios", res);
       });
+    },
+    // 自定义进度条
+    handleClickTimeLineFn(fomreTime) {
+      console.log("点击的时间", fomreTime);
     },
   },
 };

@@ -338,6 +338,12 @@ export const constantRoutes = [
             component: () => import('@/views/demo/fullScreen/liveplayer'),
             meta: { title: 'live播放器', icon: 'table' }
           },
+          {
+            path: 'xgplayer',
+            name: 'Xgplayer',
+            component: () => import('@/views/demo/fullScreen/xgplayer'),
+            meta: { title: '西瓜播放器', icon: 'table' }
+          },
         ]
       },
       {

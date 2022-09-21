@@ -25,7 +25,7 @@
       src="https://tutorialehtml.com/assets_tutorials/media/Shaun-the-Sheep-The-Movie-Official-Trailer.mp4"
       :videoData="true"
     ></Video> -->
-    <!-- <video
+    <video
       id="videoElement"
       controls
       autoplay
@@ -33,12 +33,12 @@
       width="300px"
       height="200px"
     ></video>
-    <button @click="play">播放</button> -->
+    <button @click="play">播放</button>
     <!--SkeyeWebPlayer播放器容器-->
     <!-- <div id="WebMediaPlayer" style="width: 300px; height: 240px"></div>
     <button @click="handlePlay">播放</button> -->
     <!-- 腾讯web播放器 -->
-    <div id="tcplayer"></div>
+    <!-- <div id="tcplayer"></div> -->
   </div>
 </template>
 
@@ -100,14 +100,14 @@ export default {
     // flv播放器
     // this.initFlv();
     // mpegts.js播放器
-    // this.initMpegts();
+    this.initMpegts();
     // SkeyeWebPlayer 播放器
     // this.$nextTick(() => {
     //   this.initPlayer();
     //   this.handlePlay();
     // });
     // 腾讯web播放器
-    this.initplayer();
+    // this.initplayer();
     console.log("接收", this.popupData);
   },
 
@@ -169,7 +169,7 @@ export default {
         this.flvPlayer = mpegts.createPlayer({
           type: "flv", // could also be mpegts, m2ts, flv
           isLive: true,
-          url: "http://192.168.1.222:8080/hdl/34020000001110000002/34020000001310000003.flv",
+          url: "http://192.168.1.71:8080/hdl/34020000001110000002/34020000001310000003.flv",
         });
         this.flvPlayer.attachMediaElement(videoElement);
         this.flvPlayer.load();
