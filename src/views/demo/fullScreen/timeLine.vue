@@ -1,143 +1,58 @@
 <template>
   <div>
-    <canvas id="time_line" width="1200" height="27"></canvas>
+    <el-button @click="navBtn">点击发起通知</el-button>
+    <p id="text"></p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "pathwaytrack",
+  name: "",
   data() {
-    return {
-      screenWidth: document.body.clientWidth,
-    };
+    return {};
   },
-  mounted() {
-    let that = this;
-    that.carveTimeScale(1200, 1, 10, 0, 10);
-    let canvasColor = "#999999";
-    let initTime = 12000;
-    setInterval(() => {
-      initTime += 1000;
-      that.carveTimeScale(1200, 1, 10, initTime, 10);
-    }, 1000);
-  },
+  mounted() {},
   methods: {
-    /**
-     * 分割像素刻度
-     * width: 宽度 ms：一个小刻度的毫秒数 pxMs：10像素一个小刻度 pageShowStartTime：初始时间（毫秒） 一大段间隔时长(秒）
-     */
-    carveTimeScale(width, ms, pxMs, pageShowStartTime, intervalTime) {
-      let canvasId = document.getElementById("time_line");
-      let ctx = canvasId.getContext("2d");
-      ctx.clearRect(0, 0, 1200, 60);
-      ctx.fillStyle = "#999999";
-      // 为防止苹果屏幕2X显示不正常
-      // 为防止苹果屏幕2X显示不正常
-      var getPixelRatio = function (context) {
-        var backingStore =
-          context.backingStorePixelRatio ||
-          context.webkitBackingStorePixelRatio ||
-          context.mozBackingStorePixelRatio ||
-          context.msBackingStorePixelRatio ||
-          context.oBackingStorePixelRatio ||
-          context.backingStorePixelRatio ||
-          1;
-        return (window.devicePixelRatio || 1) / backingStore;
-      };
-      let ratio = getPixelRatio(ctx);
-      let msOffset = this.startOffsetTime(pageShowStartTime, ms); // 开始的偏移时间 ms
-      let pxOffset = (msOffset / 1000) * pxMs; // 开始的偏移距离 px
-      let leftDistance = 0; // 到左侧的距离
-      let leftDistanceTime = 0; // 到左侧的时间
-      let beginX = 0;
-      let beginY = 0;
-      for (let i = 0; i < width / (ms * pxMs); i++) {
-        leftDistance = pxOffset + i * (ms * pxMs); // 距离 = 开始的偏移距离 + 格数 * px/格
-        leftDistanceTime = pageShowStartTime + msOffset + i * ms; // 时间 = 左侧开始时间 + 偏移时间 + 格数 * ms
-        beginX = pxOffset + i * (ms * pxMs);
-        let canvasColor;
-        let showTime = pageShowStartTime + (beginX / pxMs) * 1000;
-        if (showTime % (intervalTime * 1000) === 0) {
-          beginY = 0;
-          ctx.font = "12px Arial";
-          ctx.fillText(this.changeTime(showTime, 1), beginX + 10, 22);
-          canvasColor = "#999999";
-          ctx.fillStyle = "#B1B1B1";
-          this.drawLine(leftDistance, beginY, leftDistance, 20, canvasColor, 1);
-        } else if (showTime % intervalTime == 0) {
-          beginY = 0;
-          canvasColor = "#999999";
-          this.drawLine(leftDistance, beginY, leftDistance, 10, canvasColor, 1);
-        }
+    // 测试通知
+    navBtn() {
+      // 先检查浏览器是否支持
+      if (!("Notification" in window)) {
+        alert("此浏览器不支持桌面通知！");
       }
-    },
-    /**
-     * 根据传入参数画线
-     */
-    drawLine(beginX, beginY, endX, endY, color, width) {
-      let canvasId = document.getElementById("time_line");
-      let ctx = canvasId.getContext("2d");
-      ctx.beginPath();
-      ctx.moveTo(beginX, beginY);
-      ctx.lineTo(endX, endY);
-      ctx.strokeStyle = color;
-      ctx.lineWidth = width;
-      ctx.stroke();
-    },
-    /**
-     * 左侧开始时间的偏移，返回单位ms
-     */
-    startOffsetTime(timestamp, step) {
-      let remainder = timestamp % step;
-      return remainder ? step - remainder : 0;
-    },
-    /**
-     * 返回时间
-     */
-    changeTime(time, num) {
-      let hour = 0;
-      let minute = 0;
-      let second = 0;
-      second = time / 1000;
-      if (second >= 3600) {
-        minute = (second - (second % 60)) / 60;
-        hour = parseInt((minute / 60).toString());
-        minute = minute % 60;
-        /* eslint-disable */
-        hour >= 10 ? hour : (hour = "0" + hour);
-        minute >= 10 ? minute : (minute = "0" + minute);
-        second = second % 60;
-        second >= 10 ? second : (second = "0" + second);
-        /* eslint-enable */
-        return hour + ":" + minute + ":" + second;
+
+      // 检查用户是否同意接受通知
+      else if (Notification.permission === "granted") {
+        // If it's okay let's create a notification
+        var notification = new Notification("温馨提醒", {
+          dir: "auto",
+          body: "收到一条新通知",
+          icon: "	https://himg.bdimg.com/sys/portraitn/item/public.1.70da21be.9VS7zW-rGyVeffNOG-lhtQ",
+        });
+        notification.onclick = function () {
+          //点击当前消息提示框后，跳转到当前页面
+          // window.location = "https:baidu.com";
+          let text = document.getElementById("text");
+          text.innerHTML =
+            "已于" + new Date().toTimeString().split(" ")[0] + "收到通知";
+          notification.close();
+        };
       }
-      if (second < 3600 && second >= 60) {
-        hour = "00";
-        minute = parseInt((second / 60).toString());
-        /* eslint-disable */
-        minute >= 10 ? minute : (minute = "0" + minute);
-        second = second % 60;
-        second >= 10 ? second : (second = "0" + second);
-        /* eslint-enable */
-        return hour + ":" + minute + ":" + second;
+
+      // 否则我们需要向用户获取权限
+      else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(function (permission) {
+          // 如果用户接受权限，我们就可以发起一条消息
+          if (permission === "granted") {
+            var notification = new Notification("Hi there!");
+          }
+        });
       }
-      if (second < 60) {
-        hour = "00";
-        minute = "00";
-        second = parseInt(second);
-        /* eslint-disable */
-        second >= 10 ? second : (second = "0" + second);
-        /* eslint-enable */
-        return hour + ":" + minute + ":" + second;
-      }
+
+      // 最后，如果执行到这里，说明用户已经拒绝对相关通知进行授权
+      // 出于尊重，我们不应该再打扰他们了
     },
   },
 };
 </script>
 
-<style lang="less" scoped>
-canvas {
-  background: black;
-}
-</style>
+<style lang="less" scoped></style>
