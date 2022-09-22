@@ -344,6 +344,12 @@ export const constantRoutes = [
             component: () => import('@/views/demo/fullScreen/xgplayer'),
             meta: { title: '西瓜播放器', icon: 'table' }
           },
+          {
+            path: 'timeLine',
+            name: 'TimeLine',
+            component: () => import('@/views/demo/fullScreen/timeLine'),
+            meta: { title: '时间刻度', icon: 'table' }
+          },
         ]
       },
       {

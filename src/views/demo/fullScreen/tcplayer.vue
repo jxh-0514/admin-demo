@@ -114,6 +114,7 @@ export default {
         // },
       ],
       video: "",
+      dateArr: [1663735505, 1663735805],
     };
   },
 

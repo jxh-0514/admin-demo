@@ -229,8 +229,8 @@ export default {
       ],
       switchWidthNum: 540,
       yesterdayTime: 0,
-      formatDateTime: 1663735505,
       clickTimeVal: 0,
+      formatDateTime: 0,
     };
   },
   mounted() {
@@ -382,6 +382,13 @@ export default {
       this.$refs.timeRef.style.transition = "all 0.5s";
     },
   },
+  // filters: {
+  //   formatDateTime(nS) {
+  //     return new Date(parseInt(nS) * 1000)
+  //       .toLocaleString()
+  //       .replace(/:\d{1,2}$/, " ");
+  //   },
+  // },
 };
 </script>
 <style scoped lang="scss">
