@@ -50,6 +50,7 @@ export default {
       let player = new HlsPlayer({
         id: "mse",
         isLive: true,
+        // url: "rtmp://r2bj.vzan.com/v/1126653464_231435244367094402?zbid=1126653464&tpid=1361853375",
         url: "http://192.168.1.71:8080/hls/34020000001110000002/34020000001310000003.m3u8",
         autoplay: true,
         playsinline: true,

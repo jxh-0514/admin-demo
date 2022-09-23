@@ -14,6 +14,13 @@
       ></video>
     </div>
     <div>
+      <select id="select">
+        <option value="0.5">0.5</option>
+        <option value="1" selected>1.0</option>
+        <option value="1.5">1.5</option>
+        <option value="2">2.0</option>
+        <option value="3">3.0</option>
+      </select>
       <el-button @click="changeA(1)">二分屏</el-button>
       <el-button @click="changeA(2)">四分屏</el-button>
       <el-button @click="changeA(3)">九分屏</el-button>
@@ -89,6 +96,14 @@ export default {
         });
       }
       this.fullscreen = !this.fullscreen;
+    });
+
+    var select = document.getElementById("select");
+    // 视频元素
+    var video = document.getElementById("videoElement0");
+    // 改变播放速率
+    select.addEventListener("change", function () {
+      video.playbackRate = this.value;
     });
   },
 

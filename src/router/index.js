@@ -327,6 +327,12 @@ export const constantRoutes = [
             meta: { title: '全屏视频', icon: 'table' }
           },
           {
+            path: 'flv-extend',
+            name: 'Flv-extend',
+            component: () => import('@/views/demo/fullScreen/flv-extend'),
+            meta: { title: 'flv-extend', icon: 'table' }
+          },
+          {
             path: 'tcplayer',
             name: 'Tcplayer',
             component: () => import('@/views/demo/fullScreen/tcplayer'),

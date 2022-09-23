@@ -40,7 +40,8 @@ export default {
 
   data() {
     return {
-      videoUrl: "",
+      videoUrl:
+        "https://tutorialehtml.com/assets_tutorials/media/Shaun-the-Sheep-The-Movie-Official-Trailer.mp4",
       video: "",
     };
   },

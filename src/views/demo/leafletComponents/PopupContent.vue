@@ -33,7 +33,7 @@
       width="300px"
       height="200px"
     ></video>
-    <button @click="play">播放</button>
+    <button @click="play">加速</button>
     <!--SkeyeWebPlayer播放器容器-->
     <!-- <div id="WebMediaPlayer" style="width: 300px; height: 240px"></div>
     <button @click="handlePlay">播放</button> -->
@@ -160,7 +160,7 @@ export default {
       }
     },
     play() {
-      this.flvPlayer.play();
+      // this.flvPlayer.play();
     },
     // mpegts播放器
     initMpegts() {
@@ -174,30 +174,30 @@ export default {
         this.flvPlayer.attachMediaElement(videoElement);
         this.flvPlayer.load();
         this.flvPlayer.play();
-        // var playPromise = this.flvPlayer.play();
-        // if (playPromise !== undefined) {
-        //   playPromise
-        //     .then((_) => {
-        //       console.log("播放", _);
-        //       // Automatic playback started!
-        //       // Show playing UI.
-        //       this.flvPlayer.play();
-        //     })
-        //     .catch((error) => {
-        //       console.log("暂停", error);
-        //       // Auto-play was prevented
-        //       // Show paused UI.
-        //       // this.muted = false;
-        //       // 销毁flv
-        //       this.flvPlayer.pause();
-        //       this.flvPlayer.unload();
-        //       this.flvPlayer.detachMediaElement();
-        //       this.flvPlayer.destroy();
-        //       this.flvPlayer = null;
-        //       // 重新加载
-        //       this.initFlv();
-        //     });
-        // }
+        var playPromise = this.flvPlayer.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then((_) => {
+              console.log("播放", _);
+              // Automatic playback started!
+              // Show playing UI.
+              // this.flvPlayer.play();
+            })
+            .catch((error) => {
+              console.log("暂停", error);
+              // Auto-play was prevented
+              // Show paused UI.
+              // this.muted = false;
+              // 销毁flv
+              this.flvPlayer.pause();
+              this.flvPlayer.unload();
+              this.flvPlayer.detachMediaElement();
+              this.flvPlayer.destroy();
+              this.flvPlayer = null;
+              // 重新加载
+              this.initFlv();
+            });
+        }
       }
     },
     //===============SkeyeWebPlayer播放器===============
