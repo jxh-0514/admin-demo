@@ -27,6 +27,14 @@
         <el-button type="primary" size="medium" @click="playBtn()"
           >播放</el-button
         >
+        <el-select style="width: 100px" v-model="value" placeholder="请选择">
+          <el-option
+            v-for="item in optionsTime"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          ></el-option>
+        </el-select>
         <el-button @click="beforeBtn">调用</el-button>
         <el-button @click="speedBtn">倍速</el-button>
       </div>
@@ -48,7 +56,7 @@
     ></tc-player-unit> -->
     <!-- </div> -->
 
-    <progressBar @handleClickTimeLineFn="handleClickTimeLineFn"></progressBar>
+    <!-- <progressBar @handleClickTimeLineFn="handleClickTimeLineFn"></progressBar> -->
   </div>
 </template>
 
@@ -99,8 +107,7 @@ export default {
             "http://192.168.1.71:8080/hls/34020000001110000002/34020000001310000003/1663917840-1663918200.m3u8",
         },
         {
-          value:
-            "http://192.168.1.71:8081/hdl/34020000001110000002/34020000001310000003/1663917840-1663918200.flv",
+          value: "",
         },
         // {
         //   value:
@@ -117,6 +124,15 @@ export default {
       ],
       video: "",
       dateArr: [1663918200, 1663735805],
+      value: "",
+      optionsTime: [
+        { value: 5, label: "5分钟" },
+        { value: 10, label: "10分钟" },
+        { value: 30, label: "30分钟" },
+        { value: 60, label: "60分钟" },
+        { value: 90, label: "90分钟" },
+        { value: 120, label: "120分钟" },
+      ],
     };
   },
 
@@ -169,14 +185,35 @@ export default {
       this.initplayer();
     },
     beforeBtn() {
+      // 当前时间戳
+      let id = "34020000001110000002";
+      let channel = "34020000001310000003";
+      let endTime = Date.parse(new Date()) / 1000;
+      let startTime = endTime - this.value * 60;
+      console.log(111, this.value, startTime, endTime);
       // 先调用
       axios({
         // url: "http://192.168.1.71:8080/api/gb28181/query/records?id=34020000001110000002&channel=34020000001310000003&startTime=2022-9-21T10:22:02&endTime=2022-9-21T10:25:02",
         // url: "http://192.168.1.71:8080/gb28181/api/invite?id=34020000001110000002&channel=34020000001310000003&startTime=1663917840&endTime=1663918200",
-        url: "http://192.168.1.71:8081/gb28181/api/invite?id=34020000001110000002&channel=34020000001310000003&startTime=1663917840&endTime=1663918200",
-        // url: "http://192.168.1.61:6798/gb28181/api/invite?id=" + id + "&channel=" + channel + "&startTime=" + startTime + "&endTime=" + endTime,
+        // url: "http://192.168.1.71:8080/gb28181/api/invite?id=34020000001110000002&channel=34020000001310000003&startTime=1664263496&endTime=1664268896",
+        // url: "http://192.168.1.71:8081/gb28181/api/invite?id=34020000001110000002&channel=34020000001310000003&startTime=1663917840&endTime=1663918200",
+        url:
+          "http://192.168.1.71:8080/gb28181/api/invite?id=" +
+          id +
+          "&channel=" +
+          channel +
+          "&startTime=" +
+          startTime +
+          "&endTime=" +
+          endTime,
       }).then((res) => {
         console.log("axios", res);
+        this.options[4].value =
+          "http://192.168.1.71:8080/hdl/34020000001110000002/34020000001310000003/" +
+          startTime +
+          "-" +
+          endTime +
+          ".flv";
       });
     },
     // 自定义进度条

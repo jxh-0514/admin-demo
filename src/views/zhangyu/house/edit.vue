@@ -1,8 +1,8 @@
 <template>
-  <div class="app-container" >
-    <el-card class="box-card" >
+  <div class="app-container">
+    <el-card class="box-card">
       <h3>房源介绍</h3>
-      <el-form ref="house" :rules="rules" :model="house" label-width="150px" >
+      <el-form ref="house" :rules="rules" :model="house" label-width="150px">
         <el-form-item label="房源ID" prop="id">
           <el-input v-model="house.id" disabled />
         </el-form-item>
@@ -142,9 +142,14 @@
         <template>
           <div
             class="block"
-            style="margin-left: 82px;font-size: 14px;font-weight: bolder;color: #606266;"
+            style="
+              margin-left: 82px;
+              font-size: 14px;
+              font-weight: bolder;
+              color: #606266;
+            "
           >
-            <span class="demonstration" style="margin-right:8px;"
+            <span class="demonstration" style="margin-right: 8px"
               >开盘时间</span
             >
             <el-date-picker
@@ -152,8 +157,7 @@
               type="datetime"
               placeholder="选择日期时间"
               @change="dateFormat3"
-            >
-            </el-date-picker>
+            />
           </div>
         </template>
 
@@ -164,9 +168,14 @@
         <template>
           <div
             class="block"
-            style="margin-left: 54px;font-size: 14px;font-weight: bolder;color: #606266;"
+            style="
+              margin-left: 54px;
+              font-size: 14px;
+              font-weight: bolder;
+              color: #606266;
+            "
           >
-            <span class="demonstration" style="margin-right:8px;"
+            <span class="demonstration" style="margin-right: 8px"
               >活动开始时间</span
             >
             <el-date-picker
@@ -174,8 +183,7 @@
               type="datetime"
               placeholder="选择日期时间"
               @change="dateFormat2"
-            >
-            </el-date-picker>
+            />
           </div>
         </template>
 
@@ -186,9 +194,14 @@
         <template>
           <div
             class="block"
-            style="margin-left: 54px;font-size: 14px;font-weight: bolder;color: #606266;"
+            style="
+              margin-left: 54px;
+              font-size: 14px;
+              font-weight: bolder;
+              color: #606266;
+            "
           >
-            <span class="demonstration" style="margin-right:8px;"
+            <span class="demonstration" style="margin-right: 8px"
               >活动结束时间</span
             >
             <el-date-picker
@@ -196,8 +209,7 @@
               type="datetime"
               placeholder="选择日期时间"
               @change="dateFormat1"
-            >
-            </el-date-picker>
+            />
           </div>
         </template>
 
@@ -228,11 +240,11 @@
                 :rules="{
                   required: true,
                   message: '不能为空',
-                  trigger: 'blur'
+                  trigger: 'blur',
                 }"
               >
                 房源值
-                <el-input v-model="item.category"></el-input>
+                <el-input v-model="item.category" />
               </el-form-item>
             </div>
 
@@ -242,12 +254,12 @@
                 :rules="{
                   required: true,
                   message: '不能为空',
-                  trigger: 'blur'
+                  trigger: 'blur',
                 }"
                 class="input_width_300"
               >
                 现金
-                <el-input v-model="item.cash"></el-input>
+                <el-input v-model="item.cash" />
               </el-form-item>
             </div>
 
@@ -257,12 +269,12 @@
                 :rules="{
                   required: true,
                   message: '不能为空',
-                  trigger: 'blur'
+                  trigger: 'blur',
                 }"
                 class="input_width_300"
               >
                 章鱼币
-                <el-input v-model="item.token"></el-input>
+                <el-input v-model="item.token" />
               </el-form-item>
             </div>
 
@@ -339,7 +351,7 @@
 
         <el-form-item label="宣传画廊视频">
           <el-upload
-             ref="bannerVideo"
+            ref="bannerVideo"
             :action="uploadVideoPath"
             :headers="headers"
             :on-preview="handlePreview"
@@ -354,7 +366,7 @@
             <i class="el-icon-plus" />
           </el-upload>
           <el-dialog :visible.sync="dialogVisible">
-            <video width="100%" :src="this.dialogImageUrl" alt=""></video>
+            <video width="100%" :src="dialogImageUrl" alt="" />
           </el-dialog>
         </el-form-item>
 
@@ -370,35 +382,50 @@
             accept=".mp4,.mkv"
           >
             <!-- <img v-if="house.video" :src="house.video" class="avatar" /> -->
-            <video v-if="house.video" :src="house.video" class="avatar"></video>
+            <video v-if="house.video" :src="house.video" class="avatar" />
             <el-input v-if="house.video" v-model="house.video" />
             <i v-else class="el-icon-plus avatar-uploader-icon" />
             <el-progress
               v-if="videoFlag == true"
               type="circle"
               :percentage="videoUploadPercent"
-              style="margin-top:30px;"
-            ></el-progress>
+              style="margin-top: 30px"
+            />
           </el-upload>
         </el-form-item>
         <el-form-item label="房源视频链接" prop="baLink">
           <el-input v-model="house.baLink" />
         </el-form-item>
 
-        <el-form-item label="添加房源视频" :model="house" label-width="150px" class="demo-ruleForm">         
+        <el-form-item
+          label="添加房源视频"
+          :model="house"
+          label-width="150px"
+          class="demo-ruleForm"
+        >
           <!-- 动态增加项目 -->
           <!-- 不止一个项目，用div包裹起来 -->
-          <div v-for="(item, index) in balinkArr" :key="index" style="display: flex;margin-bottom: 22px;">
+          <div
+            v-for="(item, index) in balinkArr"
+            :key="index"
+            style="display: flex; margin-bottom: 22px"
+          >
             <el-input
-              type="input"
-              style="margin-right:5px"
-              placeholder="请填写视频链接"
               v-model="item.data"
+              type="input"
+              style="margin-right: 5px"
+              placeholder="请填写视频链接"
+            />
+            <el-button type="danger" @click="deletebaLink(item, index)"
+              >删除</el-button
             >
-            </el-input>
-            <el-button type="danger" @click="deletebaLink(item,index)">删除</el-button>            
           </div>
-          <el-button type="primary" @click="addbaLink()" style="margin:0 0 22px 0px">添加视频链接</el-button>
+          <el-button
+            type="primary"
+            style="margin: 0 0 22px 0px"
+            @click="addbaLink()"
+            >添加视频链接</el-button
+          >
         </el-form-item>
 
         <!-- <div class="avatar">
@@ -407,9 +434,9 @@
 
         <!-- 添加标签 -->
         <el-button
-          @click="drawer = true"
           type="primary"
-          style="margin-left: 16px;"
+          style="margin-left: 16px"
+          @click="drawer = true"
         >
           修改标签
         </el-button>
@@ -419,7 +446,7 @@
               v-model="checkList"
               @change="handleCheckedCitiesChange"
             >
-              <el-checkbox v-for="tag in tags" :label="tag" :key="tag.id">{{
+              <el-checkbox v-for="tag in tags" :key="tag.id" :label="tag">{{
                 tag.value
               }}</el-checkbox>
             </el-checkbox-group>
@@ -446,21 +473,21 @@
 
         <!-- 区域，版块 -->
         <el-button
-          @click="dialog = true"
           type="primary"
-          style="margin-left: 16px;"
+          style="margin-left: 16px"
+          @click="dialog = true"
         >
           修改区域
         </el-button>
         <el-drawer
+          ref="drawer"
           title="我是区域"
           :visible.sync="dialog"
           :with-header="false"
-          ref="drawer"
         >
           <template>
             <el-radio-group v-model="radio" @input="limit">
-              <el-radio :label="are" v-for="are in area" :key="are.id">{{
+              <el-radio v-for="are in area" :key="are.id" :label="are">{{
                 are.value
               }}</el-radio>
             </el-radio-group>
@@ -485,7 +512,7 @@
 
         <el-form-item label="空中看房视频">
           <el-upload
-             ref="bannerVideo"
+            ref="bannerVideo"
             :action="uploadVideoPath"
             :headers="headers"
             :on-preview="handlePreview4"
@@ -500,7 +527,7 @@
             <i class="el-icon-plus" />
           </el-upload>
           <el-dialog :visible.sync="dialogVisible4">
-            <video width="100%" :src="this.dialogImageUrl4" alt=""></video>
+            <video width="100%" :src="dialogImageUrl4" alt="" />
           </el-dialog>
         </el-form-item>
 
@@ -514,7 +541,7 @@
             :before-upload="beforeUploadVideo"
             class="avatar-uploader"
             accept=".mp4,.mkv"
-          >            
+          >
             <video
               v-if="house.videoBannerUrl"
               :src="house.videoBannerUrl"
@@ -553,7 +580,12 @@
           </div>
         <el-form> -->
 
-        <el-form-item label="添加画廊视频" :model="house" label-width="150px" class="demo-ruleForm">
+        <el-form-item
+          label="添加画廊视频"
+          :model="house"
+          label-width="150px"
+          class="demo-ruleForm"
+        >
           <!-- <div class="button-search">
             <el-row style="margin-left:55px">
               <span>画廊视频链接</span>
@@ -569,15 +601,20 @@
           </div> -->
           <!-- 动态增加项目 -->
           <!-- 不止一个项目，用div包裹起来 -->
-          <div v-for="(item, index) in linkArr" :key="index" style="display: flex;margin-bottom: 22px;">
+          <div
+            v-for="(item, index) in linkArr"
+            :key="index"
+            style="display: flex; margin-bottom: 22px"
+          >
             <el-input
-              type="input"
-              style="margin-right:5px"
-              placeholder="请填写视频链接"
               v-model="item.data"
+              type="input"
+              style="margin-right: 5px"
+              placeholder="请填写视频链接"
+            />
+            <el-button type="danger" @click="deleteLink(item, index)"
+              >删除</el-button
             >
-            </el-input>
-            <el-button type="danger" @click="deleteLink(item,index)">删除</el-button>
             <!-- <div class="div-inline">
               <el-form-item
                 :prop="'commissions.' + index + '.category'"
@@ -633,7 +670,12 @@
               </el-form-item>
             </div> -->
           </div>
-          <el-button type="primary" @click="addLink()" style="margin:0 0 22px 0px">添加视频链接</el-button>
+          <el-button
+            type="primary"
+            style="margin: 0 0 22px 0px"
+            @click="addLink()"
+            >添加视频链接</el-button
+          >
         </el-form-item>
 
         <!-- 微信推客长廊 -->
@@ -661,10 +703,10 @@
           <!-- <div id="app"> -->
           <el-button @click="mapVisible = !mapVisible"> 打开 </el-button>
           <Map
-            :mapVisible="mapVisible"
-            v-on:mapLocationClose="mapLocationClose"
-            v-on:mapLocationSave="mapLocationSave"
-          ></Map>
+            :map-visible="mapVisible"
+            @mapLocationClose="mapLocationClose"
+            @mapLocationSave="mapLocationSave"
+          />
           <!-- </div> -->
         </el-form-item>
 
@@ -696,7 +738,6 @@
     </div>
 
     <router-view />
-
   </div>
 </template>
 
@@ -781,13 +822,13 @@ import Map from "../../../components/Map";
 
 export default {
   name: "Edit",
-  components: { Map },  
+  components: { Map },
   data() {
     return {
-      mapVisible: false, //地图
-      uploadPath: 'http://www.baidu.com', //房源图片
-      uploadNarrowPath: 'http://www.baidu.com', //房源图片窄
-      uploadVideoPath: 'http://www.baidu.com',
+      mapVisible: false, // 地图
+      uploadPath: "http://www.baidu.com", // 房源图片
+      uploadNarrowPath: "http://www.baidu.com", // 房源图片窄
+      uploadVideoPath: "http://www.baidu.com",
       newKeywordVisible: false,
       newKeyword: "",
       keywords: [],
@@ -808,41 +849,41 @@ export default {
         baLink: "",
         link: "",
       },
-      linkArr:[
+      linkArr: [
         {
           id: "",
-          data: ""
-        }
+          data: "",
+        },
       ],
-      balinkArr:[
+      balinkArr: [
         {
           id: "",
-          data: ""
-        }
+          data: "",
+        },
       ],
       dataNum: 0,
       dataNum2: 0,
       map: [],
-      value1: "", //开始时间
-      value2: "", //结束时间
-      value3: "", //开盘时间
-      houseTagMap: {}, //所有标签
-      houseAreaMap: {}, //所有区域
-      tags: {}, //修改标签
-      area: {}, //修改区域
+      value1: "", // 开始时间
+      value2: "", // 结束时间
+      value3: "", // 开盘时间
+      houseTagMap: {}, // 所有标签
+      houseAreaMap: {}, // 所有区域
+      tags: {}, // 修改标签
+      area: {}, // 修改区域
       checkList: [],
-      radio: "", //区域，版块
-      drawer: false, //弹窗
+      radio: "", // 区域，版块
+      drawer: false, // 弹窗
       dialog: false,
-      videoFlag: false, //进度条
-      videoFlag2: false, //进度条
-      videoUploadPercent: "", //进度条的进度，
-      videoUploadPercent2: "", //进度条的进度，
+      videoFlag: false, // 进度条
+      videoFlag2: false, // 进度条
+      videoUploadPercent: "", // 进度条的进度，
+      videoUploadPercent2: "", // 进度条的进度，
       specVisiable: false,
-      dialogImageUrl:'', //预览宣传画廊视频
-      dialogVisible:false,
-      dialogImageUrl4:'', //预览视频
-      dialogVisible4:false,
+      dialogImageUrl: "", // 预览宣传画廊视频
+      dialogVisible: false,
+      dialogImageUrl4: "", // 预览视频
+      dialogVisible4: false,
       specForm: { specification: "", value: "", picUrl: "" },
       specifications: [{ specification: "规格", value: "标准", picUrl: "" }],
       productVisiable: false,
@@ -851,33 +892,35 @@ export default {
         specifications: [],
         price: 0.0,
         number: 0,
-        url: ""
+        url: "",
       },
       products: [
-        { id: 0, specifications: ["标准"], price: 0.0, number: 0, url: "" }
+        { id: 0, specifications: ["标准"], price: 0.0, number: 0, url: "" },
       ],
       attributeVisiable: false,
       attributeAdd: true,
       attributeForm: { attribute: "", value: "" },
       attributes: [],
       rules: {
-        name: [{ required: true, message: "商品名称不能为空", trigger: "blur" }]
+        name: [
+          { required: true, message: "商品名称不能为空", trigger: "blur" },
+        ],
       },
       editorInit: {
         language: "zh_CN",
         height: "400px",
         convert_urls: false,
         plugins: [
-          "advlist anchor autolink autosave code codesample colorpicker colorpicker contextmenu directionality emoticons fullscreen hr image imagetools importcss insertdatetime link lists media nonbreaking noneditable pagebreak paste preview print save searchreplace spellchecker tabfocus table template textcolor textpattern visualblocks visualchars wordcount"
+          "advlist anchor autolink autosave code codesample colorpicker colorpicker contextmenu directionality emoticons fullscreen hr image imagetools importcss insertdatetime link lists media nonbreaking noneditable pagebreak paste preview print save searchreplace spellchecker tabfocus table template textcolor textpattern visualblocks visualchars wordcount",
         ],
         toolbar: [
           "searchreplace bold italic underline strikethrough alignleft aligncenter alignright outdent indent  blockquote undo redo removeformat subscript superscript code codesample",
-          "hr bullist numlist link image charmap preview anchor pagebreak insertdatetime media table emoticons forecolor backcolor fullscreen"
+          "hr bullist numlist link image charmap preview anchor pagebreak insertdatetime media table emoticons forecolor backcolor fullscreen",
         ],
-        images_upload_handler: function(blobInfo, success, failure) {
+        images_upload_handler: function (blobInfo, success, failure) {
           const formData = new FormData();
           formData.append("file", blobInfo.blob());
-          //--------
+          // --------
           // var Bucket = 'suzhouhaofang-1304398889';
           // var Region = 'ap-shanghai';
 
@@ -900,65 +943,65 @@ export default {
           //   success('https://' + data.Location);
           // });
           // transeferCOD(formData, auth)
-          //--------
+          // --------
           createStorage(formData)
-            .then(res => {
+            .then((res) => {
               success(res.data.data.url);
             })
             .catch(() => {
               failure("上传失败，请重新上传");
             });
         },
-        file_picker_callback: function(callback, value, meta) {}
+        file_picker_callback: function (callback, value, meta) {},
       },
       recommentedInit: {
         language: "zh_CN",
         height: "200px",
         convert_urls: false,
         plugins: [
-          "advlist anchor autolink autosave code codesample colorpicker colorpicker contextmenu directionality emoticons fullscreen hr image imagetools importcss insertdatetime link lists media nonbreaking noneditable pagebreak paste preview print save searchreplace spellchecker tabfocus table template textcolor textpattern visualblocks visualchars wordcount"
+          "advlist anchor autolink autosave code codesample colorpicker colorpicker contextmenu directionality emoticons fullscreen hr image imagetools importcss insertdatetime link lists media nonbreaking noneditable pagebreak paste preview print save searchreplace spellchecker tabfocus table template textcolor textpattern visualblocks visualchars wordcount",
         ],
         toolbar: [
           "searchreplace bold italic underline strikethrough alignleft aligncenter alignright outdent indent  blockquote undo redo removeformat subscript superscript code codesample",
-          "hr bullist numlist link image charmap preview anchor pagebreak insertdatetime media table emoticons forecolor backcolor fullscreen"
+          "hr bullist numlist link image charmap preview anchor pagebreak insertdatetime media table emoticons forecolor backcolor fullscreen",
         ],
-        images_upload_handler: function(blobInfo, success, failure) {
+        images_upload_handler: function (blobInfo, success, failure) {
           const formData = new FormData();
-          formData.append("file", blobInfo.blob());          
+          formData.append("file", blobInfo.blob());
           createStorage(formData)
-            .then(res => {
+            .then((res) => {
               success(res.data.data.url);
             })
             .catch(() => {
               failure("上传失败，请重新上传");
             });
         },
-        file_picker_callback: function(callback, value, meta) {}
+        file_picker_callback: function (callback, value, meta) {},
       },
       visitInit: {
         language: "zh_CN",
         height: "200px",
         convert_urls: false,
         plugins: [
-          "advlist anchor autolink autosave code codesample colorpicker colorpicker contextmenu directionality emoticons fullscreen hr image imagetools importcss insertdatetime link lists media nonbreaking noneditable pagebreak paste preview print save searchreplace spellchecker tabfocus table template textcolor textpattern visualblocks visualchars wordcount"
+          "advlist anchor autolink autosave code codesample colorpicker colorpicker contextmenu directionality emoticons fullscreen hr image imagetools importcss insertdatetime link lists media nonbreaking noneditable pagebreak paste preview print save searchreplace spellchecker tabfocus table template textcolor textpattern visualblocks visualchars wordcount",
         ],
         toolbar: [
           "searchreplace bold italic underline strikethrough alignleft aligncenter alignright outdent indent  blockquote undo redo removeformat subscript superscript code codesample",
-          "hr bullist numlist link image charmap preview anchor pagebreak insertdatetime media table emoticons forecolor backcolor fullscreen"
+          "hr bullist numlist link image charmap preview anchor pagebreak insertdatetime media table emoticons forecolor backcolor fullscreen",
         ],
-        images_upload_handler: function(blobInfo, success, failure) {
+        images_upload_handler: function (blobInfo, success, failure) {
           const formData = new FormData();
-          formData.append("file", blobInfo.blob());          
+          formData.append("file", blobInfo.blob());
           createStorage(formData)
-            .then(res => {
+            .then((res) => {
               success(res.data.data.url);
             })
             .catch(() => {
               failure("上传失败，请重新上传");
             });
         },
-        file_picker_callback: function(callback, value, meta) {}
-      }
+        file_picker_callback: function (callback, value, meta) {},
+      },
     };
   },
   computed: {
@@ -982,7 +1025,7 @@ export default {
       var originalTags = _.split(this.house.tags, ",");
 
       var _this = this;
-      var result = _.map(originalTags, function(tagId) {
+      var result = _.map(originalTags, function (tagId) {
         return _this.houseTagMap[_.trim(tagId)];
       });
       return result;
@@ -990,226 +1033,217 @@ export default {
     areaInfos() {
       var originalArea = _.split(this.house.area, ",");
       var _this = this;
-      var result2 = _.map(originalArea, function(areaId) {
+      var result2 = _.map(originalArea, function (areaId) {
         return _this.houseAreaMap[_.trim(areaId)];
       });
       return result2;
-    }
+    },
   },
   created() {
     this.init();
-    console.log('房源编辑');
+    console.log("房源编辑");
   },
   methods: {
-    init: function() {
-    //   if (this.$route.query.id == null) {
-    //     return;
-    //   }
-
-    //   const houseId = this.$route.query.id;
-
-    //   //获取所有标签名
-    //   listAllHouseTag()
-    //     .then(response => {
-    //       var _this = this;
-    //       _.map(response.data.data.list, function(tag) {
-    //         _this.houseTagMap[tag.id] = tag.value;
-    //       });
-    //       this.tags = response.data.data.list;
-    //       console.log("测试标签");
-    //       console.log(response);
-    //     })
-    //     .catch(() => {});
-
-    //   //获取所有区域
-    //   listAllHouseArea()
-    //     .then(response => {
-    //       var _this = this;
-    //       _.map(response.data.data, function(area) {
-    //         _this.houseAreaMap[area.id] = area.value;
-    //       });
-    //       this.area = response.data.data;
-    //       console.log("测试区域");
-    //       console.log(response);
-    //     })
-    //     .catch(() => {});
-
-    //   detailHouse(houseId).then(response => {
-    //     this.house = response.data.data.house;
-    //     if (response.data.data.house.linkArr !== undefined) {
-    //       this.linkArr = response.data.data.house.linkArr;
-    //     }
-    //     if (response.data.data.house.balinkArr !== undefined) {
-    //       this.balinkArr = response.data.data.house.balinkArr;
-    //     }
-    //     console.log("打印detailHouse")
-    //     console.log(response);
-    //     // 稍微调整一下前后端不一致
-    //     if (this.house.keywords === "") {
-    //       this.house.keywords = null;
-    //     }
-    //     // this.specifications = response.data.data.specifications
-    //     // this.products = response.data.data.products
-    //     // this.attributes = response.data.data.attributes
-    //     // this.categoryIds = response.data.data.categoryIds
-    //     if (this.house.gallery !== undefined) {
-    //       this.galleryFileList = [];
-    //       for (var i = 0; i < this.house.gallery.length; i++) {
-    //         this.galleryFileList.push({
-    //           url: this.house.gallery[i]
-    //         });
-    //       }
-    //     }
-
-    //     //微信推客图片
-    //     if (this.house.galleryTwo !== undefined) {
-    //       this.galleryFileList2 = [];
-    //       for (var j = 0; j < this.house.galleryTwo.length; j++) {
-    //         this.galleryFileList2.push({
-    //           url: this.house.galleryTwo[j]
-    //         });
-    //       }
-    //     }
-
-    //     //宣传画廊视频
-    //     if (this.house.galleryC !== undefined) {
-    //       this.galleryFileList3 = [];
-    //       for (var j = 0; j < this.house.galleryC.length; j++) {
-    //         this.galleryFileList3.push({
-    //           url: this.house.galleryC[j]
-    //         });
-    //       }
-    //     }
-
-    //     //空中看房视频
-    //     if (this.house.galleryD !== undefined) {
-    //       this.galleryFileList4 = [];
-    //       for (var j = 0; j < this.house.galleryD.length; j++) {
-    //         this.galleryFileList4.push({
-    //           url: this.house.galleryD[j]
-    //         });
-    //       }
-    //     }
-
-    //     // }
-    //     // const keywords = response.data.data.goods.keywords
-    //     // if (keywords !== null) {
-    //     //   this.keywords = keywords.split(',')
-    //     // }
-    //   });
-
-    //   // listCatAndBrand().then(response => {
-    //   //   this.categoryList = response.data.data.categoryList
-    //   //   this.brandList = response.data.data.brandList
-    //   // })
+    init: function () {
+      //   if (this.$route.query.id == null) {
+      //     return;
+      //   }
+      //   const houseId = this.$route.query.id;
+      //   //获取所有标签名
+      //   listAllHouseTag()
+      //     .then(response => {
+      //       var _this = this;
+      //       _.map(response.data.data.list, function(tag) {
+      //         _this.houseTagMap[tag.id] = tag.value;
+      //       });
+      //       this.tags = response.data.data.list;
+      //       console.log("测试标签");
+      //       console.log(response);
+      //     })
+      //     .catch(() => {});
+      //   //获取所有区域
+      //   listAllHouseArea()
+      //     .then(response => {
+      //       var _this = this;
+      //       _.map(response.data.data, function(area) {
+      //         _this.houseAreaMap[area.id] = area.value;
+      //       });
+      //       this.area = response.data.data;
+      //       console.log("测试区域");
+      //       console.log(response);
+      //     })
+      //     .catch(() => {});
+      //   detailHouse(houseId).then(response => {
+      //     this.house = response.data.data.house;
+      //     if (response.data.data.house.linkArr !== undefined) {
+      //       this.linkArr = response.data.data.house.linkArr;
+      //     }
+      //     if (response.data.data.house.balinkArr !== undefined) {
+      //       this.balinkArr = response.data.data.house.balinkArr;
+      //     }
+      //     console.log("打印detailHouse")
+      //     console.log(response);
+      //     // 稍微调整一下前后端不一致
+      //     if (this.house.keywords === "") {
+      //       this.house.keywords = null;
+      //     }
+      //     // this.specifications = response.data.data.specifications
+      //     // this.products = response.data.data.products
+      //     // this.attributes = response.data.data.attributes
+      //     // this.categoryIds = response.data.data.categoryIds
+      //     if (this.house.gallery !== undefined) {
+      //       this.galleryFileList = [];
+      //       for (var i = 0; i < this.house.gallery.length; i++) {
+      //         this.galleryFileList.push({
+      //           url: this.house.gallery[i]
+      //         });
+      //       }
+      //     }
+      //     //微信推客图片
+      //     if (this.house.galleryTwo !== undefined) {
+      //       this.galleryFileList2 = [];
+      //       for (var j = 0; j < this.house.galleryTwo.length; j++) {
+      //         this.galleryFileList2.push({
+      //           url: this.house.galleryTwo[j]
+      //         });
+      //       }
+      //     }
+      //     //宣传画廊视频
+      //     if (this.house.galleryC !== undefined) {
+      //       this.galleryFileList3 = [];
+      //       for (var j = 0; j < this.house.galleryC.length; j++) {
+      //         this.galleryFileList3.push({
+      //           url: this.house.galleryC[j]
+      //         });
+      //       }
+      //     }
+      //     //空中看房视频
+      //     if (this.house.galleryD !== undefined) {
+      //       this.galleryFileList4 = [];
+      //       for (var j = 0; j < this.house.galleryD.length; j++) {
+      //         this.galleryFileList4.push({
+      //           url: this.house.galleryD[j]
+      //         });
+      //       }
+      //     }
+      //     // }
+      //     // const keywords = response.data.data.goods.keywords
+      //     // if (keywords !== null) {
+      //     //   this.keywords = keywords.split(',')
+      //     // }
+      //   });
+      //   // listCatAndBrand().then(response => {
+      //   //   this.categoryList = response.data.data.categoryList
+      //   //   this.brandList = response.data.data.brandList
+      //   // })
     },
     handleCategoryChange(value) {
-    //   this.house.categoryId = value[value.length - 1];
+      //   this.house.categoryId = value[value.length - 1];
     },
-    handleCancel: function() {
-    //   this.$store.dispatch("tagsView/delView", this.$route);
-    //   this.$router.push({ path: "/house/list" });
+    handleCancel: function () {
+      //   this.$store.dispatch("tagsView/delView", this.$route);
+      //   this.$router.push({ path: "/house/list" });
     },
     // //更新商品
-    handleEdit: function() {
-    //   this.house.linkArr = this.linkArr;
-    //   this.house.balinkArr = this.balinkArr;
-    //   const finalHouse = this.house;
-    //   console.log("更新房源");
-    //   console.log(finalHouse);
-    //   // console.log('打印')
-    //   // console.log(this.house.galleryTwo)
-    //   // console.log(this.house.galleryTwo.length)
-    //   editHouse(finalHouse)
-    //     .then(response => {
-    //       this.$notify.success({
-    //         title: "成功",
-    //         message: "编辑成功"
-    //       });
-    //       this.$store.dispatch("tagsView/delView", this.$route);
-    //       this.$router.push({ path: "/house/list" });
-    //     })
-    //     .catch(response => {
-    //       MessageBox.alert("业务错误：" + response.data.errmsg, "警告", {
-    //         confirmButtonText: "确定",
-    //         type: "error"
-    //       });
-    //     });
+    handleEdit: function () {
+      //   this.house.linkArr = this.linkArr;
+      //   this.house.balinkArr = this.balinkArr;
+      //   const finalHouse = this.house;
+      //   console.log("更新房源");
+      //   console.log(finalHouse);
+      //   // console.log('打印')
+      //   // console.log(this.house.galleryTwo)
+      //   // console.log(this.house.galleryTwo.length)
+      //   editHouse(finalHouse)
+      //     .then(response => {
+      //       this.$notify.success({
+      //         title: "成功",
+      //         message: "编辑成功"
+      //       });
+      //       this.$store.dispatch("tagsView/delView", this.$route);
+      //       this.$router.push({ path: "/house/list" });
+      //     })
+      //     .catch(response => {
+      //       MessageBox.alert("业务错误：" + response.data.errmsg, "警告", {
+      //         confirmButtonText: "确定",
+      //         type: "error"
+      //       });
+      //     });
     },
     handleClose(tag) {
       this.keywords.splice(this.keywords.indexOf(tag), 1);
       this.house.keywords = this.keywords.toString();
     },
     showInput() {
-    //   this.newKeywordVisible = true;
-    //   this.$nextTick(_ => {
-    //     this.$refs.newKeywordInput.$refs.input.focus();
-    //   });
+      //   this.newKeywordVisible = true;
+      //   this.$nextTick(_ => {
+      //     this.$refs.newKeywordInput.$refs.input.focus();
+      //   });
     },
     handleInputConfirm() {
-    //   const newKeyword = this.newKeyword;
-    //   if (newKeyword) {
-    //     this.keywords.push(newKeyword);
-    //     this.house.keywords = this.keywords.toString();
-    //   }
-    //   this.newKeywordVisible = false;
-    //   this.newKeyword = "";
+      //   const newKeyword = this.newKeyword;
+      //   if (newKeyword) {
+      //     this.keywords.push(newKeyword);
+      //     this.house.keywords = this.keywords.toString();
+      //   }
+      //   this.newKeywordVisible = false;
+      //   this.newKeyword = "";
     },
-    uploadPicUrl: function(response) {
-    //   this.house.thumbnail = response.data.url;
+    uploadPicUrl: function (response) {
+      //   this.house.thumbnail = response.data.url;
     },
-    uploadNarrowPicUrl: function(response) {
-    //   this.house.thumbnailNarrow = response.data.url;
+    uploadNarrowPicUrl: function (response) {
+      //   this.house.thumbnailNarrow = response.data.url;
     },
-    uploadVideoUrl: function(response) {
-    //   console.log("上传");
-    //   console.log(response);
-    //   this.videoFlag = false;
-    //   this.videoUploadPercent = 0;
-    //   this.house.video = response.data.url;
+    uploadVideoUrl: function (response) {
+      //   console.log("上传");
+      //   console.log(response);
+      //   this.videoFlag = false;
+      //   this.videoUploadPercent = 0;
+      //   this.house.video = response.data.url;
     },
-    uploadVideoUrl2: function(response) {
-    //   console.log("上传画廊视频");
-    //   console.log(response);
-    //   this.videoFlag2 = false;
-    //   this.videoUploadPercent2 = 0;
-    //   this.house.videoBannerUrl = response.data.url;
+    uploadVideoUrl2: function (response) {
+      //   console.log("上传画廊视频");
+      //   console.log(response);
+      //   this.videoFlag2 = false;
+      //   this.videoUploadPercent2 = 0;
+      //   this.house.videoBannerUrl = response.data.url;
     },
     // //视频验证
-    beforeUploadVideo: function(file) {
-    //   console.log("视频");
-    //   console.log(file);
-    //   const isLt500M = file.size / 1024 / 1024 < 500;
-    //   if (
-    //     [
-    //       "video/mp4",
-    //       "video/ogg",
-    //       "video/flv",
-    //       "video/avi",
-    //       "video/wmv",
-    //       "video/rmvb"
-    //     ].indexOf(file.type) == -1
-    //   ) {
-    //     this.$message.error("请上传正确的视频格式");
-    //     return false;
-    //   }
-    //   if (!isLt500M) {
-    //     this.$message.error("上传视频大小不能超过500MB哦!");
-    //     return false;
-    //   }
+    beforeUploadVideo: function (file) {
+      //   console.log("视频");
+      //   console.log(file);
+      //   const isLt500M = file.size / 1024 / 1024 < 500;
+      //   if (
+      //     [
+      //       "video/mp4",
+      //       "video/ogg",
+      //       "video/flv",
+      //       "video/avi",
+      //       "video/wmv",
+      //       "video/rmvb"
+      //     ].indexOf(file.type) == -1
+      //   ) {
+      //     this.$message.error("请上传正确的视频格式");
+      //     return false;
+      //   }
+      //   if (!isLt500M) {
+      //     this.$message.error("上传视频大小不能超过500MB哦!");
+      //     return false;
+      //   }
     },
     uploadVideoProcess(event, file, fileList) {
-    //   console.log("加载");
-    //   console.log(file);
-    //   this.videoFlag = true;
-    //   this.videoUploadPercent = file.percentage.toFixed(0) * 1;
+      //   console.log("加载");
+      //   console.log(file);
+      //   this.videoFlag = true;
+      //   this.videoUploadPercent = file.percentage.toFixed(0) * 1;
     },
     // //画廊视频
     uploadVideoProcess2(event, file, fileList) {
-    //   console.log("加载画廊视频");
-    //   console.log(file);
-    //   this.videoFlag2 = true;
-    //   this.videoUploadPercent2 = file.percentage.toFixed(0) * 1;
+      //   console.log("加载画廊视频");
+      //   console.log(file);
+      //   this.videoFlag2 = true;
+      //   this.videoUploadPercent2 = file.percentage.toFixed(0) * 1;
     },
     // // uploadOverrun: function() {
     // //   this.$message({
@@ -1218,350 +1252,346 @@ export default {
     // //   })
     // // },
     handleGalleryUrl(response, file, fileList) {
-    //   if (this.house.gallery === undefined) {
-    //     this.house.gallery = [];
-    //   }
-    //   if (response.errno === 0) {
-    //     this.house.gallery.push(response.data.url);
-    //   }
+      //   if (this.house.gallery === undefined) {
+      //     this.house.gallery = [];
+      //   }
+      //   if (response.errno === 0) {
+      //     this.house.gallery.push(response.data.url);
+      //   }
     },
     // // 微信推客图片
     handleGalleryUrl2(response, file, fileList) {
-    //   if (this.house.galleryTwo == undefined) {
-    //     this.house.galleryTwo = [];
-    //   }
-    //   if (response.errno === 0) {
-    //     this.house.galleryTwo.push(response.data.url);
-    //   }
+      //   if (this.house.galleryTwo == undefined) {
+      //     this.house.galleryTwo = [];
+      //   }
+      //   if (response.errno === 0) {
+      //     this.house.galleryTwo.push(response.data.url);
+      //   }
     },
     // // 宣传画廊视频
     handleGalleryUrl3(response, file, fileList) {
-    //   if (this.house.galleryC == undefined) {
-    //     this.house.galleryC = [];
-    //   }
-    //   if (response.errno === 0) {
-    //     this.house.galleryC.push(response.data.url);
-    //   }
+      //   if (this.house.galleryC == undefined) {
+      //     this.house.galleryC = [];
+      //   }
+      //   if (response.errno === 0) {
+      //     this.house.galleryC.push(response.data.url);
+      //   }
     },
     // // 空中看房视频
     handleGalleryUrl4(response, file, fileList) {
-    //   if (this.house.galleryD == undefined) {
-    //     this.house.galleryD = [];
-    //   }
-    //   if (response.errno === 0) {
-    //     this.house.galleryD.push(response.data.url);
-    //   }
+      //   if (this.house.galleryD == undefined) {
+      //     this.house.galleryD = [];
+      //   }
+      //   if (response.errno === 0) {
+      //     this.house.galleryD.push(response.data.url);
+      //   }
     },
-    handleRemove: function(file, fileList) {
-    //   for (var i = 0; i < this.house.gallery.length; i++) {
-    //     // 这里存在两种情况
-    //     // 1. 如果所删除图片是刚刚上传的图片，那么图片地址是file.response.data.url
-    //     //    此时的file.url虽然存在，但是是本机地址，而不是远程地址。
-    //     // 2. 如果所删除图片是后台返回的已有图片，那么图片地址是file.url
-    //     var url;
-    //     if (file.response === undefined) {
-    //       url = file.url;
-    //     } else {
-    //       url = file.response.data.url;
-    //     }
-
-    //     if (this.house.gallery[i] === url) {
-    //       this.house.gallery.splice(i, 1);
-    //     }
-    //   }
+    handleRemove: function (file, fileList) {
+      //   for (var i = 0; i < this.house.gallery.length; i++) {
+      //     // 这里存在两种情况
+      //     // 1. 如果所删除图片是刚刚上传的图片，那么图片地址是file.response.data.url
+      //     //    此时的file.url虽然存在，但是是本机地址，而不是远程地址。
+      //     // 2. 如果所删除图片是后台返回的已有图片，那么图片地址是file.url
+      //     var url;
+      //     if (file.response === undefined) {
+      //       url = file.url;
+      //     } else {
+      //       url = file.response.data.url;
+      //     }
+      //     if (this.house.gallery[i] === url) {
+      //       this.house.gallery.splice(i, 1);
+      //     }
+      //   }
     },
     // //微信推客
-    handleRemove2: function(file, fileList) {
-    //   for (var i = 0; i < this.house.galleryTwo.length; i++) {
-    //     // 这里存在两种情况
-    //     // 1. 如果所删除图片是刚刚上传的图片，那么图片地址是file.response.data.url
-    //     //    此时的file.url虽然存在，但是是本机地址，而不是远程地址。
-    //     // 2. 如果所删除图片是后台返回的已有图片，那么图片地址是file.url
-    //     var url;
-    //     if (file.response === undefined) {
-    //       url = file.url;
-    //     } else {
-    //       url = file.response.data.url;
-    //     }
-
-    //     if (this.house.galleryTwo[i] === url) {
-    //       this.house.galleryTwo.splice(i, 1);
-    //     }
-    //   }
+    handleRemove2: function (file, fileList) {
+      //   for (var i = 0; i < this.house.galleryTwo.length; i++) {
+      //     // 这里存在两种情况
+      //     // 1. 如果所删除图片是刚刚上传的图片，那么图片地址是file.response.data.url
+      //     //    此时的file.url虽然存在，但是是本机地址，而不是远程地址。
+      //     // 2. 如果所删除图片是后台返回的已有图片，那么图片地址是file.url
+      //     var url;
+      //     if (file.response === undefined) {
+      //       url = file.url;
+      //     } else {
+      //       url = file.response.data.url;
+      //     }
+      //     if (this.house.galleryTwo[i] === url) {
+      //       this.house.galleryTwo.splice(i, 1);
+      //     }
+      //   }
     },
     // //宣传画廊视频
-    handleRemove3: function(file, fileList) {
-    //   for (var i = 0; i < this.house.galleryC.length; i++) {
-    //     // 这里存在两种情况
-    //     // 1. 如果所删除图片是刚刚上传的图片，那么图片地址是file.response.data.url
-    //     //    此时的file.url虽然存在，但是是本机地址，而不是远程地址。
-    //     // 2. 如果所删除图片是后台返回的已有图片，那么图片地址是file.url
-    //     var url;
-    //     if (file.response === undefined) {
-    //       url = file.url;
-    //     } else {
-    //       url = file.response.data.url;
-    //     }
-
-    //     if (this.house.galleryC[i] === url) {
-    //       this.house.galleryC.splice(i, 1);
-    //     }
-    //   }
+    handleRemove3: function (file, fileList) {
+      //   for (var i = 0; i < this.house.galleryC.length; i++) {
+      //     // 这里存在两种情况
+      //     // 1. 如果所删除图片是刚刚上传的图片，那么图片地址是file.response.data.url
+      //     //    此时的file.url虽然存在，但是是本机地址，而不是远程地址。
+      //     // 2. 如果所删除图片是后台返回的已有图片，那么图片地址是file.url
+      //     var url;
+      //     if (file.response === undefined) {
+      //       url = file.url;
+      //     } else {
+      //       url = file.response.data.url;
+      //     }
+      //     if (this.house.galleryC[i] === url) {
+      //       this.house.galleryC.splice(i, 1);
+      //     }
+      //   }
     },
     // //空中看房视频
-    handleRemove4: function(file, fileList) {
-    //   for (var i = 0; i < this.house.galleryD.length; i++) {
-    //     // 这里存在两种情况
-    //     // 1. 如果所删除图片是刚刚上传的图片，那么图片地址是file.response.data.url
-    //     //    此时的file.url虽然存在，但是是本机地址，而不是远程地址。
-    //     // 2. 如果所删除图片是后台返回的已有图片，那么图片地址是file.url
-    //     var url;
-    //     if (file.response === undefined) {
-    //       url = file.url;
-    //     } else {
-    //       url = file.response.data.url;
-    //     }
-
-    //     if (this.house.galleryD[i] === url) {
-    //       this.house.galleryD.splice(i, 1);
-    //     }
-    //   }
+    handleRemove4: function (file, fileList) {
+      //   for (var i = 0; i < this.house.galleryD.length; i++) {
+      //     // 这里存在两种情况
+      //     // 1. 如果所删除图片是刚刚上传的图片，那么图片地址是file.response.data.url
+      //     //    此时的file.url虽然存在，但是是本机地址，而不是远程地址。
+      //     // 2. 如果所删除图片是后台返回的已有图片，那么图片地址是file.url
+      //     var url;
+      //     if (file.response === undefined) {
+      //       url = file.url;
+      //     } else {
+      //       url = file.response.data.url;
+      //     }
+      //     if (this.house.galleryD[i] === url) {
+      //       this.house.galleryD.splice(i, 1);
+      //     }
+      //   }
     },
     // //画廊视频
     beforeBannerVideo(file) {
-    //   console.log("打印画廊视频");
-    //   console.log(this.$refs);
-    //   console.log(this.$refs.bannerVideo);
-    //   console.log(file)
-    //   const typeAll = file.type.split('/');
-    //   if (typeAll[0] === 'video') {
-    //     //视频
-    //     const isLt500M = file.size / 1024 / 1024 < 500
-    //     if (['video/mp4'].indexOf(file.type) === -1) {
-    //       this.$message.error('上传视频只能是mp4格式')
-    //       return false;
-    //     }
-    //     if (!isLt500M) {
-    //       this.$message.error('上传视频大小不能超过500M')
-    //       return false;
-    //     }
-    //   }
+      //   console.log("打印画廊视频");
+      //   console.log(this.$refs);
+      //   console.log(this.$refs.bannerVideo);
+      //   console.log(file)
+      //   const typeAll = file.type.split('/');
+      //   if (typeAll[0] === 'video') {
+      //     //视频
+      //     const isLt500M = file.size / 1024 / 1024 < 500
+      //     if (['video/mp4'].indexOf(file.type) === -1) {
+      //       this.$message.error('上传视频只能是mp4格式')
+      //       return false;
+      //     }
+      //     if (!isLt500M) {
+      //       this.$message.error('上传视频大小不能超过500M')
+      //       return false;
+      //     }
+      //   }
     },
-    specChanged: function(label) {
-    //   if (label === false) {
-    //     this.specifications = [
-    //       { specification: "规格", value: "标准", picUrl: "" }
-    //     ];
-    //     this.products = [
-    //       { id: 0, specifications: ["标准"], price: 0.0, number: 0, url: "" }
-    //     ];
-    //   } else {
-    //     this.specifications = [];
-    //     this.products = [];
-    //   }
+    specChanged: function (label) {
+      //   if (label === false) {
+      //     this.specifications = [
+      //       { specification: "规格", value: "标准", picUrl: "" }
+      //     ];
+      //     this.products = [
+      //       { id: 0, specifications: ["标准"], price: 0.0, number: 0, url: "" }
+      //     ];
+      //   } else {
+      //     this.specifications = [];
+      //     this.products = [];
+      //   }
     },
-    uploadSpecPicUrl: function(response) {
-    //   this.specForm.picUrl = response.data.url;
+    uploadSpecPicUrl: function (response) {
+      //   this.specForm.picUrl = response.data.url;
     },
     handleSpecificationShow(row) {
-    //   this.specForm = Object.assign({}, row);
-    //   this.specVisiable = true;
+      //   this.specForm = Object.assign({}, row);
+      //   this.specVisiable = true;
     },
     handleSpecificationEdit() {
-    //   this.specForm.updateTime = "";
-    //   for (var i = 0; i < this.specifications.length; i++) {
-    //     const v = this.specifications[i];
-    //     if (v.id === this.specForm.id) {
-    //       this.specifications.splice(i, 1, this.specForm);
-    //       break;
-    //     }
-    //   }
-    //   this.specVisiable = false;
+      //   this.specForm.updateTime = "";
+      //   for (var i = 0; i < this.specifications.length; i++) {
+      //     const v = this.specifications[i];
+      //     if (v.id === this.specForm.id) {
+      //       this.specifications.splice(i, 1, this.specForm);
+      //       break;
+      //     }
+      //   }
+      //   this.specVisiable = false;
     },
     handleProductShow(row) {
-    //   this.productForm = Object.assign({}, row);
-    //   this.productVisiable = true;
+      //   this.productForm = Object.assign({}, row);
+      //   this.productVisiable = true;
     },
-    uploadProductUrl: function(response) {
-    //   this.productForm.url = response.data.url;
-    // },
-    // handleProductEdit() {
-    //   this.productForm.updateTime = "";
-    //   for (var i = 0; i < this.products.length; i++) {
-    //     const v = this.products[i];
-    //     if (v.id === this.productForm.id) {
-    //       this.products.splice(i, 1, this.productForm);
-    //       break;
-    //     }
-    //   }
-    //   this.productVisiable = false;
+    uploadProductUrl: function (response) {
+      //   this.productForm.url = response.data.url;
+      // },
+      // handleProductEdit() {
+      //   this.productForm.updateTime = "";
+      //   for (var i = 0; i < this.products.length; i++) {
+      //     const v = this.products[i];
+      //     if (v.id === this.productForm.id) {
+      //       this.products.splice(i, 1, this.productForm);
+      //       break;
+      //     }
+      //   }
+      //   this.productVisiable = false;
     },
     handleAttributeShow(row) {
-    //   if (row.id) {
-    //     this.attributeForm = Object.assign({}, row);
-    //     this.attributeAdd = false;
-    //   } else {
-    //     this.attributeForm = {};
-    //     this.attributeAdd = true;
-    //   }
-    //   this.attributeVisiable = true;
+      //   if (row.id) {
+      //     this.attributeForm = Object.assign({}, row);
+      //     this.attributeAdd = false;
+      //   } else {
+      //     this.attributeForm = {};
+      //     this.attributeAdd = true;
+      //   }
+      //   this.attributeVisiable = true;
     },
     handleAttributeAdd() {
-    //   this.attributes.unshift(this.attributeForm);
-    //   this.attributeVisiable = false;
+      //   this.attributes.unshift(this.attributeForm);
+      //   this.attributeVisiable = false;
     },
     handleAttributeEdit() {
-    //   // 这是一个trick，设置updateTime的值为空，告诉后端这个记录已编辑需要更新。
-    //   this.attributeForm.updateTime = "";
-    //   for (var i = 0; i < this.attributes.length; i++) {
-    //     const v = this.attributes[i];
-    //     if (v.id === this.attributeForm.id) {
-    //       this.attributes.splice(i, 1, this.attributeForm);
-    //       break;
-    //     }
-    //   }
-    //   this.attributeVisiable = false;
+      //   // 这是一个trick，设置updateTime的值为空，告诉后端这个记录已编辑需要更新。
+      //   this.attributeForm.updateTime = "";
+      //   for (var i = 0; i < this.attributes.length; i++) {
+      //     const v = this.attributes[i];
+      //     if (v.id === this.attributeForm.id) {
+      //       this.attributes.splice(i, 1, this.attributeForm);
+      //       break;
+      //     }
+      //   }
+      //   this.attributeVisiable = false;
     },
     handleAttributeDelete(row) {
-    //   row.deleted = true;
+      //   row.deleted = true;
     },
     // // 地图
     mapLocationClose() {
       this.mapVisible = false;
     },
     mapLocationSave(e) {
-    //   console.log(e);
-    //   this.house.longtitude = e.longitude;
-    //   this.house.latitude = e.latitude;
-    //   console.log(this.house);
-    //   this.mapVisible = false;
+      //   console.log(e);
+      //   this.house.longtitude = e.longitude;
+      //   this.house.latitude = e.latitude;
+      //   console.log(this.house);
+      //   this.mapVisible = false;
     },
     // //方案
     addHeader() {
-    //   this.house.commissions.push({
-    //     category: "",
-    //     cash: "",
-    //     token: ""
-    //   });
-    //   console.log(this.house.commissions);
-    // },
-    // removeHeader(item, index) {
-    //   this.house.commissions.splice(index, 1);
+      //   this.house.commissions.push({
+      //     category: "",
+      //     cash: "",
+      //     token: ""
+      //   });
+      //   console.log(this.house.commissions);
+      // },
+      // removeHeader(item, index) {
+      //   this.house.commissions.splice(index, 1);
     },
     // //视频链接
     deleteLink(item, index) {
-    //   if (this.linkArr.length <= 1) {
-    //     //如果只有一个输入框则不可以删除
-    //     return false;
-    //   }
-    //   console.log("当前下标" + index);
-    //   this.linkArr.splice(index, 1); //删除了数组中对应的数据也就将这个位置的输入框删除
+      //   if (this.linkArr.length <= 1) {
+      //     //如果只有一个输入框则不可以删除
+      //     return false;
+      //   }
+      //   console.log("当前下标" + index);
+      //   this.linkArr.splice(index, 1); //删除了数组中对应的数据也就将这个位置的输入框删除
     },
     addLink() {
-    //   this.linkArr.push(
-    //     //增加就push进数组一个新值
-    //     {
-    //       id: this.dataNum++,
-    //       data: ""
-    //     }
-    //   );
-    //   console.log(this.linkArr);
+      //   this.linkArr.push(
+      //     //增加就push进数组一个新值
+      //     {
+      //       id: this.dataNum++,
+      //       data: ""
+      //     }
+      //   );
+      //   console.log(this.linkArr);
     },
     deletebaLink(item, index) {
-    //   if (this.balinkArr.length <= 1) {
-    //     //如果只有一个输入框则不可以删除
-    //     return false;
-    //   }
-    //   console.log("当前下标" + index);
-    //   this.balinkArr.splice(index, 1); //删除了数组中对应的数据也就将这个位置的输入框删除
+      //   if (this.balinkArr.length <= 1) {
+      //     //如果只有一个输入框则不可以删除
+      //     return false;
+      //   }
+      //   console.log("当前下标" + index);
+      //   this.balinkArr.splice(index, 1); //删除了数组中对应的数据也就将这个位置的输入框删除
     },
     addbaLink() {
-    //   this.balinkArr.push(
-    //     //增加就push进数组一个新值
-    //     {
-    //       id: this.dataNum2++,
-    //       data: ""
-    //     }
-    //   );
-    //   console.log(this);
-    //   console.log(this.balinkArr);
+      //   this.balinkArr.push(
+      //     //增加就push进数组一个新值
+      //     {
+      //       id: this.dataNum2++,
+      //       data: ""
+      //     }
+      //   );
+      //   console.log(this);
+      //   console.log(this.balinkArr);
     },
     // //标签
     handleCheckedCitiesChange(value) {
-    //   console.log(value);
-    //   let checkedCount = value.length;
-    //   this.checkAll = checkedCount === this.tags.length;
-    //   this.isIndeterminate =
-    //     checkedCount > 0 && checkedCount < this.tags.length;
-    //   var b = [];
-    //   value.forEach(item => {
-    //     b.push(item.id);
-    //     let c = b.join(",");
-    //     this.house.tags = c;
-    //     console.log(c);
-    //   });
+      //   console.log(value);
+      //   let checkedCount = value.length;
+      //   this.checkAll = checkedCount === this.tags.length;
+      //   this.isIndeterminate =
+      //     checkedCount > 0 && checkedCount < this.tags.length;
+      //   var b = [];
+      //   value.forEach(item => {
+      //     b.push(item.id);
+      //     let c = b.join(",");
+      //     this.house.tags = c;
+      //     console.log(c);
+      //   });
     },
     // //区域
     limit(e) {
-    //   this.house.area = e.id;
-    //   console.log(e.id);
+      //   this.house.area = e.id;
+      //   console.log(e.id);
     },
     handlePreview(file) {
-    //     this.dialogImageUrl = file.url;
-        // this.dialogVisible = true;
+      //     this.dialogImageUrl = file.url;
+      // this.dialogVisible = true;
     },
     handlePreview4(file) {
-    //     this.dialogImageUrl4 = file.url;
-    //     this.dialogVisible4 = true;
+      //     this.dialogImageUrl4 = file.url;
+      //     this.dialogVisible4 = true;
     },
     dateFormat1(e) {
-    //   var date = new Date(e);
-    //   var y = date.getFullYear();
-    //   var m = date.getMonth() + 1;
-    //   m = m < 10 ? "0" + m : m;
-    //   var d = date.getDate();
-    //   d = d < 10 ? "0" + d : d;
-    //   var a = date.getHours();
-    //   a = a < 10 ? "0" + a : a;
-    //   var b = date.getMinutes();
-    //   b = b < 10 ? "0" + b : b;
-    //   var c = date.getSeconds();
-    //   c = c < 10 ? "0" + c : c;
-    //   const time = y + "-" + m + "-" + d + " " + a + ":" + b + ":" + c;
-    //   return (this.house.activityEndDatetime = time);
+      //   var date = new Date(e);
+      //   var y = date.getFullYear();
+      //   var m = date.getMonth() + 1;
+      //   m = m < 10 ? "0" + m : m;
+      //   var d = date.getDate();
+      //   d = d < 10 ? "0" + d : d;
+      //   var a = date.getHours();
+      //   a = a < 10 ? "0" + a : a;
+      //   var b = date.getMinutes();
+      //   b = b < 10 ? "0" + b : b;
+      //   var c = date.getSeconds();
+      //   c = c < 10 ? "0" + c : c;
+      //   const time = y + "-" + m + "-" + d + " " + a + ":" + b + ":" + c;
+      //   return (this.house.activityEndDatetime = time);
     },
     dateFormat2(e) {
-    //   var date = new Date(e);
-    //   var y = date.getFullYear();
-    //   var m = date.getMonth() + 1;
-    //   m = m < 10 ? "0" + m : m;
-    //   var d = date.getDate();
-    //   d = d < 10 ? "0" + d : d;
-    //   var a = date.getHours();
-    //   a = a < 10 ? "0" + a : a;
-    //   var b = date.getMinutes();
-    //   b = b < 10 ? "0" + b : b;
-    //   var c = date.getSeconds();
-    //   c = c < 10 ? "0" + c : c;
-    //   const time = y + "-" + m + "-" + d + " " + a + ":" + b + ":" + c;
-    //   return (this.house.activityStartDatetime = time);
+      //   var date = new Date(e);
+      //   var y = date.getFullYear();
+      //   var m = date.getMonth() + 1;
+      //   m = m < 10 ? "0" + m : m;
+      //   var d = date.getDate();
+      //   d = d < 10 ? "0" + d : d;
+      //   var a = date.getHours();
+      //   a = a < 10 ? "0" + a : a;
+      //   var b = date.getMinutes();
+      //   b = b < 10 ? "0" + b : b;
+      //   var c = date.getSeconds();
+      //   c = c < 10 ? "0" + c : c;
+      //   const time = y + "-" + m + "-" + d + " " + a + ":" + b + ":" + c;
+      //   return (this.house.activityStartDatetime = time);
     },
     dateFormat3(e) {
-    //   var date = new Date(e);
-    //   var y = date.getFullYear();
-    //   var m = date.getMonth() + 1;
-    //   m = m < 10 ? "0" + m : m;
-    //   var d = date.getDate();
-    //   d = d < 10 ? "0" + d : d;
-    //   var a = date.getHours();
-    //   a = a < 10 ? "0" + a : a;
-    //   var b = date.getMinutes();
-    //   b = b < 10 ? "0" + b : b;
-    //   var c = date.getSeconds();
-    //   c = c < 10 ? "0" + c : c;
-    //   const time = y + "-" + m + "-" + d + " " + a + ":" + b + ":" + c;
-    //   return (this.house.openDatetime = time);
-    }
-  }
+      //   var date = new Date(e);
+      //   var y = date.getFullYear();
+      //   var m = date.getMonth() + 1;
+      //   m = m < 10 ? "0" + m : m;
+      //   var d = date.getDate();
+      //   d = d < 10 ? "0" + d : d;
+      //   var a = date.getHours();
+      //   a = a < 10 ? "0" + a : a;
+      //   var b = date.getMinutes();
+      //   b = b < 10 ? "0" + b : b;
+      //   var c = date.getSeconds();
+      //   c = c < 10 ? "0" + c : c;
+      //   const time = y + "-" + m + "-" + d + " " + a + ":" + b + ":" + c;
+      //   return (this.house.openDatetime = time);
+    },
+  },
 };
 </script>

@@ -67,4 +67,9 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#mse {
+  width: 100%;
+  height: 500px;
+}
+</style>
