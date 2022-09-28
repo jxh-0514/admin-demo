@@ -37,6 +37,33 @@
   <script src="//unpkg.byted-static.com/xgplayer-flv.js/2.1.2/browser/index.js" charset="utf-8"></script>
   <script src="//unpkg.byted-static.com/xgplayer-hls/2.5.2/dist/index.min.js" charset="utf-8"></script>
 </head>
+<style>
+  /* 滚动条优化 start */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f6f6f6;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cdcdcd;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #747474;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: #f6f6f6;
+  }
+
+  /* 滚动条优化 end */
+</style>
 <script>
   // rem  自适应屏幕大小
   // (function (doc, win, imgW) {
