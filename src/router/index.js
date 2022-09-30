@@ -357,6 +357,12 @@ export const constantRoutes = [
             meta: { title: '西瓜播放器', icon: 'table' }
           },
           {
+            path: 'artplayer',
+            name: 'Artplayer',
+            component: () => import('@/views/demo/fullScreen/artplayer'),
+            meta: { title: 'art播放器', icon: 'table' }
+          },
+          {
             path: 'timeLine',
             name: 'TimeLine',
             component: () => import('@/views/demo/fullScreen/timeLine'),
