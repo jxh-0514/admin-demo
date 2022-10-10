@@ -55,8 +55,6 @@
       :widthHeigt="[100, 100]"
     ></tc-player-unit> -->
     <!-- </div> -->
-
-    <!-- <progressBar @handleClickTimeLineFn="handleClickTimeLineFn"></progressBar> -->
   </div>
 </template>
 
@@ -64,12 +62,10 @@
 import axios from "axios";
 import tcPlayer from "@/components/Tcplayer/indexA.vue";
 import tcPlayerUnit from "@/components/Tcplayer"; //多个
-import progressBar from "@/components/ProgressBar";
 export default {
   components: {
     tcPlayer,
     tcPlayerUnit,
-    progressBar,
   },
 
   data() {
@@ -216,10 +212,6 @@ export default {
           endTime +
           ".flv";
       });
-    },
-    // 自定义进度条
-    handleClickTimeLineFn(fomreTime) {
-      console.log("点击的时间", fomreTime);
     },
     // 倍速
     speedBtn() {

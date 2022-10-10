@@ -1,7 +1,7 @@
-<!-- 封装的fev插件 -->
+<!-- 封装的flv插件 -->
 <template>
   <div>
-    <video id="video" controls autoplay></video>
+    <video style="width: 100%" id="video" controls autoplay></video>
   </div>
 </template>
 
@@ -44,7 +44,7 @@ export default {
         {
           type: "flv",
           url: "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-360p.flv",
-          //   url: "http://192.168.1.222:8080/hdl/34020000001110000002/34020000001310000003.flv",
+          // url: "http://192.168.1.71:8081/hdl/34020000001110000002/34020000001310000003.flv",
           isLive: true,
         },
         {
