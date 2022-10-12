@@ -38,9 +38,9 @@ export default {
       value: this.tinymceHtml, //父组件通过ref拿到该组件的值
       init: {
         selector: "#tinymce",
-        language_url: "/tinymce/zh_CN.js",
+        language_url: process.env.BASE_URL + "/tinymce/zh_CN.js",
         language: "zh_CN",
-        skin_url: "/tinymce/skins/ui/oxide", //编辑器需要一个skin才能正常工作，所以要设置一个skin_url指向之前复制出来的skin文件
+        skin_url: process.env.BASE_URL + "/tinymce/skins/ui/oxide", //编辑器需要一个skin才能正常工作，所以要设置一个skin_url指向之前复制出来的skin文件
         height: this.tinymceHeight,
         plugins: "image link code table lists wordcount", //引入插件
         toolbar:

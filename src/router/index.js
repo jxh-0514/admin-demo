@@ -321,6 +321,12 @@ export const constantRoutes = [
         ]
       },
       {
+        path: 'test',
+        name: 'Test',
+        component: () => import('@/views/demo/test'),
+        meta: { title: '测试', icon: 'table' }
+      },
+      {
         path: "fullScreen",
         name: "FullScreen",
         component: () => import("@/views/demo/fullScreen"),
@@ -497,24 +503,6 @@ export const constantRoutes = [
     ],
   },
   {
-    path: "/echarts",
-    component: Layout,
-    redirect: "/echarts/index",
-    name: "Echarts",
-    meta: {
-      title: "echarts",
-      icon: "el-icon-s-help",
-    },
-    children: [
-      {
-        path: "index",
-        name: "Index",
-        component: () => import("@/views/echarts/index"),
-        meta: { title: "echarts", icon: "table" },
-      },
-    ],
-  },
-  {
     path: "/zhangyu",
     component: Layout,
     redirect: "/zhangyu/dashboard",
@@ -555,39 +543,6 @@ export const constantRoutes = [
             meta: { title: "房源编辑" },
           },
         ],
-      },
-    ],
-  },
-  {
-    path: "/calendar",
-    component: Layout,
-    redirect: "/calendar/day1",
-    name: "Calendar",
-    meta: { title: "日历示例", icon: "el-icon-s-help" },
-    children: [
-      {
-        path: "day1",
-        name: "Day1",
-        component: () => import("@/views/calendar/day1"),
-        meta: { title: "日历1" },
-      },
-      {
-        path: "day2",
-        name: "Day2",
-        component: () => import("@/views/calendar/day2"),
-        meta: { title: "日历2" },
-      },
-      {
-        path: "day3",
-        name: "Day3",
-        component: () => import("@/views/calendar/day3"),
-        meta: { title: "日历3" },
-      },
-      {
-        path: "countDowm1",
-        name: "CountDowm1",
-        component: () => import("@/views/calendar/countDowm1"),
-        meta: { title: "倒计时1" },
       },
     ],
   },

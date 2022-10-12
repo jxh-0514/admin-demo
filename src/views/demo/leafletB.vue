@@ -43,6 +43,7 @@ export default {
       content:
         '<div id="mapDialog_container" ref="mapDialog_container" style="width: 300px;height:200px;"></div>',
       markerData: { test: "测试" },
+      pane: null,
     };
   },
 
@@ -72,7 +73,7 @@ export default {
         this.map
       );
       //   this.map.on("click", this.addEventMarker);
-      this.markerPopup();
+      // this.markerPopup();
       this.extendPopup();
     },
     // 方法一  只能一个marker
@@ -153,11 +154,13 @@ export default {
       let arr = [
         {
           point: [39.91553, 116.391305],
-          data: "http://192.168.1.71:8080/hdl/34020000001110000002/34020000001310000003.flv",
+          data: "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-360p.flv",
+          // data: "http://192.168.1.71:8080/hdl/34020000001110000002/34020000001310000003.flv",
         },
         {
           point: [39.91553, 116.395305],
-          data: "http://192.168.1.71:8080/hls/34020000001110000002/34020000001310000003.m3u8",
+          data: "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-360p.flv",
+          // data: "http://192.168.1.71:8080/hls/34020000001110000002/34020000001310000003.m3u8",
         },
       ];
       this.gem = [];

@@ -43,6 +43,7 @@
     "path-to-regexp": "2.4.0",
     "proj4": "^2.8.0",
     "proj4leaflet": "^1.0.2",
+    "projektpro-leaflet-smoothwheelzoom": "^0.1.4",
     "screenfull": "^4.2.0",
     "sign-canvas": "^1.1.4",
     "three": "^0.139.2",
