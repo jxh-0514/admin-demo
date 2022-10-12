@@ -8,6 +8,7 @@
 import tinymce from "tinymce";
 import Editor from "@tinymce/tinymce-vue";
 import "tinymce/themes/silver/theme";
+import "tinymce/skins/ui/oxide/skin.min.css";
 // 引入icon解决组件icon无法显示的问题
 import "tinymce/icons/default/icons.min.js";
 import "tinymce/plugins/image";
@@ -38,9 +39,9 @@ export default {
       value: this.tinymceHtml, //父组件通过ref拿到该组件的值
       init: {
         selector: "#tinymce",
-        language_url: process.env.BASE_URL + "/tinymce/zh_CN.js",
+        language_url: "/tinymce/zh_CN.js",
         language: "zh_CN",
-        skin_url: process.env.BASE_URL + "/tinymce/skins/ui/oxide", //编辑器需要一个skin才能正常工作，所以要设置一个skin_url指向之前复制出来的skin文件
+        skin_url: "/tinymce/skins/ui/oxide", //编辑器需要一个skin才能正常工作，所以要设置一个skin_url指向之前复制出来的skin文件
         height: this.tinymceHeight,
         plugins: "image link code table lists wordcount", //引入插件
         toolbar:
