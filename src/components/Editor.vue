@@ -8,6 +8,7 @@
 import tinymce from "tinymce";
 import Editor from "@tinymce/tinymce-vue";
 import "tinymce/themes/silver/theme";
+import "tinymce/skins/ui/oxide/skin.min.css";
 // 引入icon解决组件icon无法显示的问题
 import "tinymce/icons/default/icons.min.js";
 import "tinymce/plugins/image";

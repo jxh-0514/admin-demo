@@ -169,7 +169,7 @@ export default {
         this.flvPlayer = mpegts.createPlayer({
           type: "flv", // could also be mpegts, m2ts, flv
           isLive: true,
-          url: "http://192.168.1.71:8080/hdl/34020000001110000002/34020000001310000003.flv",
+          url: this.popupData,
         });
         this.flvPlayer.attachMediaElement(videoElement);
         this.flvPlayer.load();
