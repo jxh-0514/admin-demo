@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-table
+    <!-- <el-table
       v-loading="listLoading"
       :data="list"
       element-loading-text="Loading"
@@ -39,41 +39,52 @@
           <span>{{ scope.row.display_time }}</span>
         </template>
       </el-table-column>
-    </el-table>
+    </el-table> -->
+    <Table :listData="listData" :propList="propList" />
   </div>
 </template>
 
 <script>
-import { getList } from '@/api/table'
+import Table from "@/components/Table";
+import { getList } from "@/api/table";
 
 export default {
+  components: { Table },
   filters: {
     statusFilter(status) {
       const statusMap = {
-        published: 'success',
-        draft: 'gray',
-        deleted: 'danger'
-      }
-      return statusMap[status]
-    }
+        published: "success",
+        draft: "gray",
+        deleted: "danger",
+      };
+      return statusMap[status];
+    },
   },
   data() {
     return {
       list: null,
-      listLoading: true
-    }
+      listLoading: true,
+      listData: [
+        { id: 1, name: "碧桂园", address: "苏州创业园" },
+        { id: 2, name: "碧桂园", address: "苏州创业园" },
+      ],
+      propList: [
+        { prop: "name", label: "名称" },
+        { prop: "address", label: "地址" },
+      ],
+    };
   },
   created() {
-    this.fetchData()
+    this.fetchData();
   },
   methods: {
     fetchData() {
-      this.listLoading = true
-      getList().then(response => {
-        this.list = response.data.items
-        this.listLoading = false
-      })
-    }
-  }
-}
+      this.listLoading = true;
+      getList().then((response) => {
+        this.list = response.data.items;
+        this.listLoading = false;
+      });
+    },
+  },
+};
 </script>

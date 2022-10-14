@@ -293,7 +293,7 @@ export const constantRoutes = [
       //   name: 'BaiduMapV',
       //   component: () => import('@/views/demo/baiduMapV'),
       //   meta: { title: '百度MapV点聚合', icon: 'table'}
-      // },
+      // },      
       // {
       //   path: 'chart',
       //   name: 'Chart',
