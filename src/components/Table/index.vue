@@ -1,6 +1,6 @@
 <!-- 封装表格 -->
 <template>
-  <div class="hy-table">
+  <div class="fz-table">
     <div class="header">
       <slot name="header">
         <div class="title">{{ title }}</div>
@@ -14,6 +14,7 @@
       border
       @selection-change="selectionChange"
       v-bind="childrenProps"
+      :cell-style="cellStyle"
     >
       <el-table-column
         v-if="showSelectColumn"
@@ -28,29 +29,32 @@
         align="center"
         width="80"
       ></el-table-column>
-      <template v-for="item in propList">
+      <template v-for="(item, index) in propList">
+        <!-- 需要特殊展示 -->
         <el-table-column
+          v-if="item.columnType"
+          :key="index"
+          :prop="item.prop"
+          :label="item.label"
+          :width="item.width"
+          :min-Width="item.minWidth"
+        >
+          <template slot-scope="{ row }">
+            <slot :name="item.soltName" :data="row"></slot>
+          </template>
+        </el-table-column>
+        <!-- 不需要特殊展示 -->
+        <el-table-column
+          v-else
           :prop="item.prop"
           :label="item.label"
           :sortable="item.sort"
-          :key="item.prop"
+          :width="item.width"
+          :min-Width="item.minWidth"
+          :key="index"
         >
         </el-table-column>
       </template>
-      <!-- <template v-for="item in propList">
-        <el-table-column
-          v-bind="item"
-          align="center"
-          show-overflow-tooltip
-          :key="item.prop"
-        >
-          <template v-slot="scope">
-            <slot :prop="item.prop" :row="scope.row">
-              {{ scope.row[item.prop] }}
-            </slot>
-          </template>
-        </el-table-column>
-      </template> -->
       <slot></slot>
     </el-table>
     <div class="footer" v-if="showFooter">
@@ -67,33 +71,42 @@
         </el-pagination>
       </slot>
     </div>
+    <slot></slot>
+    <slot name="title"></slot>
+    <slot name="content" :a="1" :b="2"></slot>
   </div>
 </template>
 
 <script>
 export default {
+  name: "Table",
   components: {},
   props: {
     title: {
       type: String,
-      default: "表格数据",
+      default: "表格",
     },
+    // 是否展示序号
     showIndexColumn: {
       type: Boolean,
       default: true,
     },
+    // 是否展示多选
     showSelectColumn: {
       type: Boolean,
-      default: false,
+      default: true,
     },
+    // 是否展示分页
     showFooter: {
       type: Boolean,
       default: true,
     },
+    // 表格内容
     listData: {
       type: Array,
       default: () => [],
     },
+    // 表头数据
     propList: {
       type: Array,
       default: () => [],
@@ -102,6 +115,7 @@ export default {
       type: Object,
       default: () => ({}),
     },
+    // 总数
     totalCount: {
       type: Number,
       default: 0,
@@ -109,10 +123,12 @@ export default {
     page: {
       type: Object,
       default: () => ({
-        currentPage: 0,
+        currentPage: 1,
         pageSize: 10,
       }),
     },
+    // 列颜色
+    cellStyle: {},
   },
   data() {
     return {};

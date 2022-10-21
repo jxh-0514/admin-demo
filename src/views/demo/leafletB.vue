@@ -44,6 +44,7 @@ export default {
         '<div id="mapDialog_container" ref="mapDialog_container" style="width: 300px;height:200px;"></div>',
       markerData: { test: "测试" },
       pane: null,
+      gem: [],
     };
   },
 
@@ -74,6 +75,9 @@ export default {
       );
       //   this.map.on("click", this.addEventMarker);
       // this.markerPopup();
+      // this.timer = setInterval(() => {
+      //   this.markerPopup();
+      // }, 2000);
       this.extendPopup();
     },
     // 方法一  只能一个marker
@@ -219,7 +223,12 @@ export default {
         { point: [39.90553, 116.391305], data: "1111" },
         { point: [39.90553, 116.395305], data: "2222" },
       ]; //模拟数据
+      if (this.marker_group) {
+        console.log("清除");
+        this.marker_group.clearLayers();
+      }
       this.gem = [];
+
       for (let i = 0; i < arr.length; i++) {
         const marker = L.marker(arr[i].point, { icon: this.mapUrl }).addTo(
           this.map
@@ -236,6 +245,8 @@ export default {
         );
         console.log("循环", i, arr[i].point);
       }
+      this.marker_group = new L.layerGroup(this.gem).addTo(this.map);
+      console.log("12312", this.marker_group);
     },
     func() {
       console.log("123", this.curData);

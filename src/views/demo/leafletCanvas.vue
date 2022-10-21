@@ -5,7 +5,7 @@
 <script>
 // import  "@/utils/leaflet.canvas-markers"
 import("leaflet-canvas-marker-xrr2021");
-
+import { lZoom } from "@/utils/zoom.js";
 import L from "leaflet";
 export default {
   data() {
@@ -26,6 +26,14 @@ export default {
       imageOverLay: null,
     };
   },
+  created() {
+    //输出当前窗口的宽
+    this.windowWidth =
+      document.documentElement.clientWidth || document.body.clientWidth;
+    //输出当前窗口的高
+    this.windowHeight =
+      document.documentElement.clientHeight || document.body.clientHeight;
+  },
   mounted() {
     this.init();
   },
@@ -35,7 +43,7 @@ export default {
         // center: [50, 250],
         center: [1876, 2500],
         // center: [39.905963, 116.390813],
-        zoom: -3,
+        // zoom: -3,
         crs: L.CRS.Simple,
         // continuousWorld: true,
         bounds: this.bounds,
@@ -56,6 +64,13 @@ export default {
       //     this.map.panTo([centerPoint[1],centerPoint[0]])
       //     this.showModal(data[0].data.options.alt)
       //  });
+      var zoom = lZoom(
+        this.bounds[1][0],
+        this.bounds[1][1],
+        this.windowWidth,
+        this.windowHeight
+      );
+      this.map.setView([this.bounds[1][0] / 2, this.bounds[1][1] / 2], zoom);
       this.imageOverLay = L.imageOverlay(this.mapUrl, this.bounds, {
         interactive: true, //允许地图触发事件
       }).addTo(this.map);

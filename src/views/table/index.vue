@@ -40,7 +40,26 @@
         </template>
       </el-table-column>
     </el-table> -->
-    <Table :listData="listData" :propList="propList" />
+    <Table :listData="listData" :propList="propList" :cellStyle="cellStyle">
+      <template #type="{ data }">
+        <span>{{ data.type }}</span>
+      </template>
+      <template #options="{ data }">
+        <el-button type="text" @click="btn(data, 1)">修改</el-button>
+        <el-button type="text" @click="btn(data, 1)">删除</el-button>
+      </template>
+      <!-- 匿名插槽 -->
+      <p>匿名</p>
+      <!-- 具名插槽 使用# 或者 v-slot -->
+      <template #title>
+        <p>123123</p>
+      </template>
+      <!-- 作用域插槽 -->
+      <template #content="scope">
+        <p>{{ scope.a }}</p>
+        <p>{{ scope.b }}</p>
+      </template>
+    </Table>
   </div>
 </template>
 
@@ -65,12 +84,32 @@ export default {
       list: null,
       listLoading: true,
       listData: [
-        { id: 1, name: "碧桂园", address: "苏州创业园" },
-        { id: 2, name: "碧桂园", address: "苏州创业园" },
+        {
+          id: 1,
+          name: "苏州",
+          address: "苏州创业园",
+          time: "2022-10-20",
+          type: "11",
+        },
+        {
+          id: 2,
+          name: "苏州",
+          address: "苏州创业园",
+          time: "2022-10-20",
+          type: "22",
+        },
       ],
       propList: [
         { prop: "name", label: "名称" },
+        { label: "类型", columnType: true, soltName: "type" },
         { prop: "address", label: "地址" },
+        { prop: "time", label: "时间" },
+        {
+          label: "操作",
+          columnType: true,
+          soltName: "options",
+          width: "200",
+        },
       ],
     };
   },
@@ -84,6 +123,18 @@ export default {
         this.list = response.data.items;
         this.listLoading = false;
       });
+    },
+    btn(data, val) {
+      console.log("按钮", data, val);
+    },
+    cellStyle({ row, column, rowIndex, columnIndex }) {
+      if (column.property == "type") {
+        if (row.type == "11") {
+          return "color:rgb(105 221 233)";
+        } else {
+          return "color:#000";
+        }
+      }
     },
   },
 };
