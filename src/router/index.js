@@ -371,6 +371,20 @@ export const constantRoutes = [
         ]
       },
       {
+        path: "roaster",
+        name: "Roaster",
+        component: () => import("@/views/demo/roaster/roasterA"),
+        meta: { title: "排版表" },
+        children: [
+          {
+            path: 'roasterA',
+            name: 'RoasterA',
+            component: () => import('@/views/demo/roaster/roasterA'),
+            meta: { title: '表1', icon: 'table' }
+          },
+        ]
+      },
+      {
         path: "chat",
         name: "Chat",
         component: () => import("@/views/demo/chat"),

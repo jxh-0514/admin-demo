@@ -1,7 +1,12 @@
 <!-- 封装的flv插件 -->
 <template>
   <div>
-    <video style="width: 100%" id="video" controls autoplay></video>
+    <video
+      style="width: 100%; height: 94vh"
+      id="video"
+      controls
+      autoplay
+    ></video>
   </div>
 </template>
 
@@ -11,13 +16,25 @@ export default {
   components: {},
 
   data() {
-    return {};
+    return {
+      player: null,
+    };
   },
 
   computed: {},
 
   watch: {},
-
+  destroyed() {
+    // destroy
+    this.player.pause();
+    this.player.unload();
+    this.player.detachMediaElement();
+    this.player.destroy();
+    this.player = null;
+    console.log("====================================");
+    console.log("页面销毁");
+    console.log("====================================");
+  },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
@@ -35,16 +52,16 @@ export default {
         updateOnStart: false, // 点击播放后更新视频
         updateOnFocus: false, // 获得焦点后更新视频
         reconnect: true, // 开启断流重连
-        reconnectInterval: 0, // 断流重连间隔
+        reconnectInterval: 1000, // 断流重连间隔
       });
 
       // 调用 init 方法初始化视频
       // init 方法的参数与 flvjs.createPlayer 相同，并返回 flvjs.player 实例
-      const player = flv.init(
+      this.player = flv.init(
         {
           type: "flv",
-          url: "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-360p.flv",
-          // url: "http://192.168.1.71:8081/hdl/34020000001110000002/34020000001310000003.flv",
+          // url: "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-360p.flv",
+          url: "http://192.168.1.71:8081/hdl/34020000001110000002/34020000001310000003.flv",
           isLive: true,
         },
         {
@@ -55,7 +72,7 @@ export default {
       );
 
       // 直接调用play即可播放
-      player.play();
+      this.player.play();
     },
   },
 };
