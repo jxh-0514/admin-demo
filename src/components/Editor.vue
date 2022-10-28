@@ -11,12 +11,13 @@ import "tinymce/themes/silver/theme";
 import "tinymce/skins/ui/oxide/skin.min.css";
 // 引入icon解决组件icon无法显示的问题
 import "tinymce/icons/default/icons.min.js";
-import "tinymce/plugins/image";
-import "tinymce/plugins/link";
-import "tinymce/plugins/code";
-import "tinymce/plugins/table";
+import "tinymce/plugins/image"; //引入图片插件
+import "tinymce/plugins/link"; //引入超链接插件
+import "tinymce/plugins/code"; // 引入代码插件
+import "tinymce/plugins/table"; //引入表格插件
 import "tinymce/plugins/lists";
 import "tinymce/plugins/wordcount";
+import "tinymce/plugins/paste"; //拖拽图片进富文本
 // import { uploadImg } from "@/api/common";
 //下面的插件是自带的,不需要引入
 // import "tinymce/plugins/contextmenu";
@@ -43,7 +44,7 @@ export default {
         language: "zh_CN",
         skin_url: "/tinymce/skins/ui/oxide", //编辑器需要一个skin才能正常工作，所以要设置一个skin_url指向之前复制出来的skin文件
         height: this.tinymceHeight,
-        plugins: "image link code table lists wordcount", //引入插件
+        plugins: "image link code table lists wordcount paste", //引入插件
         toolbar:
           "fontselect fontsizeselect link lineheight forecolor backcolor bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | image quicklink h2 h3 blockquote table numlist bullist preview fullscreen", //工具栏
         browser_spellcheck: true, // 拼写检查
@@ -51,11 +52,13 @@ export default {
         elementpath: false, //禁用编辑器底部的状态栏
         statusbar: false, // 隐藏编辑器底部的状态栏
         paste_data_images: true, // 允许粘贴图像
-        menubar: false, // 隐藏最上方menu
+        menubar: true, // 隐藏最上方menu
+        paste_data_images: true, //开启图片拖拽上传
 
         file_picker_types: "image",
         images_upload_credentials: true,
-        fontsize_formats: "14px 16px 18px 20px 24px 26px 28px 30px 32px 36px", //字体大小
+        fontsize_formats:
+          "12px 14px 16px 18px 20px 24px 26px 28px 30px 32px 36px", //字体大小
         font_formats:
           "微软雅黑=Microsoft YaHei,Helvetica Neue;PingFang SC;sans-serif;苹果苹方=PingFang SC,Microsoft YaHei,sans-serif;宋体=simsun;serifsans-serif;Terminal=terminal;monaco;Times New Roman=times new roman;times", //字体
         /**

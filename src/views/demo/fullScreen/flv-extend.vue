@@ -61,7 +61,7 @@ export default {
         {
           type: "flv",
           // url: "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-360p.flv",
-          url: "http://192.168.1.71:8081/hdl/34020000001110000002/34020000001310000003.flv",
+          url: "http://192.168.1.71:8081/hdl/34020000001110000002/34020000001310000005.flv",
           isLive: true,
         },
         {

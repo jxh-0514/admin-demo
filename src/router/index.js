@@ -373,7 +373,7 @@ export const constantRoutes = [
       {
         path: "roaster",
         name: "Roaster",
-        component: () => import("@/views/demo/roaster/roasterA"),
+        component: () => import("@/views/demo/roaster"),
         meta: { title: "排版表" },
         children: [
           {
@@ -381,6 +381,12 @@ export const constantRoutes = [
             name: 'RoasterA',
             component: () => import('@/views/demo/roaster/roasterA'),
             meta: { title: '表1', icon: 'table' }
+          },
+          {
+            path: 'gantt',
+            name: 'Gantt',
+            component: () => import('@/views/demo/roaster/gantt'),
+            meta: { title: '甘特图', icon: 'table' }
           },
         ]
       },
