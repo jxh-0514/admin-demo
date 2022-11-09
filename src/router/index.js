@@ -383,10 +383,10 @@ export const constantRoutes = [
             meta: { title: '表1', icon: 'table' }
           },
           {
-            path: 'gantt',
-            name: 'Gantt',
-            component: () => import('@/views/demo/roaster/gantt'),
-            meta: { title: '甘特图', icon: 'table' }
+            path: 'roasterB',
+            name: 'RoasterB',
+            component: () => import('@/views/demo/roaster/roasterB'),
+            meta: { title: '表2', icon: 'table' }
           },
         ]
       },

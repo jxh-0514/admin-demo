@@ -252,7 +252,7 @@ export default {
     // this.getTableList();
     // this.getAddInfo();
     // this.getworkers();
-    // this.getTime();
+    this.getTime();
   },
   methods: {
     lastweek() {

@@ -35,6 +35,11 @@ Vue.use(VueSignaturePad)
 import vueEsign from 'vue-esign'
 Vue.use(vueEsign)
 
+// import XGantt from "@xpyjs/gantt-vue2";
+// import '@xpyjs/gantt-vue2/lib/index.css';
+// Vue.use(XGantt);
+
+
 import '@/icons' // icon
 import '@/permission' // permission control
 // import VueCesium from 'vue-cesium'
