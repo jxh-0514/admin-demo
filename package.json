@@ -53,6 +53,7 @@
     "vue-cron": "^1.0.9",
     "vue-esign": "^1.1.4",
     "vue-i18n": "^9.1.10",
+    "vue-material-year-calendar": "^1.2.6",
     "vue-quill-editor": "^3.0.6",
     "vue-router": "3.0.6",
     "vue-signature-pad": "^2.0.5",

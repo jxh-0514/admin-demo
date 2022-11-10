@@ -380,7 +380,7 @@ export const constantRoutes = [
             path: 'roasterA',
             name: 'RoasterA',
             component: () => import('@/views/demo/roaster/roasterA'),
-            meta: { title: '表1', icon: 'table' }
+            meta: { title: '年视图', icon: 'table' }
           },
           {
             path: 'roasterB',
