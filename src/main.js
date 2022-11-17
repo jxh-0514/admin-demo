@@ -28,10 +28,9 @@ import rules from './utils/formCheck.js'
 // 全局方法挂载
 Vue.prototype.$rules = rules
 Vue.use(VueSignaturePad)
-Vue.use(vueEsign)
+// Vue.use(vueEsign)
 Vue.use(mavonEditor);
 Vue.use(SuperFlow)
-
 // 引入rem.js
 // import '@/utils/rem.js'
 
