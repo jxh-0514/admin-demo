@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Live2d />
+    <!-- <Live2d /> -->
     <router-view />
   </div>
 </template>

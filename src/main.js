@@ -16,29 +16,32 @@ import axios from 'axios'
 import i18n from 'i18n'
 import VueI18n from 'vue-i18n' // 引入国际化的包
 import SuperFlow from 'vue-super-flow'
+// mavon-editor 编辑器
+import mavonEditor from 'mavon-editor';
+import 'mavon-editor/dist/css/index.css';
+// 电子签名 https://github.com/neighborhood999/vue-signature-pad#readme
+import VueSignaturePad from 'vue-signature-pad'
+import vueEsign from 'vue-esign'
 import 'vue-super-flow/lib/index.css'
+// 封装表单验证方法
+import rules from './utils/formCheck.js'
+// 全局方法挂载
+Vue.prototype.$rules = rules
+Vue.use(VueSignaturePad)
+Vue.use(vueEsign)
+Vue.use(mavonEditor);
+Vue.use(SuperFlow)
+
 // 引入rem.js
 // import '@/utils/rem.js'
-Vue.use(SuperFlow)
+
 // 全局引入
 // import VueCron from 'vue-cron'
 // Vue.use(VueCron);
 
-// mavon-editor 编辑器
-import mavonEditor from 'mavon-editor';
-import 'mavon-editor/dist/css/index.css';
-Vue.use(mavonEditor);
-
-// 电子签名 https://github.com/neighborhood999/vue-signature-pad#readme
-import VueSignaturePad from 'vue-signature-pad'
-Vue.use(VueSignaturePad)
-import vueEsign from 'vue-esign'
-Vue.use(vueEsign)
-
 // import XGantt from "@xpyjs/gantt-vue2";
 // import '@xpyjs/gantt-vue2/lib/index.css';
 // Vue.use(XGantt);
-
 
 import '@/icons' // icon
 import '@/permission' // permission control
