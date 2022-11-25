@@ -24,13 +24,17 @@ import VueSignaturePad from 'vue-signature-pad'
 import vueEsign from 'vue-esign'
 import 'vue-super-flow/lib/index.css'
 // 封装表单验证方法
-import rules from './utils/formCheck.js'
+import rules from '@/utils/formCheck.js'
+// 引入自定义拖动盒子move.js
+import move from '@/utils/move'
 // 全局方法挂载
 Vue.prototype.$rules = rules
 Vue.use(VueSignaturePad)
 // Vue.use(vueEsign)
 Vue.use(mavonEditor);
 Vue.use(SuperFlow)
+Vue.use(move)
+
 // 引入rem.js
 // import '@/utils/rem.js'
 
