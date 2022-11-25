@@ -30,6 +30,8 @@ export default {
         { date: "2022-02-14", className: "red" },
         { date: "2022-02-15", className: "blue" },
         { date: "2022-02-16", className: "your_customized_classname" },
+        { date: "2022-03-16", className: "demo", class: "red" },
+        { date: "2022-03-17", className: "demo", class: "green" },
       ], //选择的日期---用颜色显示
       showYearSelector: true, //在日历顶部显示或隐藏年份选择器。
       activeClass: "", //设置点击日历显示的颜色
@@ -62,6 +64,10 @@ export default {
   // background: #f6f6f3;
   overflow: hidden;
   overflow-y: auto;
+}
+.demo {
+  background: v-bind(demo);
+  // background: var(--demo);
 }
 </style>
 <style lang="stylus">
