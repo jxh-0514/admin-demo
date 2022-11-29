@@ -101,7 +101,7 @@ export default {
       tableHeader: [],
       tableData: [
         {
-          name: "李国华",
+          name: "李xx",
           date: "十月2000",
           1: "早班",
           2: "",
@@ -114,7 +114,7 @@ export default {
           9: "早班",
         },
         {
-          name: "冯天佑",
+          name: "冯xx",
           date: "十月2000",
           1: "",
           2: "中班",
@@ -126,7 +126,7 @@ export default {
           8: "晚班",
         },
         {
-          name: "王志刚",
+          name: "王xx",
           date: "十月2000",
           1: "晚班",
           2: "晚班",

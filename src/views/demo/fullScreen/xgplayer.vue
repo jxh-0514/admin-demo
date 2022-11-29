@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: 杭
+ * @Date: 2022-09-21 15:00:22
+ * @LastEditors: 杭
+ * @LastEditTime: 2022-11-29 13:52:59
+-->
 <!-- 西瓜播放器 -->
 <template>
   <div>
@@ -51,7 +59,8 @@ export default {
         id: "mse",
         isLive: true,
         // url: "rtmp://r2bj.vzan.com/v/1126653464_231435244367094402?zbid=1126653464&tpid=1361853375",
-        url: "http://192.168.1.71:8080/hls/34020000001110000002/34020000001310000003.m3u8",
+        url: "//sf1-cdn-tos.huoshanstatic.com/obj/media-fe/xgplayer_doc_video/hls/xgplayer-demo.m3u8",
+        // url: "http://192.168.1.71:8080/hls/34020000001110000002/34020000001310000003.m3u8",
         autoplay: true,
         playsinline: true,
         height: "500",

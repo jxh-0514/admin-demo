@@ -105,13 +105,19 @@ export const constantRoutes = [
       {
         path: "table",
         name: "Table",
-        component: () => import("@/views/table/index"),
+        component: () => import("@/views/example/table/index"),
+        meta: { title: "表格", icon: "table" },
+      },
+      {
+        path: "table2",
+        name: "Table2",
+        component: () => import("@/views/example/table/index2"),
         meta: { title: "表格", icon: "table" },
       },
       {
         path: "tree",
         name: "Tree",
-        component: () => import("@/views/tree/index"),
+        component: () => import("@/views/example/tree/index"),
         meta: { title: "树型", icon: "tree" },
       },
     ],
@@ -374,7 +380,7 @@ export const constantRoutes = [
         path: "roaster",
         name: "Roaster",
         component: () => import("@/views/demo/roaster"),
-        meta: { title: "排版表" },
+        meta: { title: "排班表" },
         children: [
           {
             path: 'roasterA',
@@ -387,6 +393,12 @@ export const constantRoutes = [
             name: 'RoasterB',
             component: () => import('@/views/demo/roaster/roasterB'),
             meta: { title: '表2', icon: 'table' }
+          },
+          {
+            path: 'roasterC',
+            name: 'RoasterC',
+            component: () => import('@/views/demo/roaster/roasterC'),
+            meta: { title: '年视图B', icon: 'table' }
           },
         ]
       },
