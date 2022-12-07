@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: 杭
+ * @Date: 2022-11-18 08:20:26
+ * @LastEditors: 杭
+ * @LastEditTime: 2022-12-07 16:58:29
+ */
 import Vue from 'vue'
 
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
@@ -27,6 +35,7 @@ import 'vue-super-flow/lib/index.css'
 import rules from '@/utils/formCheck.js'
 // 引入自定义拖动盒子move.js
 import move from '@/utils/move'
+
 // 全局方法挂载
 Vue.prototype.$rules = rules
 Vue.use(VueSignaturePad)

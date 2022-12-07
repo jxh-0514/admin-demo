@@ -454,6 +454,26 @@ export const constantRoutes = [
           },
         ]
       },
+      {
+        path: "face",
+        name: "Face",
+        component: () => import("@/views/demo/face"),
+        meta: { title: "活体检测" },
+        children: [
+          {
+            path: 'faceA',
+            name: 'FaceA',
+            component: () => import('@/views/demo/face/faceA'),
+            meta: { title: 'H5人脸识别', icon: 'table' }
+          },
+          {
+            path: 'faceB',
+            name: 'FaceB',
+            component: () => import('@/views/demo/face/faceB'),
+            meta: { title: 'face-ca', icon: 'table' }
+          },
+        ]
+      },
     ],
   },
   // {
