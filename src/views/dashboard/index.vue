@@ -10,6 +10,8 @@
     </div>
     <div class="dashboard-text">name: {{ name }}</div>
     <!-- <div><img :src="require('@/assets/pic/1.png')" alt="" /></div> -->
+    <!-- css脉动星球效果 -->
+    <div class="start"></div>
   </div>
 </template>
 
@@ -112,6 +114,23 @@ body {
 }
 h3 {
   margin-top: 25px;
+}
+/* // 脉动星球 */
+.start {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #fff, -20px 0 80px #fff, 20px 0 80px #0ff,
+    inset 0 0 50px #fff, inset 50px 0 80px #f0f, inset -50px 0 80px #0ff,
+    inset 50px 0 200px #f0f, inset -50px 0 200px #0ff;
+  animation: pulsate 6s linear infinite;
+}
+@keyframes pulsate {
+  50% {
+    box-shadow: 0 0 20px #fff, 20px 0 80px #f0f, -20px 0 80px #0ff,
+      inset 0 0 50px #fff, inset 50px 0 80px #f0f, inset 50px 0 80px #0ff,
+      inset -50px 0 200px #f0f, inset 50px 0 200px #0ff;
+  }
 }
 </style>
 <style lang="scss" scoped>
