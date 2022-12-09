@@ -52,16 +52,7 @@
 
 <script>
 // 请求接口
-import * as faceapi from "@/utils/faceapi.js";
-// import {
-//   detectSingleFace,
-//   nets,
-//   matchDimensions,
-//   resizeResults,
-//   draw,
-//   SsdMobilenetv1Options,
-//   Box,
-// } from "face-api.js";
+import * as faceapi from "face-api.js";
 export default {
   // name: "face2",
   props: ["activename", "isrest"],
@@ -138,10 +129,10 @@ export default {
       // 加载神经网络模型
       Promise.all([
         // 加载我想要使用的模型 同时对应的json文件和shard文件要处在同一目录 不然读取的时候可能读取不到。当你读取不到的时候你可能会报 SyntaxError: Unexpected token < in JSON at position 0。这点略坑
-        faceapi.nets.tinyFaceDetector.loadFromUri("/assets/models"),
-        faceapi.nets.faceLandmark68Net.loadFromUri("/assets/models"),
+        faceapi.nets.tinyFaceDetector.loadFromUri("/models"),
+        faceapi.nets.faceLandmark68Net.loadFromUri("/models"),
         // faceapi.nets.faceRecognitionNet.loadFromUri("../../static/models"),
-        faceapi.nets.faceExpressionNet.loadFromUri("/assets/models"),
+        faceapi.nets.faceExpressionNet.loadFromUri("/models"),
       ]).then(
         () => {
           this.tipTxt = "模型加载成功，正在检测人脸";
@@ -506,8 +497,8 @@ $unitSize: 1/37.5;
       height: 0.625rem;
     }
     .photoBox {
-      width: 5.625rem;
-      height: 5.625rem;
+      width: 12.625rem;
+      height: 12.625rem;
       border-radius: 50%;
       /* border: 2px dashed red; */
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

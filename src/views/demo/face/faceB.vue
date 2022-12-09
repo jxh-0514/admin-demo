@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2022-12-07 15:02:57
  * @LastEditors: 杭
- * @LastEditTime: 2022-12-07 17:13:58
+ * @LastEditTime: 2022-12-09 14:55:41
 -->
 <template>
   <div>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import face from "@/components/Face/face3.vue";
+import face from "@/components/Face/face2.vue";
 export default {
   // name: "faceB",
   components: {
@@ -33,6 +33,7 @@ export default {
       isRest: false,
     };
   },
+  mounted() {},
   methods: {
     // 进入人脸识别页面
     faceLogin() {

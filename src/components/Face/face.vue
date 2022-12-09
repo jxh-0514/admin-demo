@@ -158,7 +158,7 @@ export default {
   watch: {
     faceView(v) {
       if (v == false) {
-        this.closeFace();
+        this.trackerTask && this.closeFace();
       }
     },
     imgView(v) {
@@ -179,7 +179,7 @@ export default {
   .container {
     background: #000;
     position: relative;
-    width: 581px;
+    width: 540px;
     height: 436px;
     #canvas1 {
       position: absolute;
@@ -188,7 +188,7 @@ export default {
     #canvas,
     #canvas1 {
       position: absolute;
-      width: 581px;
+      width: 540px;
       height: 436px;
     }
   }
