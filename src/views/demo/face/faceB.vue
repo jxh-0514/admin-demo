@@ -4,11 +4,10 @@
  * @Author: 杭
  * @Date: 2022-12-07 15:02:57
  * @LastEditors: 杭
- * @LastEditTime: 2022-12-09 14:55:41
+ * @LastEditTime: 2022-12-09 22:09:14
 -->
 <template>
   <div>
-    {{ msg }}
     <face
       :activename="activeName"
       :isrest="isRest"
@@ -16,6 +15,8 @@
       @responseFun="responseFun"
     ></face>
     <button id="facelogin" @click="faceLogin">人脸登录</button>
+
+    <input ref="file" type="file" accept="image/*" capture="user" />
   </div>
 </template>
 

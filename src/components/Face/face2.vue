@@ -1,16 +1,17 @@
 <!-- home -->
 <template>
   <div>
-    <div :class="'app-container ' + activename">
+    <!-- <div :class="'app-container ' + activename"> -->
+    <div class="app-container">
       <div class="warpper">
         <div class="btnBox">
           <div class="left" @click="closeFaceBox">
-            <img src="/src/assets/imgs/close.svg" alt srcset />
+            <img src="/imgs/close.svg" alt srcset />
           </div>
           <!-- <div class="right" @click="changeVoice">
-                <img src="../assets/imgs/openvoice.svg" alt="" srcset="" v-if="voiceFlag">
-                <img src="../assets/imgs/closevoice.svg" alt="" srcset="" v-else>
-          </div>-->
+            <img src="/imgs/openvoice.svg" alt="" srcset="" v-if="voiceFlag" />
+            <img src="/imgs/closevoice.svg" alt="" srcset="" v-else />
+          </div> -->
         </div>
         <!-- 提示信息 -->
         <p class="tip">{{ tipTxt }}</p>
@@ -35,18 +36,17 @@
             >{{ hovertxt }}</span
           >
         </div>
-        <div style="display: none">
+        <div style="display: block">
           <img :src="imgSrc" alt class="imgSrc" />
           <!-- <img :src="firstfaceImg" alt="" srcset=""> -->
         </div>
         <div class="safeBox">
-          <img src="/src/assets/imgs/safe.png" alt="" srcset="" /><span
+          <img src="/imgs/safe.png" alt="" srcset="" /><span
             >信息已加密,仅用于身份认证</span
           >
         </div>
       </div>
     </div>
-    <!-- <button id="facelogin" @click="faceLogin">人脸登录</button> -->
   </div>
 </template>
 
@@ -120,7 +120,9 @@ export default {
     },
     //   关闭页面
     closeFaceBox() {
-      this.$emit("restActive", "");
+      // 关闭摄像头
+      this.$refs.myVideo.srcObject.getTracks()[0].stop();
+      // this.$emit("restActive", "");
     },
     // 初始化
     initFun: async function (input) {
@@ -452,16 +454,16 @@ $unitSize: 1/37.5;
 }
 .app-container {
   background: #fff;
-  height: 100vh;
+  // height: 100vh;
   box-sizing: border-box;
-  position: fixed;
-  left: 0;
-  top: 0;
+  // position: fixed;
+  // left: 0;
+  // top: 0;
   width: 100%;
-  display: none;
-  &.active {
-    display: block;
-  }
+  // display: none;
+  // &.active {
+  //   display: block;
+  // }
   .warpper {
     width: 100%;
     height: 100%;
