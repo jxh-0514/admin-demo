@@ -120,6 +120,12 @@ export const constantRoutes = [
         component: () => import("@/views/example/tree/index"),
         meta: { title: "树型", icon: "tree" },
       },
+      {
+        path: "ruler",
+        name: "Ruler",
+        component: () => import("@/views/example/ruler/index"),
+        meta: { title: "刻度尺", icon: "tree" },
+      },
     ],
   },
   {
