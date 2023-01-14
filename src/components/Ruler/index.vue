@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2023-01-12 11:45:11
  * @LastEditors: 杭
- * @LastEditTime: 2023-01-12 16:23:35
+ * @LastEditTime: 2023-01-14 16:14:32
 -->
 <!-- 滑动刻度尺组件 -->
 <template>
@@ -63,6 +63,7 @@
             class="ruler-item span-item"
             v-for="(item, index) in max - min + 1"
             :key="index"
+            @click="clickItem(item)"
           >
             <span>{{ ((index + min) / multiple).toFixed(point) }}</span>
           </span>
@@ -76,7 +77,6 @@
 
 <script>
 import ScrollView from "@/components/Scroll/index.vue";
-// import ScrollView from "@/components/Scroll/index.vue";
 export default {
   name: "select-ruler",
   components: {
@@ -145,6 +145,9 @@ export default {
       this.setDefault(this.defaultValue);
     }, 500);
   },
+  mounted() {
+    window.addEventListener("resize", this.resizeCharts);
+  },
   methods: {
     // 刻度尺滚动监听
     handleScroll(e) {
@@ -193,6 +196,10 @@ export default {
     },
     handleScrollB(val) {
       console.log("滚动", val);
+    },
+    // 点击事件
+    clickItem(item) {
+      console.log("点击", item);
     },
   },
 };
