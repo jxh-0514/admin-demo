@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2023-01-12 11:45:11
  * @LastEditors: 杭
- * @LastEditTime: 2023-01-14 16:14:32
+ * @LastEditTime: 2023-01-17 18:37:24
 -->
 <!-- 滑动刻度尺组件 -->
 <template>
