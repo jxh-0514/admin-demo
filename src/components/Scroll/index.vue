@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2023-01-12 13:36:14
  * @LastEditors: 杭
- * @LastEditTime: 2023-01-12 17:02:20
+ * @LastEditTime: 2023-01-14 16:12:22
 -->
 <template>
   <div class="wrapper" ref="wrapper">
@@ -26,6 +26,8 @@
 <script>
 // import BScroll from "better-scroll";
 import BScroll from "@better-scroll/core";
+import { debounce } from "@/utils/debounce.js"; // 增加防抖---控制切换视口重新渲染刻度尺
+
 export default {
   name: "ScrollView",
   props: {
@@ -36,7 +38,7 @@ export default {
      */
     probeType: {
       type: Number,
-      default: 1,
+      default: 3,
     },
     /**
      * 点击列表是否派发click事件
@@ -129,10 +131,10 @@ export default {
   mounted() {
     // 保证在DOM渲染完毕后初始化better-scroll
     setTimeout(() => {
-      console.log("初始化");
       //   this._initScroll();
       this.personScroll(); //滑动
     }, 20);
+    window.addEventListener("resize", this.resizeRuler);
   },
   beforeDestroy() {
     this.scroll.destroy();
@@ -228,6 +230,7 @@ export default {
             // eventPassthrough: "horizontal",
             eventPassthrough: "vertical",
           });
+          console.log("初始化刻度尺");
           this.scroll.on("scrollStart", () => {
             console.log("scrollStart-");
           });
@@ -242,9 +245,17 @@ export default {
           // 有个时候，滚动区域的内容并不是写死的，会发生变化，
           // 当DOM结构发生改变时应重新计算 BetterScroll 以确保滚动正常工作。
           this.scroll.refresh();
+          console.log("重新计算");
         }
       });
     },
+    resizeRuler: debounce(function () {
+      // 先销毁再初始化
+      // this.scroll.destroy();
+      // this.scroll = null;
+      // this.scroll.refresh();
+      this.personScroll(); //滑动
+    }, 500),
   },
 };
 </script>

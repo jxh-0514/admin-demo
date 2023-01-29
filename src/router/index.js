@@ -480,6 +480,34 @@ export const constantRoutes = [
           },
         ]
       },
+      {
+        path: "filePreview",
+        name: "FilePreview",
+        component: () => import("@/views/demo/filePreview"),
+        meta: { title: "文件预览" },
+        children: [
+          {
+            path: 'fileA',
+            name: 'FileA',
+            component: () => import('@/views/demo/filePreview/fileA'),
+            meta: { title: '文件预览A', icon: 'table' }
+          },
+        ]
+      },
+      {
+        path: "shareScreen",
+        name: "ShareScreen",
+        component: () => import("@/views/demo/shareScreen"),
+        meta: { title: "共享屏幕" },
+        children: [
+          {
+            path: 'stream',
+            name: 'Stream',
+            component: () => import('@/views/demo/shareScreen/stream'),
+            meta: { title: 'chrome共享屏幕', icon: 'table' }
+          },
+        ]
+      },
     ],
   },
   // {
