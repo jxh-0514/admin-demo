@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2023-01-12 11:45:11
  * @LastEditors: 杭
- * @LastEditTime: 2023-01-12 16:23:35
+ * @LastEditTime: 2023-01-12 17:16:23
 -->
 <!-- 滑动刻度尺组件 -->
 <template>
@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import ScrollView from "@/components/Scroll/index.vue";
+import ScrollView from "@/components/Scroll/index.vue"; // 滑动组件
 // import ScrollView from "@/components/Scroll/index.vue";
 export default {
   name: "select-ruler",
