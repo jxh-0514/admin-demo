@@ -9,10 +9,12 @@
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
+      <!-- 天气组件 -->
+      <Weather class="right-menu-item" />
       <!-- 全屏组件 -->
-      <screen-full class="right-menu-item" />
+      <ScreenFull class="right-menu-item" />
       <!-- 主题组件 -->
-      <theme-picker class="right-menu-item" />
+      <ThemePicker class="right-menu-item" />
       <!-- 桌面通知 -->
       <Notification class="right-menu-item" />
       <el-dropdown class="avatar-container" trigger="click">
@@ -43,16 +45,18 @@
 import { mapGetters } from "vuex";
 import Breadcrumb from "@/components/Breadcrumb";
 import Hamburger from "@/components/Hamburger";
-import themePicker from "@/components/Themepicker";
-import screenFull from "@/components/ScreenFull";
+import ThemePicker from "@/components/Themepicker";
+import ScreenFull from "@/components/ScreenFull";
 import Notification from "@/components/Notification";
+import Weather from "@/components/Weather";
 export default {
   components: {
     Breadcrumb,
     Hamburger,
-    themePicker,
-    screenFull,
+    ThemePicker,
+    ScreenFull,
     Notification,
+    Weather,
   },
   computed: {
     ...mapGetters(["sidebar", "avatar"]),
