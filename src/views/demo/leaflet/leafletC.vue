@@ -35,7 +35,7 @@ import { LMap, LTileLayer, LMarker, LPopup } from "vue2-leaflet";
 import Vue2LeafletMarkerCluster from "vue2-leaflet-markercluster";
 import icon from "leaflet/dist/images/marker-icon-2x.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
-import Pane from "./leafletComponents/PopupContent";
+import Pane from "../leafletComponents/PopupContent";
 export default {
   name: "LeafletC",
   components: {

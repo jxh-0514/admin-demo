@@ -4,11 +4,13 @@
  * @Author: 杭
  * @Date: 2023-01-30 15:12:49
  * @LastEditors: 杭
- * @LastEditTime: 2023-01-30 16:59:26
+ * @LastEditTime: 2023-02-03 13:42:33
 -->
 <!-- 天气组件 -->
 <template>
-  <div class="box">{{ city + " " + weatcherData.wea }}</div>
+  <div class="box">
+    {{ city + " " + weatcherData.wea }}
+  </div>
 </template>
 
 <script>
@@ -18,7 +20,9 @@ export default {
   data() {
     return {
       city: "",
-      weatcherData: {},
+      weatcherData: {
+        wea: "",
+      },
     };
   },
 
@@ -39,7 +43,7 @@ export default {
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
     this.getAddressIp();
-    this.getIp();
+    // this.getIp();
   },
 
   methods: {
@@ -78,6 +82,7 @@ export default {
           }
         })
         .catch((err) => {
+          this.weatcherData.wea = "";
           console.log("失败", err);
         });
     },

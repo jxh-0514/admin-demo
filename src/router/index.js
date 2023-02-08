@@ -246,42 +246,7 @@ export const constantRoutes = [
       //   component: () => import('@/views/demo/fmap5/fmap6'),
       //   meta: { title: 'fmap6', icon: 'table'}
       // },
-      {
-        path: "leaflet",
-        name: "Leaflet",
-        component: () => import("@/views/demo/leaflet"),
-        meta: { title: "leaflet", icon: "table" },
-      },
-      {
-        path: "leafletBD",
-        name: "LeafletBD",
-        component: () => import("@/views/demo/leafletBD"),
-        meta: { title: "leafletBD", icon: "table" },
-      },
-      {
-        path: "leafletB",
-        name: "LeafletB",
-        component: () => import("@/views/demo/leafletB"),
-        meta: { title: "leafletB", icon: "table" },
-      },
-      {
-        path: "leafletC",
-        name: "LeafletC",
-        component: () => import("@/views/demo/leafletC"),
-        meta: { title: "leafletC", icon: "table" },
-      },
-      {
-        path: 'leafletCanvas',
-        name: 'LeafletCanvas',
-        component: () => import('@/views/demo/leafletCanvas'),
-        meta: { title: 'leafletCanvas', icon: 'table' }
-      },
-      {
-        path: 'leafletCanvas2',
-        name: 'LeafletCanvas2',
-        component: () => import('@/views/demo/leafletCanvas2'),
-        meta: { title: 'leafletCanvas2', icon: 'table' }
-      },
+
       // {
       //   path: 'baidu1',
       //   name: 'Baidu1',
@@ -332,11 +297,56 @@ export const constantRoutes = [
           },
         ]
       },
+
       {
-        path: 'test',
-        name: 'Test',
-        component: () => import('@/views/demo/test'),
-        meta: { title: '测试', icon: 'table' }
+        path: "leaflet",
+        name: "Leaflet",
+        component: () => import("@/views/demo/leaflet/index"),
+        meta: { title: "leaflet案例" },
+        children: [
+          {
+            path: "leaflet",
+            name: "Leaflet",
+            component: () => import("@/views/demo/leaflet/leaflet"),
+            meta: { title: "leaflet", icon: "table" },
+          },
+          {
+            path: "leafletBD",
+            name: "LeafletBD",
+            component: () => import("@/views/demo/leaflet/leafletBD"),
+            meta: { title: "leafletBD", icon: "table" },
+          },
+          {
+            path: "leafletB",
+            name: "LeafletB",
+            component: () => import("@/views/demo/leaflet/leafletB"),
+            meta: { title: "leafletB", icon: "table" },
+          },
+          {
+            path: "leafletC",
+            name: "LeafletC",
+            component: () => import("@/views/demo/leaflet/leafletC"),
+            meta: { title: "leafletC", icon: "table" },
+          },
+          {
+            path: 'leafletCanvas',
+            name: 'LeafletCanvas',
+            component: () => import('@/views/demo/leaflet/leafletCanvas'),
+            meta: { title: 'leafletCanvas', icon: 'table' }
+          },
+          {
+            path: 'leafletCanvas2',
+            name: 'LeafletCanvas2',
+            component: () => import('@/views/demo/leaflet/leafletCanvas2'),
+            meta: { title: 'leafletCanvas2', icon: 'table' }
+          },
+          {
+            path: 'test',
+            name: 'Test',
+            component: () => import('@/views/demo/leaflet/test'),
+            meta: { title: '测试', icon: 'table' }
+          },
+        ]
       },
       {
         path: "fullScreen",
@@ -477,6 +487,26 @@ export const constantRoutes = [
             name: 'FaceB',
             component: () => import('@/views/demo/face/faceB'),
             meta: { title: 'face-ca', icon: 'table' }
+          },
+        ]
+      },
+      {
+        path: "print",
+        name: "Print",
+        component: () => import("@/views/demo/print"),
+        meta: { title: "打印" },
+        children: [
+          {
+            path: 'printEasy',
+            name: 'PrintEasy',
+            component: () => import('@/views/demo/print/printEasy'),
+            meta: { title: 'printEasy', icon: 'table' }
+          },
+          {
+            path: 'printNb',
+            name: 'PrintNb',
+            component: () => import('@/views/demo/print/printNb'),
+            meta: { title: 'printNb', icon: 'table' }
           },
         ]
       },

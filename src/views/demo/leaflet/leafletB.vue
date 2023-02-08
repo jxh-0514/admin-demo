@@ -7,7 +7,7 @@
 import L from "leaflet";
 import iconA from "leaflet/dist/images/marker-icon-2x.png";
 import Vue from "vue";
-import popupContent from "./leafletComponents/PopupContent";
+import popupContent from "../leafletComponents/PopupContent";
 export default {
   components: {
     popupContent,
