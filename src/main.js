@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2022-11-18 08:20:26
  * @LastEditors: 杭
- * @LastEditTime: 2022-12-07 16:58:29
+ * @LastEditTime: 2023-02-10 15:57:07
  */
 import Vue from 'vue'
 
@@ -35,7 +35,10 @@ import 'vue-super-flow/lib/index.css'
 import rules from '@/utils/formCheck.js'
 // 引入自定义拖动盒子move.js
 import move from '@/utils/move'
-
+// 全局引入自定义表单
+// import VueFormGenerator from "vue-form-generator";
+// import "vue-form-generator/dist/vfg.css";
+// Vue.use(VueFormGenerator)
 // 全局方法挂载
 Vue.prototype.$rules = rules
 Vue.use(VueSignaturePad)

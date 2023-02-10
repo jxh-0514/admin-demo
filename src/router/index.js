@@ -538,6 +538,20 @@ export const constantRoutes = [
           },
         ]
       },
+      {
+        path: "formGenerator",
+        name: "FormGenerator",
+        component: () => import("@/views/demo/formGenerator/index"),
+        meta: { title: "自定义表单" },
+        children: [
+          {
+            path: 'formA',
+            name: 'FormA',
+            component: () => import('@/views/demo/formGenerator/formA'),
+            meta: { title: 'formGenerator', icon: 'table' }
+          },
+        ]
+      },
     ],
   },
   // {
