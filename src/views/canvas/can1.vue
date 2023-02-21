@@ -22,7 +22,7 @@ export default {
     // canvas 宽度
     canvasWidth: {
       type: Number,
-      default: clientWidth
+      default: clientWidth,
     },
     // canvas 高度
     canvasHeight: {

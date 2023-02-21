@@ -46,14 +46,18 @@ export default {
      */
     initMqtt() {
       let vm = this;
-      let commonApi = "ws://192.168.1.222:8883/mqtt";
+      // let commonApi = "ws://192.168.1.222:8883/mqtt";
+      let commonApi = "ws://broker.emqx.io:8083/mqtt";
       var mqtt = require("mqtt");
       var options = {
         //mqtt客户端的id
         // clientId: "mqttjs_" + Math.random().toString(16).substr(2, 8),
+        connectTimeout: 40000,
         clientId: "mqttx_5f0cb198",
-        username: "admin",
-        password: "123456",
+        username: "",
+        password: "",
+        // username: "admin",
+        // password: "123456",
       };
       vm.client = mqtt.connect(commonApi, options);
       this.client.on("connect", function () {
@@ -72,7 +76,8 @@ export default {
      * @return {*}
      */
     mqttPublish() {
-      let topic = "/Epat/StationServer/4G000005"; //和后台约定好的主题
+      let topic = "test1"; //和后台约定好的主题
+      // let topic = "/Epat/StationServer/4G000005"; //和后台约定好的主题
       this.client.publish(topic, JSON.stringify(this.message));
     },
     /**
@@ -83,7 +88,8 @@ export default {
      */
     mqttReceive() {
       // 订阅主题 字符串（订阅单个主题）、数组或者对象（订阅多个主题）
-      let topic = "/Epat/StationServer/4G000005"; //要接收的主题
+      let topic = "test1"; //要接收的主题
+      // let topic = "/Epat/StationServer/4G000005"; //要接收的主题
       const vm = this;
       vm.client.subscribe(topic, function (err) {
         if (!err) {
@@ -95,6 +101,7 @@ export default {
       });
       vm.client.on("message", function (topic, message) {
         vm.logs.push(message);
+        console.log('接收',message);
       });
     },
   },

@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2023-02-10 15:49:56
  * @LastEditors: 杭
- * @LastEditTime: 2023-02-10 16:00:19
+ * @LastEditTime: 2023-02-21 15:37:33
 -->
 <!-- formGenerator表单 -->
 <template>
@@ -102,7 +102,9 @@ export default {
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {},
+  mounted() {
+    
+  },
 
   methods: {},
 };
