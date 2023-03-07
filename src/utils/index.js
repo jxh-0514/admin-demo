@@ -45,7 +45,7 @@ export function parseTime(time, cFormat) {
   const time_str = format.replace(/{([ymdhisa])+}/g, (result, key) => {
     const value = formatObj[key]
     // Note: getDay() returns 0 on Sunday
-    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value ] }
+    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value] }
     return value.toString().padStart(2, '0')
   })
   return time_str
@@ -114,4 +114,26 @@ export function param2Obj(url) {
     }
   })
   return obj
+}
+/**
+ * 
+ * @param
+ */
+export function changeIcon() {
+  const changgeFavicon = link => {
+    let favicon = document.querySelector('link[rel="icon"]');
+    console.log('改变', favicon);
+    if (favicon !== null) {
+      favicon.href = link
+    } else {
+      favicon = document.createElement('link');
+      favicon.rel = 'icon';
+      favicon.href = link;
+      document.head.appendChild(favicon);
+    }
+  }
+  // 设置图标地址
+  let iconUrl = 'https://img-cdn-aliyun.dcloud.net.cn/dev/img/ext/ico.png';
+  // 动态修改网站图标
+  changgeFavicon(iconUrl);
 }

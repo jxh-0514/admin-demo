@@ -23,6 +23,7 @@ import c from "@/assets/pic/3.png";
 import d from "@/assets/pic/4.png";
 import e from "@/assets/pic/5.png";
 import f from "@/assets/pic/6.png";
+import { changeIcon } from "@/utils/index.js";
 export default {
   name: "Dashboard",
   data() {
@@ -62,6 +63,8 @@ export default {
         img.style.setProperty("--blur", blurValue + "px");
       });
     });
+    // 改变网站图标
+    changeIcon()
   },
   methods: {},
 };
