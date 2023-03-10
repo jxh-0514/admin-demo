@@ -346,6 +346,12 @@ export const constantRoutes = [
             component: () => import('@/views/demo/leaflet/test'),
             meta: { title: '测试', icon: 'table' }
           },
+          {
+            path: 'movingMarker',
+            name: 'MovingMarker',
+            component: () => import('@/views/demo/leaflet/movingMarker'),
+            meta: { title: '点移动', icon: 'table' }
+          },
         ]
       },
       {
