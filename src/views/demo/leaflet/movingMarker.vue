@@ -4,21 +4,23 @@
  * @Author: 杭
  * @Date: 2023-03-10 16:44:18
  * @LastEditors: 杭
- * @LastEditTime: 2023-03-10 17:22:03
+ * @LastEditTime: 2023-03-11 00:27:14
 -->
 <!-- marker移动 -->
 <template>
-  <div id="map"></div>
+  <div id="map" v-loading="loading"></div>
 </template>
 
 <script>
 import L from "leaflet";
-import movingMarker from "@/utils/movingMarker.js";
+import iconA from "leaflet/dist/images/marker-icon-2x.png";
+import "@/utils/movingMarker.js";
 export default {
   components: {},
 
   data() {
     return {
+      loading: true,
       map: null,
       imageOverLay: null,
       parisKievLL: [
@@ -47,6 +49,13 @@ export default {
         [43.296346, 5.369889],
         [43.738418, 7.424616],
       ],
+      iconUrl: L.icon({
+        iconUrl: iconA,
+        iconSize: [26, 42],
+        iconAnchor: [13, 42],
+        shadowSize: [41, 41],
+        shadowAnchor: [13, 41],
+      }),
     };
   },
 
@@ -60,7 +69,10 @@ export default {
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
+    // setTimeout(() => {
+    this.loading = false;
     this.initLeaflet();
+    // }, 1000);
   },
 
   methods: {
@@ -84,6 +96,7 @@ export default {
       var marker1 = L.Marker.movingMarker(this.parisKievLL, [20000]).addTo(
         this.map
       );
+      marker1.setIcon(this.iconUrl).addTo(this.map);
       L.polyline(this.parisKievLL).addTo(this.map);
       marker1.once("click", function () {
         marker1.start();
@@ -149,7 +162,7 @@ export default {
       var marker4 = L.Marker.movingMarker([[45.816667, 15.983333]], []).addTo(
         this.map
       );
-
+      marker4.setIcon(this.iconUrl).addTo(this.map);
       //设置地图的点击事件，使标记移动到点击的位置
       this.map.on("click", function (e) {
         marker4.moveTo(e.latlng, 2000);
@@ -178,11 +191,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 #map {
-  position: absolute;
   width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 0;
+  height: 95vh;
 }
 </style>
