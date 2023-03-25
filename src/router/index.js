@@ -260,17 +260,17 @@ export const constantRoutes = [
       //   meta: { title: '百度批量坐标点', icon: 'table'}
       // },
       {
-        path: 'bdLuShu',
-        name: 'BdLuShu',
-        component: () => import('@/views/demo/bdLuShu'),
-        meta: { title: '百度路书', icon: 'table' }
+        path: "bdLuShu",
+        name: "BdLuShu",
+        component: () => import("@/views/demo/bdLuShu"),
+        meta: { title: "百度路书", icon: "table" },
       },
       // {
       //   path: 'baiduMapV',
       //   name: 'BaiduMapV',
       //   component: () => import('@/views/demo/baiduMapV'),
       //   meta: { title: '百度MapV点聚合', icon: 'table'}
-      // },      
+      // },
       // {
       //   path: 'chart',
       //   name: 'Chart',
@@ -282,7 +282,7 @@ export const constantRoutes = [
       //   name: "DragDialog",
       //   component: () => import("@/views/demo/dragDialog"),
       //   meta: { title: "拖拽对话框", icon: "table" },
-      // },      
+      // },
       {
         path: "transfer",
         name: "Transfer",
@@ -290,12 +290,12 @@ export const constantRoutes = [
         meta: { title: "表格穿梭框" },
         children: [
           {
-            path: 'transferA',
-            name: 'TransferA',
-            component: () => import('@/views/demo/transfer/transferA'),
-            meta: { title: '穿梭框C', icon: 'table' }
+            path: "transferA",
+            name: "TransferA",
+            component: () => import("@/views/demo/transfer/transferA"),
+            meta: { title: "穿梭框C", icon: "table" },
           },
-        ]
+        ],
       },
 
       {
@@ -329,30 +329,30 @@ export const constantRoutes = [
             meta: { title: "leafletC", icon: "table" },
           },
           {
-            path: 'leafletCanvas',
-            name: 'LeafletCanvas',
-            component: () => import('@/views/demo/leaflet/leafletCanvas'),
-            meta: { title: 'leafletCanvas', icon: 'table' }
+            path: "leafletCanvas",
+            name: "LeafletCanvas",
+            component: () => import("@/views/demo/leaflet/leafletCanvas"),
+            meta: { title: "leafletCanvas", icon: "table" },
           },
           {
-            path: 'leafletCanvas2',
-            name: 'LeafletCanvas2',
-            component: () => import('@/views/demo/leaflet/leafletCanvas2'),
-            meta: { title: 'leafletCanvas2', icon: 'table' }
+            path: "leafletCanvas2",
+            name: "LeafletCanvas2",
+            component: () => import("@/views/demo/leaflet/leafletCanvas2"),
+            meta: { title: "leafletCanvas2", icon: "table" },
           },
           {
-            path: 'test',
-            name: 'Test',
-            component: () => import('@/views/demo/leaflet/test'),
-            meta: { title: '测试', icon: 'table' }
+            path: "test",
+            name: "Test",
+            component: () => import("@/views/demo/leaflet/test"),
+            meta: { title: "测试", icon: "table" },
           },
           {
-            path: 'movingMarker',
-            name: 'MovingMarker',
-            component: () => import('@/views/demo/leaflet/movingMarker'),
-            meta: { title: '点移动', icon: 'table' }
+            path: "movingMarker",
+            name: "MovingMarker",
+            component: () => import("@/views/demo/leaflet/movingMarker"),
+            meta: { title: "点移动", icon: "table" },
           },
-        ]
+        ],
       },
       {
         path: "fullScreen",
@@ -361,42 +361,42 @@ export const constantRoutes = [
         meta: { title: "全屏视频" },
         children: [
           {
-            path: 'fullScreenA',
-            name: 'fullScreenA',
-            component: () => import('@/views/demo/fullScreen/fullScreenA'),
-            meta: { title: '全屏视频', icon: 'table' }
+            path: "fullScreenA",
+            name: "fullScreenA",
+            component: () => import("@/views/demo/fullScreen/fullScreenA"),
+            meta: { title: "全屏视频", icon: "table" },
           },
           {
-            path: 'flv-extend',
-            name: 'Flv-extend',
-            component: () => import('@/views/demo/fullScreen/flv-extend'),
-            meta: { title: 'flv-extend', icon: 'table' }
+            path: "flv-extend",
+            name: "Flv-extend",
+            component: () => import("@/views/demo/fullScreen/flv-extend"),
+            meta: { title: "flv-extend", icon: "table" },
           },
           {
-            path: 'tcplayer',
-            name: 'Tcplayer',
-            component: () => import('@/views/demo/fullScreen/tcplayer'),
-            meta: { title: '腾讯web播放器', icon: 'table' }
+            path: "tcplayer",
+            name: "Tcplayer",
+            component: () => import("@/views/demo/fullScreen/tcplayer"),
+            meta: { title: "腾讯web播放器", icon: "table" },
           },
           {
-            path: 'liveplayer',
-            name: 'Liveplayer',
-            component: () => import('@/views/demo/fullScreen/liveplayer'),
-            meta: { title: 'live播放器', icon: 'table' }
+            path: "liveplayer",
+            name: "Liveplayer",
+            component: () => import("@/views/demo/fullScreen/liveplayer"),
+            meta: { title: "live播放器", icon: "table" },
           },
           {
-            path: 'xgplayer',
-            name: 'Xgplayer',
-            component: () => import('@/views/demo/fullScreen/xgplayer'),
-            meta: { title: '西瓜播放器', icon: 'table' }
+            path: "xgplayer",
+            name: "Xgplayer",
+            component: () => import("@/views/demo/fullScreen/xgplayer"),
+            meta: { title: "西瓜播放器", icon: "table" },
           },
           {
-            path: 'artplayer',
-            name: 'Artplayer',
-            component: () => import('@/views/demo/fullScreen/artplayer'),
-            meta: { title: 'art播放器', icon: 'table' }
+            path: "artplayer",
+            name: "Artplayer",
+            component: () => import("@/views/demo/fullScreen/artplayer"),
+            meta: { title: "art播放器", icon: "table" },
           },
-        ]
+        ],
       },
       {
         path: "roaster",
@@ -405,24 +405,24 @@ export const constantRoutes = [
         meta: { title: "排班表" },
         children: [
           {
-            path: 'roasterA',
-            name: 'RoasterA',
-            component: () => import('@/views/demo/roaster/roasterA'),
-            meta: { title: '年视图', icon: 'table' }
+            path: "roasterA",
+            name: "RoasterA",
+            component: () => import("@/views/demo/roaster/roasterA"),
+            meta: { title: "年视图", icon: "table" },
           },
           {
-            path: 'roasterB',
-            name: 'RoasterB',
-            component: () => import('@/views/demo/roaster/roasterB'),
-            meta: { title: '表2', icon: 'table' }
+            path: "roasterB",
+            name: "RoasterB",
+            component: () => import("@/views/demo/roaster/roasterB"),
+            meta: { title: "表2", icon: "table" },
           },
           {
-            path: 'roasterC',
-            name: 'RoasterC',
-            component: () => import('@/views/demo/roaster/roasterC'),
-            meta: { title: '年视图B', icon: 'table' }
+            path: "roasterC",
+            name: "RoasterC",
+            component: () => import("@/views/demo/roaster/roasterC"),
+            meta: { title: "年视图B", icon: "table" },
           },
-        ]
+        ],
       },
       {
         path: "chat",
@@ -431,18 +431,18 @@ export const constantRoutes = [
         meta: { title: "通信" },
         children: [
           {
-            path: 'websocket',
-            name: 'Websoclet',
-            component: () => import('@/views/demo/chat/websocket'),
-            meta: { title: 'websocket', icon: 'table' }
+            path: "websocket",
+            name: "Websoclet",
+            component: () => import("@/views/demo/chat/websocket"),
+            meta: { title: "websocket", icon: "table" },
           },
           {
-            path: 'mqtt',
-            name: 'Mqtt',
-            component: () => import('@/views/demo/chat/mqtt'),
-            meta: { title: 'mqtt', icon: 'table' }
+            path: "mqtt",
+            name: "Mqtt",
+            component: () => import("@/views/demo/chat/mqtt"),
+            meta: { title: "mqtt", icon: "table" },
           },
-        ]
+        ],
       },
       {
         path: "dragBox",
@@ -451,30 +451,30 @@ export const constantRoutes = [
         meta: { title: "拖拽盒子" },
         children: [
           {
-            path: 'dragBoxA',
-            name: 'DragBoxA',
-            component: () => import('@/views/demo/dragBox/dragBoxA'),
-            meta: { title: '拖拽盒子A', icon: 'table' }
+            path: "dragBoxA",
+            name: "DragBoxA",
+            component: () => import("@/views/demo/dragBox/dragBoxA"),
+            meta: { title: "拖拽盒子A", icon: "table" },
           },
           {
-            path: 'dragBoxB',
-            name: 'DragBoxB',
-            component: () => import('@/views/demo/dragBox/dragBoxB'),
-            meta: { title: '拖拽盒子组件', icon: 'table' }
+            path: "dragBoxB",
+            name: "DragBoxB",
+            component: () => import("@/views/demo/dragBox/dragBoxB"),
+            meta: { title: "拖拽盒子组件", icon: "table" },
           },
           {
-            path: 'dragBoxC',
-            name: 'DragBoxC',
-            component: () => import('@/views/demo/dragBox/dragBoxC'),
-            meta: { title: '拖拽盒子组件B', icon: 'table' }
+            path: "dragBoxC",
+            name: "DragBoxC",
+            component: () => import("@/views/demo/dragBox/dragBoxC"),
+            meta: { title: "拖拽盒子组件B", icon: "table" },
           },
           {
-            path: 'dragBoxD',
-            name: 'DragBoxD',
-            component: () => import('@/views/demo/dragBox/dragBoxD'),
-            meta: { title: '拖拽盒子B', icon: 'table' }
+            path: "dragBoxD",
+            name: "DragBoxD",
+            component: () => import("@/views/demo/dragBox/dragBoxD"),
+            meta: { title: "拖拽盒子B", icon: "table" },
           },
-        ]
+        ],
       },
       {
         path: "face",
@@ -483,18 +483,18 @@ export const constantRoutes = [
         meta: { title: "活体检测" },
         children: [
           {
-            path: 'faceA',
-            name: 'FaceA',
-            component: () => import('@/views/demo/face/faceA'),
-            meta: { title: 'H5人脸识别', icon: 'table' }
+            path: "faceA",
+            name: "FaceA",
+            component: () => import("@/views/demo/face/faceA"),
+            meta: { title: "H5人脸识别", icon: "table" },
           },
           {
-            path: 'faceB',
-            name: 'FaceB',
-            component: () => import('@/views/demo/face/faceB'),
-            meta: { title: 'face-ca', icon: 'table' }
+            path: "faceB",
+            name: "FaceB",
+            component: () => import("@/views/demo/face/faceB"),
+            meta: { title: "face-ca", icon: "table" },
           },
-        ]
+        ],
       },
       {
         path: "print",
@@ -503,18 +503,32 @@ export const constantRoutes = [
         meta: { title: "打印" },
         children: [
           {
-            path: 'printEasy',
-            name: 'PrintEasy',
-            component: () => import('@/views/demo/print/printEasy'),
-            meta: { title: 'printEasy', icon: 'table' }
+            path: "printEasy",
+            name: "PrintEasy",
+            component: () => import("@/views/demo/print/printEasy"),
+            meta: { title: "printEasy", icon: "table" },
           },
           {
-            path: 'printNb',
-            name: 'PrintNb',
-            component: () => import('@/views/demo/print/printNb'),
-            meta: { title: 'printNb', icon: 'table' }
+            path: "printNb",
+            name: "PrintNb",
+            component: () => import("@/views/demo/print/printNb"),
+            meta: { title: "printNb", icon: "table" },
           },
-        ]
+        ],
+      },
+      {
+        path: "directive",
+        name: "Directive",
+        component: () => import("@/views/demo/directive"),
+        meta: { title: "指令" },
+        children: [
+          {
+            path: "underline",
+            name: "Underline",
+            component: () => import("@/views/demo/directive/underline"),
+            meta: { title: "下划线", icon: "table" },
+          },
+        ],
       },
       {
         path: "filePreview",
@@ -523,12 +537,12 @@ export const constantRoutes = [
         meta: { title: "文件预览" },
         children: [
           {
-            path: 'fileA',
-            name: 'FileA',
-            component: () => import('@/views/demo/filePreview/fileA'),
-            meta: { title: '文件预览A', icon: 'table' }
+            path: "fileA",
+            name: "FileA",
+            component: () => import("@/views/demo/filePreview/fileA"),
+            meta: { title: "文件预览A", icon: "table" },
           },
-        ]
+        ],
       },
       {
         path: "shareScreen",
@@ -537,12 +551,12 @@ export const constantRoutes = [
         meta: { title: "共享屏幕" },
         children: [
           {
-            path: 'stream',
-            name: 'Stream',
-            component: () => import('@/views/demo/shareScreen/stream'),
-            meta: { title: 'chrome共享屏幕', icon: 'table' }
+            path: "stream",
+            name: "Stream",
+            component: () => import("@/views/demo/shareScreen/stream"),
+            meta: { title: "chrome共享屏幕", icon: "table" },
           },
-        ]
+        ],
       },
       {
         path: "formGenerator",
@@ -551,12 +565,12 @@ export const constantRoutes = [
         meta: { title: "自定义表单" },
         children: [
           {
-            path: 'formA',
-            name: 'FormA',
-            component: () => import('@/views/demo/formGenerator/formA'),
-            meta: { title: 'formGenerator', icon: 'table' }
+            path: "formA",
+            name: "FormA",
+            component: () => import("@/views/demo/formGenerator/formA"),
+            meta: { title: "formGenerator", icon: "table" },
           },
-        ]
+        ],
       },
     ],
   },
@@ -750,30 +764,30 @@ export const constantRoutes = [
         meta: { title: "树型结构" },
       },
       {
-        path: 'treePopover',
-        name: 'TreePopover',
-        component: () => import('@/views/elTable/treePopover'),
-        meta: { title: '树型弹出框' }
+        path: "treePopover",
+        name: "TreePopover",
+        component: () => import("@/views/elTable/treePopover"),
+        meta: { title: "树型弹出框" },
       },
       {
-        path: 'treePopoverB',
-        name: 'TreePopoverB',
-        component: () => import('@/views/elTable/treePopoverB'),
-        meta: { title: '树型弹出框B' }
+        path: "treePopoverB",
+        name: "TreePopoverB",
+        component: () => import("@/views/elTable/treePopoverB"),
+        meta: { title: "树型弹出框B" },
       },
       {
-        path: 'keyUpTable',
-        name: 'KeyUpTable',
-        component: () => import('@/views/elTable/keyUpTable'),
-        meta: { title: '键盘控制' }
+        path: "keyUpTable",
+        name: "KeyUpTable",
+        component: () => import("@/views/elTable/keyUpTable"),
+        meta: { title: "键盘控制" },
       },
       {
-        path: 'keyUpTableB',
-        name: 'KeyUpTableB',
-        component: () => import('@/views/elTable/keyUpTableB'),
-        meta: { title: '键盘控制B' }
+        path: "keyUpTableB",
+        name: "KeyUpTableB",
+        component: () => import("@/views/elTable/keyUpTableB"),
+        meta: { title: "键盘控制B" },
       },
-    ]
+    ],
   },
   {
     path: "/richText",
