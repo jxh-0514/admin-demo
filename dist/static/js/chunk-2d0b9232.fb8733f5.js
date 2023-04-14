@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0b9232"],{3252:function(n,e,t){"use strict";t.r(e);var s=function(){var n=this,e=n.$createElement,t=n._self._c||e;return t("div",{staticClass:"app-container"},[n._v(" 36699 ")])},a=[],c={name:"PagePermission",methods:{}},i=c,l=t("2877"),o=Object(l["a"])(i,s,a,!1,null,null,null);e["default"]=o.exports}}]);
