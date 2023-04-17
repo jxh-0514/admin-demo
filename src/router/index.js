@@ -474,6 +474,12 @@ export const constantRoutes = [
             component: () => import("@/views/demo/dragBox/dragBoxD"),
             meta: { title: "拖拽盒子B", icon: "table" },
           },
+          {
+            path: "dragText",
+            name: "DragText",
+            component: () => import("@/views/demo/dragBox/dragText"),
+            meta: { title: "拖拽文本", icon: "table" },
+          },
         ],
       },
       {
