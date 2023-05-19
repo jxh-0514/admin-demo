@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2023-03-25 22:46:04
  * @LastEditors: 杭
- * @LastEditTime: 2023-04-01 13:55:25
+ * @LastEditTime: 2023-05-20 00:40:20
 -->
 <!-- 自定义指令---下划线 -->
 <template>
@@ -54,9 +54,13 @@ export default {
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {},
+  mounted() {
+    
+  },
 
-  methods: {},
+  methods: {
+    
+  },
 };
 </script>
 <style lang="scss" scoped>
