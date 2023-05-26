@@ -317,6 +317,12 @@ export const constantRoutes = [
             meta: { title: "leafletBD", icon: "table" },
           },
           {
+            path: "leafletBD2",
+            name: "LeafletBD2",
+            component: () => import("@/views/demo/leaflet/leafletBD2"),
+            meta: { title: "leafletBD2", icon: "table" },
+          },
+          {
             path: "leafletB",
             name: "LeafletB",
             component: () => import("@/views/demo/leaflet/leafletB"),
