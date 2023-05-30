@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: 杭
+ * @Date: 2022-09-19 16:15:17
+ * @LastEditors: 杭
+ * @LastEditTime: 2023-05-30 09:39:45
+-->
 <!-- 西瓜播放器 -->
 <template>
   <div>
@@ -41,7 +49,8 @@ export default {
   data() {
     return {
       videoUrl:
-        "https://tutorialehtml.com/assets_tutorials/media/Shaun-the-Sheep-The-Movie-Official-Trailer.mp4",
+        // "https://tutorialehtml.com/assets_tutorials/media/Shaun-the-Sheep-The-Movie-Official-Trailer.mp4",
+        "ws://192.168.0.69:8080/rtp/0BEBC201.live.flv",
       video: "",
     };
   },
