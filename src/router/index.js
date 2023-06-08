@@ -358,6 +358,12 @@ export const constantRoutes = [
             component: () => import("@/views/demo/leaflet/movingMarker"),
             meta: { title: "点移动", icon: "table" },
           },
+          {
+            path: "trackPlayBack",
+            name: "TrackPlayBack",
+            component: () => import("@/views/demo/leaflet/trackPlayBack"),
+            meta: { title: "轨迹回放", icon: "table" },
+          },
         ],
       },
       {
