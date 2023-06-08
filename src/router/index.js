@@ -297,7 +297,20 @@ export const constantRoutes = [
           },
         ],
       },
-
+      {
+        path: "bMap",
+        name: "BMap",
+        component: () => import("@/views/demo/bMap"),
+        meta: { title: "百度地图案例" },
+        children: [
+          {
+            path: "bmapHis",
+            name: "BmapHis",
+            component: () => import("@/views/demo/bMap/bmapHis"),
+            meta: { title: "百度轨迹回放", icon: "table" },
+          },
+        ],
+      },
       {
         path: "leaflet",
         name: "Leaflet",

@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2023-06-08 16:28:47
  * @LastEditors: 杭
- * @LastEditTime: 2023-06-08 17:26:41
+ * @LastEditTime: 2023-06-08 20:44:02
 -->
 <!-- leaflet---轨迹回放 -->
 <template>
@@ -257,34 +257,19 @@ export default {
   //   background: none;
   background: #ccc;
 }
-v-deep.leaflet-map-pane canvas {
+::v-deep .leaflet-map-pane canvas {
   z-index: 201; // 强制改变轨迹插件图层，使运动的轨迹线在完整轨迹线之上，避免出现重合时线有透明度
-}
-.leaflet-bottom {
-  .leaflet-control {
-    margin-bottom: 0;
-  }
-}
-.leaflet-control-playback {
-  // 按钮
-  .buttonContainer {
-    a {
-      width: 20px;
-      height: 20px;
-    }
-  }
-  // 信息
-  .infoContainer {
-    margin-top: 20px;
-    .info-container {
-      display: inline-block;
-      margin: 0 20px;
-    }
-  }
 }
 .dashLines {
   stroke-dasharray: 5; //虚线长度
   // stroke: #f00;
   stroke: #1c54e2;
+}
+::v-deep .leaflet-control {
+  .sliderContainer {
+    input {
+      -webkit-appearance: auto;
+    }
+  }
 }
 </style>
