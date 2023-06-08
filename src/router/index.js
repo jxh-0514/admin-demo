@@ -548,6 +548,20 @@ export const constantRoutes = [
         ],
       },
       {
+        path: "canvas",
+        name: "Canvas",
+        component: () => import("@/views/demo/canvas"),
+        meta: { title: "canvas" },
+        children: [
+          {
+            path: "waterMark",
+            name: "WaterMark",
+            component: () => import("@/views/demo/canvas/waterMark"),
+            meta: { title: "水印", icon: "table" },
+          },
+        ],
+      },
+      {
         path: "directive",
         name: "Directive",
         component: () => import("@/views/demo/directive"),
