@@ -14,11 +14,16 @@ jobs:
       # 官方action，将代码拉取到虚拟机
       - name: Checkout  ️ 
         uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.18.0'  # 指定所需的 Node.js 版本
 
       - name: Install and Build   # 安装依赖、打包，如果提前已打包好无需这一步
         run: |
           npm install
-          npm run build
+          npm run build:prod
 
       - name: Deploy   # 部署
         uses: JamesIves/github-pages-deploy-action@v4.3.3
