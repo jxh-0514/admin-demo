@@ -55,11 +55,11 @@ export default {
       beishu: 1, // 倍数
       speed: 500,
       icon: require("@/assets/marker.png"),
-      play: require("@/assets/marker.png"),
-      restart: require("@/assets/marker.png"),
-      slow: require("@/assets/marker.png"),
-      stop: require("@/assets/marker.png"),
-      quick: require("@/assets/marker.png"),
+      play: require("@/assets/icon-play.png"),
+      restart: require("@/assets/icon-restart.png"),
+      slow: require("@/assets/icon-slow.png"),
+      stop: require("@/assets/icon-stop.png"),
+      quick: require("@/assets/icon-quick.png"),
       person: require("@/assets/person.png"),
       isPlay: false, // 是否开始
       arrPois: [],
