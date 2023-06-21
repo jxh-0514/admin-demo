@@ -619,66 +619,72 @@ export const constantRoutes = [
       },
     ],
   },
-  // {
-  //   path: '/3D',
-  //   component: Layout,
-  //   redirect: '/3D/threeJs',
-  //   name: '3D',
-  //   meta: {
-  //     title: '3D模型',
-  //     icon: 'el-icon-s-help'
-  //   },
-  //   children: [
-  //     {
-  //       path: 'threeJs',
-  //       name: 'ThreeJs',
-  //       component: () => import('@/views/3D/threeJs'),
-  //       meta: { title: 'threeJs' }
-  //     },
-  //     {
-  //       path: 'threeSkull',
-  //       name: 'ThreeSkull',
-  //       component: () => import('@/views/3D/threeSkull'),
-  //       meta: { title: 'threeSkull' }
-  //     },
-  //     {
-  //       path: 'cesium1',
-  //       name: 'Cesium1',
-  //       component: () => import('@/views/3D/cesium1'),
-  //       meta: { title: 'cesium1' }
-  //     },
-  //     {
-  //       path: 'cesium2',
-  //       name: 'Cesium2',
-  //       component: () => import('@/views/3D/cesium2'),
-  //       meta: { title: 'cesium2' }
-  //     },
-  //     {
-  //       path: 'cesium3',
-  //       name: 'Cesium3',
-  //       component: () => import('@/views/3D/cesium3'),
-  //       meta: { title: 'cesium3' }
-  //     },
-  //     {
-  //       path: 'cesium4',
-  //       name: 'Cesium4',
-  //       component: () => import('@/views/3D/cesium4'),
-  //       meta: { title: 'cesium4' }
-  //     },
-  //     {
-  //       path: 'cesium_draw',
-  //       name: 'Cesium_draw',
-  //       component: () => import('@/views/3D/cesium_draw'),
-  //       meta: { title: 'cesium_draw' }
-  //     },
-  //     {
-  //       path: 'three',
-  //       name: 'Three',
-  //       component: () => import('@/views/3D/three'),
-  //       meta: { title: 'three' }
-  //     }
-  //   ]
-  // },
+  {
+    path: "/3D",
+    component: Layout,
+    redirect: "/3D/threeJs",
+    name: "3D",
+    meta: {
+      title: "3D模型",
+      icon: "el-icon-s-help",
+    },
+    children: [
+      {
+        path: "threeJs",
+        name: "ThreeJs",
+        component: () => import("@/views/3D/threeJs"),
+        meta: { title: "threeJs", icon: "table" },
+      },
+      // {
+      //   path: "threeSkull",
+      //   name: "ThreeSkull",
+      //   component: () => import("@/views/3D/threeSkull"),
+      //   meta: { title: "threeSkull" },
+      // },
+      // {
+      //   path: "cesium1",
+      //   name: "Cesium1",
+      //   component: () => import("@/views/3D/cesium1"),
+      //   meta: { title: "cesium1" },
+      // },
+      // {
+      //   path: "cesium2",
+      //   name: "Cesium2",
+      //   component: () => import("@/views/3D/cesium2"),
+      //   meta: { title: "cesium2" },
+      // },
+      // {
+      //   path: "cesium3",
+      //   name: "Cesium3",
+      //   component: () => import("@/views/3D/cesium3"),
+      //   meta: { title: "cesium3" },
+      // },
+      // {
+      //   path: "cesium4",
+      //   name: "Cesium4",
+      //   component: () => import("@/views/3D/cesium4"),
+      //   meta: { title: "cesium4" },
+      // },
+      // {
+      //   path: "cesium_draw",
+      //   name: "Cesium_draw",
+      //   component: () => import("@/views/3D/cesium_draw"),
+      //   meta: { title: "cesium_draw" },
+      // },
+      // {
+      //   path: "three",
+      //   name: "Three",
+      //   component: () => import("@/views/3D/three"),
+      //   meta: { title: "three" },
+      // },
+      {
+        path: "relic",
+        name: "Relic",
+        component: () => import("@/views/3D/relic"),
+        meta: { title: "文物demo", icon: "table" },
+      },
+    ],
+  },
   {
     path: "/fy-demo",
     component: Layout,

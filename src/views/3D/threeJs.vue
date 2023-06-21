@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import * as THREE from "three";
 export default {
   data() {
     return {
@@ -66,27 +67,32 @@ export default {
       this.animate();
     }, // 定义3D效果
     line() {
-        this.renderer = new THREE.WebGLRenderer();
-        this.renderer.setSize( window.innerWidth, window.innerHeight );
-        demo.appendChild( this.renderer.domElement );
+      this.renderer = new THREE.WebGLRenderer();
+      this.renderer.setSize(window.innerWidth, window.innerHeight);
+      demo.appendChild(this.renderer.domElement);
 
-        this.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
-        this.camera.position.set( 0, 0, 100 );
-        this.camera.lookAt( 0, 0, 0 );
+      this.camera = new THREE.PerspectiveCamera(
+        45,
+        window.innerWidth / window.innerHeight,
+        1,
+        500
+      );
+      this.camera.position.set(0, 0, 100);
+      this.camera.lookAt(0, 0, 0);
 
-        this.scene = new THREE.Scene();
-        //create a blue LineBasicMaterial
-        const material = new THREE.LineBasicMaterial( { color: 0xff0000 } );
-        const points = [];
-        points.push( new THREE.Vector3( - 10, 0, 0 ) );
-        points.push( new THREE.Vector3( 0, 10, 0 ) );
-        points.push( new THREE.Vector3( 10, 0, 0 ) );
+      this.scene = new THREE.Scene();
+      //create a blue LineBasicMaterial
+      const material = new THREE.LineBasicMaterial({ color: 0xff0000 });
+      const points = [];
+      points.push(new THREE.Vector3(-10, 0, 0));
+      points.push(new THREE.Vector3(0, 10, 0));
+      points.push(new THREE.Vector3(10, 0, 0));
 
-        const geometry = new THREE.BufferGeometry().setFromPoints( points );
-        const line = new THREE.Line( geometry, material );
+      const geometry = new THREE.BufferGeometry().setFromPoints(points);
+      const line = new THREE.Line(geometry, material);
 
-        this.scene.add( line );
-        this.renderer.render( this.scene, this.camera );
+      this.scene.add(line);
+      this.renderer.render(this.scene, this.camera);
     },
 
     animate() {
@@ -105,10 +111,9 @@ export default {
 </script>
 
 <style>
-
-body{
-margin:0;
-overflow: hidden;
-/* 隐藏body窗口区域滚动条 */
+body {
+  margin: 0;
+  overflow: hidden;
+  /* 隐藏body窗口区域滚动条 */
 }
 </style>
