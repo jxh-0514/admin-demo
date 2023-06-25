@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2023-01-14 14:45:30
  * @LastEditors: 杭
- * @LastEditTime: 2023-06-21 13:02:20
+ * @LastEditTime: 2023-06-25 13:21:07
  */
 /**
  * 防抖
@@ -33,11 +33,11 @@ function debounce(fn, delay = 300) {
 }
 /**
  * 节流
- * @param {*} fn
+ * @param {*} func
  * @param {*} delay
  * @returns
  */
-function throttle(fn, delay) {
+function throttle(func, delay) {
   let timerId;
   let lastExecTime = 0;
 

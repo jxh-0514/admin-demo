@@ -683,6 +683,12 @@ export const constantRoutes = [
         component: () => import("@/views/3D/relic"),
         meta: { title: "文物demo", icon: "table" },
       },
+      {
+        path: "machineRoom",
+        name: "MachineRoom",
+        component: () => import("@/views/3D/machineRoom"),
+        meta: { title: "机房", icon: "table" },
+      },
     ],
   },
   {
