@@ -383,7 +383,7 @@ export const constantRoutes = [
         path: "fullScreen",
         name: "FullScreen",
         component: () => import("@/views/demo/fullScreen"),
-        meta: { title: "全屏视频" },
+        meta: { title: "播放器" },
         children: [
           {
             path: "fullScreenA",
