@@ -4,10 +4,26 @@
  * @Author: 杭
  * @Date: 2023-06-25 17:22:02
  * @LastEditors: 杭
- * @LastEditTime: 2023-07-03 22:29:05
+ * @LastEditTime: 2023-07-05 21:17:35
 -->
 <template>
-  <div id="container" @mousemove="mouseMove"></div>
+  <div>
+    <div id="container" @mousemove="mouseMove"></div>
+    <div
+      id="plane"
+      :style="{
+        left: state.planePos.left,
+        top: state.planePos.top,
+        display: state.planeDisplay,
+      }"
+    >
+      <p>机柜名称：{{ state.curCabinet.name }}</p>
+      <p>机柜温度：{{ state.curCabinet.temperature }}</p>
+      <p>
+        使用情况：{{ state.curCabinet.count }} / {{ state.curCabinet.capacity }}
+      </p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -28,6 +44,21 @@ export default {
       maps: null,
       cabinets: [], //机柜集合
       curCabinet: "", // 鼠标划入的机柜
+      state: {
+        planePos: {
+          // 信息面板位置
+          left: 0,
+          top: 0,
+        },
+        planeDisplay: "none", // 信息面板可见性
+        curCabinet: {
+          // 机柜信息
+          name: "Loading...", // 名称
+          temperature: 0, // 温度
+          capacity: 0, // 容量
+          count: 0, //服务器数量
+        },
+      },
     };
   },
   beforeDestroy() {
@@ -242,13 +273,18 @@ export default {
     //鼠标划入机柜事件，参数为机柜对象
     onMouseOverCabinet(cabinet) {
       console.log(cabinet);
+      this.state.planeDisplay = "block";
     },
     //鼠标在机柜上移动的事件，参数为鼠标在canvas画布上的坐标位
     onMouseMoveCabinet(x, y) {
       console.log(x, y);
+      this.state.planePos.left = x + "px";
+      this.state.planePos.top = y + "px";
     },
     //鼠标划出机柜的事件
-    onMouseOutCabinet() {},
+    onMouseOutCabinet() {
+      this.state.planeDisplay = "none";
+    },
     animate() {
       this.animationId = requestAnimationFrame(this.animate);
       console.log(this.animate, "132");
@@ -263,5 +299,15 @@ export default {
 #container {
   width: 100vw;
   height: calc(100vh - 50px);
+}
+#plane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 0 18px;
+  transform: translate(12px, -100%);
+  display: none;
 }
 </style>
