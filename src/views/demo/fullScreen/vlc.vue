@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: 杭
+ * @Date: 2023-07-05 21:29:07
+ * @LastEditors: 杭
+ * @LastEditTime: 2023-07-06 20:51:24
+-->
 <!-- vlc插件模式播放rtsp监控流 -->
 <template>
   <div>
@@ -16,6 +24,16 @@
       <param name="loop" value="false" />
       <param name="fullscreen" value="false" />
     </object> -->
+    <!-- <object
+      id="vlc"
+      events="false"
+      windowless="true"
+      type="application/x-vlc-plugin;"
+      pluginspage="http://www.videolan.org/"
+      width="500"
+      height="300"
+    /> -->
+    <iframe src="/vlc.html" frameborder="0" width="100%"></iframe>
     vlc
   </div>
 </template>
@@ -41,11 +59,12 @@ export default {
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
-    // var vlc = document.getElementById("vlc");
+    var vlc = document.getElementById("vlc");
     // vlc.playlist.stop();
     // vlc.playlist.clear();
     // vlc.playlist.add(this.rtsp_url);
     // vlc.playlist.play();
+    console.log("vlc---", vlc);
   },
 
   methods: {},
