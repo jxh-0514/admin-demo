@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2023-07-05 21:29:07
  * @LastEditors: 杭
- * @LastEditTime: 2023-07-06 20:51:24
+ * @LastEditTime: 2023-07-07 08:37:33
 -->
 <!-- vlc插件模式播放rtsp监控流 -->
 <template>
@@ -33,7 +33,7 @@
       width="500"
       height="300"
     /> -->
-    <iframe src="/vlc.html" frameborder="0" width="100%"></iframe>
+    <iframe src="/vlc.html" frameborder="0" width="800" height="500"></iframe>
     vlc
   </div>
 </template>
