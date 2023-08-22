@@ -12,6 +12,8 @@
     <!-- <div><img :src="require('@/assets/pic/1.png')" alt="" /></div> -->
     <!-- css脉动星球效果 -->
     <div class="start"></div>
+    <!-- 泡泡效果 -->
+    <div class="pao"></div>
   </div>
 </template>
 
@@ -64,7 +66,7 @@ export default {
       });
     });
     // 改变网站图标
-    changeIcon()
+    changeIcon();
   },
   methods: {},
 };
@@ -144,6 +146,59 @@ h3 {
   &-text {
     font-size: 30px;
     line-height: 46px;
+  }
+}
+
+// 泡泡效果
+.pao {
+  border-radius: 50%;
+  // box-shadow: 0 20px 30px rgb(58 81 112 / 10%),
+  //   inset 0px 10px 30px 5px rgb(255 255 255 / 70%);
+  box-shadow: 0 0 20px #fff, 20px 0 80px #f0f, -20px 0 80px #0ff,
+    inset 0 0 50px #fff, inset 50px 0 80px #f0f, inset 50px 0 80px #0ff,
+    inset -50px 0 200px #f0f, inset 50px 0 200px #0ff;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  animation: animateBubble 21s linear infinite,
+    sideWays 2s ease-in-out infinite alternate;
+  &::after {
+    background: radial-gradient(
+      ellipse at center,
+      rgb(203 238 255 / 30%) 0%,
+      rgba(255, 255, 255, 0) 70%
+    );
+    border-radius: 50%;
+    box-shadow: inset 0 20px 30px rgba(255, 255, 255, 0.3);
+    content: "";
+    position: absolute;
+    left: 5px;
+    width: 90px;
+    height: 90px;
+  }
+}
+@keyframes animateBubble {
+  0% {
+    margin-top: 100vh;
+  }
+  100% {
+    margin-top: -100%;
+  }
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+
+@keyframes sideWays {
+  0% {
+    margin-left: 0px;
+  }
+
+  100% {
+    margin-left: 50px;
   }
 }
 </style>
