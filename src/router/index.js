@@ -593,6 +593,18 @@ export const constantRoutes = [
             component: () => import("@/views/demo/filePreview/fileA"),
             meta: { title: "文件预览A", icon: "table" },
           },
+          {
+            path: "fileB",
+            name: "FileB",
+            component: () => import("@/views/demo/filePreview/fileB"),
+            meta: { title: "文件预览B", icon: "table" },
+          },
+          {
+            path: "fileC",
+            name: "FileC",
+            component: () => import("@/views/demo/filePreview/fileC"),
+            meta: { title: "文件预览C", icon: "table" },
+          },
         ],
       },
       {
@@ -606,20 +618,6 @@ export const constantRoutes = [
             name: "Stream",
             component: () => import("@/views/demo/shareScreen/stream"),
             meta: { title: "chrome共享屏幕", icon: "table" },
-          },
-        ],
-      },
-      {
-        path: "formGenerator",
-        name: "FormGenerator",
-        component: () => import("@/views/demo/formGenerator/index"),
-        meta: { title: "自定义表单" },
-        children: [
-          {
-            path: "formA",
-            name: "FormA",
-            component: () => import("@/views/demo/formGenerator/formA"),
-            meta: { title: "formGenerator", icon: "table" },
           },
         ],
       },
