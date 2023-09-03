@@ -1,3 +1,11 @@
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: 杭
+ * @Date: 2022-08-23 20:06:43
+ * @LastEditors: 杭
+ * @LastEditTime: 2023-09-02 13:39:27
+ */
 import Vue from "vue";
 import Router from "vue-router";
 
@@ -504,6 +512,12 @@ export const constantRoutes = [
             name: "DragBoxD",
             component: () => import("@/views/demo/dragBox/dragBoxD"),
             meta: { title: "拖拽盒子B", icon: "table" },
+          },
+          {
+            path: "draggable",
+            name: "Draggable",
+            component: () => import("@/views/demo/dragBox/draggable"),
+            meta: { title: "拖拽api", icon: "table" },
           },
           {
             path: "dragText",

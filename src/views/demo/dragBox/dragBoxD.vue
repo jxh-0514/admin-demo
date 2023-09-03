@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: 杭
+ * @Date: 2022-11-25 23:20:19
+ * @LastEditors: 杭
+ * @LastEditTime: 2023-09-02 00:19:38
+-->
 <template>
   <div>
     <div class="box" v-move="coordinates"></div>
