@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2023-08-31 09:55:54
  * @LastEditors: 杭
- * @LastEditTime: 2023-09-01 17:34:31
+ * @LastEditTime: 2023-09-07 17:31:05
 -->
 <!-- 文件预览 -->
 <template>
@@ -90,8 +90,8 @@ export default {
           url: "http://g.hiphotos.baidu.com/image/pic/item/6d81800a19d8bc3e770bd00d868ba61ea9d345f2.jpg",
         },
         {
-          name: "pdf",
-          url: "/camera/player.pdf",
+          name: "excel",
+          url: "https://kdocs.cn/l/ciXmf36Liwqd.xls",
         },
       ],
       excelHeader: [{ prop: "name", label: "文件名称🙂" }],
@@ -186,30 +186,54 @@ export default {
         //   this.excelData = XLSX.utils.sheet_to_json(worksheet, sheet2JSONOpts);
         //   console.log(this.excelData);
         // });
-        const workbook = XLSX.read(new Uint8Array(data), { type: "array" }); // 解析数据
-        var worksheet = workbook.Sheets[workbook.SheetNames[0]]; // workbook.SheetNames 下存的是该文件每个工作表名字,这里取出第一个工作表
-        // this.excelHtml = XLSX.utils.sheet_to_html(worksheet) // 渲染成html
-        const sheet2JSONOpts = {
-          /** Default value for null/undefined values */
-          defval: "", // 给defval赋值为空的字符串,不然没值的这列就不显示
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", item.url, true);
+        xhr.responseType = "arraybuffer";
+        xhr.onload = function (e) {
+          console.log("excel文件----", e);
+          if (xhr.status === 200) {
+            let data = new Uint8Array(this.response);
+            let workbook = XLSX.read(data, {
+              type: "array",
+            });
+
+            let worksheet = workbook.Sheets[workbook.SheetNames[0]]; // workbook.SheetNames 下存的是该文件每个工作表名字,这里取出第一个工作表
+            // this.excelHtml = XLSX.utils.sheet_to_html(worksheet) // 渲染成html
+            const sheet2JSONOpts = {
+              /** Default value for null/undefined values */
+              defval: "", // 给defval赋值为空的字符串,不然没值的这列就不显示
+            };
+            // 渲染成json
+            this.excelData = XLSX.utils.sheet_to_json(
+              worksheet,
+              sheet2JSONOpts
+            );
+          }
         };
-        // 渲染成json
-        this.excelData = XLSX.utils.sheet_to_json(worksheet, sheet2JSONOpts);
-        console.log(this.excelData);
       } else if (item.url.includes(".doc")) {
         var vm = this;
         this.dialog.isWord = true;
         this.dialog.isExcel = false;
         this.dialog.isPdf = false;
-        // downloadFileByUniq2(encodeURIComponent(item.url)).then((data) => {
-        //   mammoth
-        //     .convertToHtml({ arrayBuffer: new Uint8Array(data) })
-        //     .then(function (resultObject) {
-        //       vm.$nextTick(() => {
-        //         vm.wordHtml = resultObject.value;
-        //       });
-        //     });
-        // });
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", item.url, true);
+        xhr.responseType = "arraybuffer";
+        xhr.onload = function (e) {
+          if (this.status == 200) {
+            let data = new Uint8Array(this.response);
+            mammoth
+              .convertToHtml({ arrayBuffer: data })
+              .then(function (resultObject) {
+                vm.$nextTick(() => {
+                  vm.wordHtml = resultObject.value;
+                });
+              })
+              .done();
+          }
+        };
+        xhr.send();
       } else {
         this.dialog.isPdf = false;
         this.dialog.isExcel = false;
