@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2022-09-19 16:15:17
  * @LastEditors: 杭
- * @LastEditTime: 2023-07-07 10:49:51
+ * @LastEditTime: 2023-09-08 10:27:58
 -->
 <!-- 西瓜播放器 -->
 <template>
@@ -48,10 +48,10 @@ export default {
 
   data() {
     return {
-      videoUrl:
-        // "https://tutorialehtml.com/assets_tutorials/media/Shaun-the-Sheep-The-Movie-Official-Trailer.mp4",
-        // "ws://192.168.0.69:8080/rtp/0BEBC201.live.flv",
-        "http://124.222.36.200:10002/rtp/6EAC6A22/hls.m3u8",
+      videoUrl: "",
+      // "https://tutorialehtml.com/assets_tutorials/media/Shaun-the-Sheep-The-Movie-Official-Trailer.mp4",
+      // "ws://192.168.0.69:8080/rtp/0BEBC201.live.flv",
+      // "http://124.222.36.200:10002/rtp/6EAC6A22/hls.m3u8",
       video: "",
     };
   },

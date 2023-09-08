@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2022-08-23 20:06:43
  * @LastEditors: 杭
- * @LastEditTime: 2023-09-02 13:39:27
+ * @LastEditTime: 2023-09-08 16:49:50
  */
 import Vue from "vue";
 import Router from "vue-router";
@@ -428,6 +428,12 @@ export const constantRoutes = [
             name: "Artplayer",
             component: () => import("@/views/demo/fullScreen/artplayer"),
             meta: { title: "art播放器", icon: "table" },
+          },
+          {
+            path: "goldplayh265",
+            name: "Artplayer",
+            component: () => import("@/views/demo/fullScreen/goldplayh265"),
+            meta: { title: "h265", icon: "table" },
           },
           {
             path: "vlc插件",

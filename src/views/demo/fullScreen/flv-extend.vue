@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: 杭
+ * @Date: 2022-09-23 15:27:57
+ * @LastEditors: 杭
+ * @LastEditTime: 2023-09-08 10:51:11
+-->
 <!-- 封装的flv插件 -->
 <template>
   <div>
@@ -61,7 +69,8 @@ export default {
         {
           type: "flv",
           // url: "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/flv/xgplayer-demo-360p.flv",
-          url: "http://192.168.1.71:8081/hdl/34020000001110000002/34020000001310000005.flv",
+
+          url: "http://192.168.0.233:1234/live?app=live&stream=test",
           isLive: true,
         },
         {
