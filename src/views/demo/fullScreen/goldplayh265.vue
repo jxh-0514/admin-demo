@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2023-08-24 10:52:49
  * @LastEditors: 杭
- * @LastEditTime: 2023-09-08 17:09:30
+ * @LastEditTime: 2023-09-09 15:29:21
 -->
 <!-- goldplayh265     https://github.com/goldvideo/h265player   -->
 <template>
@@ -56,7 +56,7 @@ export default {
                     return window.location.origin + "/goldplayh265/lib/";
                 },
                 get src() {
-                    return "https://uploads.codesandbox.io/uploads/user/0f72b6d6-22a6-42a9-953f-28918e45f1f0/ooso-playlist.m3u8";
+                    return "https://ks3-cn-beijing.ksyun.com/ksplayer/h265/mp4_resource/moov_head_265.mp4";
                 },
             };
 

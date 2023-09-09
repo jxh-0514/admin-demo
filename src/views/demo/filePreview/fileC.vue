@@ -7,6 +7,7 @@
     <pre>{{ previewContent }}</pre>
     <div ref="preview"></div>
 
+    <el-divider></el-divider>
     <p>图片</p>
     <input type="file" @change="previewImage" />
     <p>文本</p>
@@ -99,43 +100,60 @@ export default {
       }
     },
     previewOffice(event) {
+      console.log("读取本地文件---", event);
       const files = event.target.files;
       if (files && files.length > 0) {
         const file = files[0];
         const reader = new FileReader();
         reader.onload = (e) => {
+          console.log("-----2222------", e.target.result);
           const fileData = new Uint8Array(e.target.result);
-          const zip = new JSZip();
-          zip.loadAsync(fileData).then((zip) => {
-            const entries = Object.values(zip.files);
-            Promise.all(
-              entries.map((entry) => {
-                return entry.async("arraybuffer").then((data) => {
-                  return {
-                    name: entry.name,
-                    data,
-                  };
-                });
-              })
-            ).then((files) => {
-              const fileData = {};
-              files.forEach((file) => {
-                fileData[file.name] = file.data;
-              });
-              mammoth
-                .convertToHtml({ arrayBuffer: fileData["word/document.xml"] })
-                .then(
-                  (result) => {
-                    const div = document.createElement("div");
-                    div.innerHTML = result.value;
-                    this.preview.appendChild(div);
-                  },
-                  (error) => {
-                    console.log(error);
-                  }
-                );
-            });
-          });
+          // const zip = new JSZip();
+          // zip.loadAsync(fileData).then((zip) => {
+          //   const entries = Object.values(zip.files);
+          //   Promise.all(
+          //     entries.map((entry) => {
+          //       return entry.async("arraybuffer").then((data) => {
+          //         return {
+          //           name: entry.name,
+          //           data,
+          //         };
+          //       });
+          //     })
+          //   ).then((files) => {
+          //     const fileData = {};
+          //     files.forEach((file) => {
+          //       fileData[file.name] = file.data;
+          //     });
+          //     console.log(
+          //       "file data: " + fileData,
+          //       files,
+          //       fileData["word/document.xml"]
+          //     );
+          //     mammoth
+          //       .convertToHtml({ arrayBuffer: fileData["word/document.xml"] })
+          //       .then(
+          //         (result) => {
+          //           const div = document.createElement("div");
+          //           div.innerHTML = result.value;
+          //           this.preview.appendChild(div);
+          //         },
+          //         (error) => {
+          //           console.log(error);
+          //         }
+          //       );
+          //   });
+          // });
+
+          mammoth.convertToHtml({ arrayBuffer: fileData }).then((res) => {
+            console.log("读取---", res);
+            const div = document.createElement("div");
+            div.innerHTML = res.value;
+            this.preview.appendChild(div);
+          }),
+            (error) => {
+              console.log(error);
+            };
         };
         reader.readAsArrayBuffer(file);
       }

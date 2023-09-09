@@ -4,14 +4,14 @@
  * @Author: 杭
  * @Date: 2023-08-31 09:55:54
  * @LastEditors: 杭
- * @LastEditTime: 2023-09-07 17:31:05
+ * @LastEditTime: 2023-09-10 00:08:41
 -->
 <!-- 文件预览 -->
 <template>
   <div>
-    <el-table :data="excelData" style="width: 100%">
+    <el-table :data="tableData" style="width: 100%">
       <el-table-column
-        v-for="(item, index) in excelHeader"
+        v-for="(item, index) in tableHeader"
         :key="index"
         :prop="item.prop"
         :label="item.label"
@@ -76,7 +76,7 @@ export default {
     return {
       excelHtml: "",
       wordHtml: "",
-      excelData: [
+      tableData: [
         {
           name: "pdf",
           url: "https://www.dcloud.io/docs/a/unipush/manufacturer.pdf",
@@ -94,7 +94,7 @@ export default {
           url: "https://kdocs.cn/l/ciXmf36Liwqd.xls",
         },
       ],
-      excelHeader: [{ prop: "name", label: "文件名称🙂" }],
+      tableHeader: [{ prop: "name", label: "文件名称🙂" }],
       dialog: {
         dialogVisible: false,
         src: "",
@@ -104,6 +104,7 @@ export default {
       },
       checkClass: "",
       iframeLoading: false,
+      excelData: [],
     };
   },
 
@@ -174,18 +175,6 @@ export default {
         this.dialog.isExcel = true;
         this.dialog.isWord = false;
         this.dialog.isPdf = false;
-        // downloadFileByUniq2(encodeURIComponent(item.url)).then((data) => {
-        //   const workbook = XLSX.read(new Uint8Array(data), { type: "array" }); // 解析数据
-        //   var worksheet = workbook.Sheets[workbook.SheetNames[0]]; // workbook.SheetNames 下存的是该文件每个工作表名字,这里取出第一个工作表
-        //   // this.excelHtml = XLSX.utils.sheet_to_html(worksheet) // 渲染成html
-        //   const sheet2JSONOpts = {
-        //     /** Default value for null/undefined values */
-        //     defval: "", // 给defval赋值为空的字符串,不然没值的这列就不显示
-        //   };
-        //   // 渲染成json
-        //   this.excelData = XLSX.utils.sheet_to_json(worksheet, sheet2JSONOpts);
-        //   console.log(this.excelData);
-        // });
 
         let xhr = new XMLHttpRequest();
         xhr.open("GET", item.url, true);
