@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2022-08-23 20:06:43
  * @LastEditors: 杭
- * @LastEditTime: 2023-09-08 16:49:50
+ * @LastEditTime: 2023-09-13 08:42:12
  */
 import Vue from "vue";
 import Router from "vue-router";
@@ -406,6 +406,12 @@ export const constantRoutes = [
             meta: { title: "flv-extend", icon: "table" },
           },
           {
+            path: "mpegts",
+            name: "Mpegts",
+            component: () => import("@/views/demo/fullScreen/mpegts"),
+            meta: { title: "mpegts", icon: "table" },
+          },
+          {
             path: "tcplayer",
             name: "Tcplayer",
             component: () => import("@/views/demo/fullScreen/tcplayer"),
@@ -433,7 +439,7 @@ export const constantRoutes = [
             path: "goldplayh265",
             name: "Artplayer",
             component: () => import("@/views/demo/fullScreen/goldplayh265"),
-            meta: { title: "h265", icon: "table" },
+            meta: { title: "goldplayh265", icon: "table" },
           },
           {
             path: "vlc插件",
