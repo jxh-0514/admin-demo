@@ -4,16 +4,17 @@
  * @Author: 杭
  * @Date: 2023-01-30 15:12:49
  * @LastEditors: 杭
- * @LastEditTime: 2023-06-25 17:20:57
+ * @LastEditTime: 2023-10-13 13:23:00
 -->
 <!-- 天气组件 -->
 <template>
-  <div class="box">
-    {{ city + " " + weatcherData.wea }}
+  <div class="box" @click="navigateTo">
+    {{ city + " " + weatcherData.textDay }}
   </div>
 </template>
 
 <script>
+import { CityCode } from "@/utils/cityCode.js";
 export default {
   components: {},
 
@@ -22,7 +23,9 @@ export default {
       city: "",
       weatcherData: {
         wea: "",
+        textDay: "",
       },
+      hfurl: "",
     };
   },
 
@@ -53,8 +56,8 @@ export default {
       geolocation.getCurrentPosition(
         function getinfo(position) {
           that.city = position.address.city; //获取城市信息
-          that.getWeather(that.city);
-          console.log("address", that.city, position);
+          // that.getWeather(that.city);
+          that.getHFweather(that.city);
         },
         function (e) {
           console.log("定位失败");
@@ -86,6 +89,29 @@ export default {
           console.log("失败", err);
         });
     },
+
+    // 和风天气 https://devapi.qweather.com/v7/weather/3d?location=101010100&key=3a063240013c4cc49b3cc6bef565a597
+    getHFweather(city) {
+      const arr = new Map(CityCode);
+      const cityStr = city.split("市")[0];
+      const code = arr.get(cityStr);
+      this.$axios
+        .get(
+          `https://devapi.qweather.com/v7/weather/3d?location=${code}&key=3a063240013c4cc49b3cc6bef565a597`
+        )
+        .then((res) => {
+          console.log("获取天气成功", res);
+          if (res.data.code === "200") {
+            this.weatcherData = res.data.daily[0];
+            this.hfurl = res.data.fxLink;
+          }
+        });
+    },
+    // 跳转和风天气
+    navigateTo() {
+      if(!this.hfurl) return;
+      window.open(this.hfurl);
+    },
     // http://ip.360.cn/IPShare/info
     getIp() {
       this.$axios.get("http://ip.360.cn/IPShare/info").then((res) => {
@@ -98,5 +124,6 @@ export default {
 <style lang="scss" scoped>
 .box {
   font-size: 12px !important;
+  cursor: pointer;
 }
 </style>
