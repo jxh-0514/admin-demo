@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2022-08-23 20:06:43
  * @LastEditors: 杭
- * @LastEditTime: 2023-09-13 08:42:12
+ * @LastEditTime: 2023-11-02 17:37:46
  */
 import Vue from "vue";
 import Router from "vue-router";
@@ -136,78 +136,78 @@ export const constantRoutes = [
       },
     ],
   },
-  {
-    path: "/nested",
-    component: Layout,
-    redirect: "/nested/menu1",
-    name: "Nested",
-    meta: {
-      title: "嵌套",
-      icon: "nested",
-    },
-    children: [
-      {
-        path: "menu1",
-        component: () => import("@/views/nested/menu1/index"), // Parent router-view
-        name: "Menu1",
-        meta: { title: "Menu1" },
-        children: [
-          {
-            path: "menu1-1",
-            component: () => import("@/views/nested/menu1/menu1-1"),
-            name: "Menu1-1",
-            meta: { title: "Menu1-1" },
-          },
-          {
-            path: "menu1-2",
-            component: () => import("@/views/nested/menu1/menu1-2"),
-            name: "Menu1-2",
-            meta: { title: "Menu1-2" },
-            children: [
-              {
-                path: "menu1-2-1",
-                component: () =>
-                  import("@/views/nested/menu1/menu1-2/menu1-2-1"),
-                name: "Menu1-2-1",
-                meta: { title: "Menu1-2-1" },
-              },
-              {
-                path: "menu1-2-2",
-                component: () =>
-                  import("@/views/nested/menu1/menu1-2/menu1-2-2"),
-                name: "Menu1-2-2",
-                meta: { title: "Menu1-2-2" },
-              },
-            ],
-          },
-          {
-            path: "menu1-3",
-            component: () => import("@/views/nested/menu1/menu1-3"),
-            name: "Menu1-3",
-            meta: { title: "Menu1-3" },
-          },
-        ],
-      },
-      {
-        path: "menu2",
-        component: () => import("@/views/nested/menu2/index"),
-        name: "Menu2",
-        meta: { title: "menu2" },
-      },
-      {
-        path: "corn1",
-        component: () => import("@/views/nested/corn/corn1"),
-        name: "Corn1",
-        meta: { title: "corn表达式" },
-      },
-      {
-        path: "corn2",
-        component: () => import("@/views/nested/corn/corn2"),
-        name: "Corn2",
-        meta: { title: "corn表达式" },
-      },
-    ],
-  },
+  // {
+  //   path: "/nested",
+  //   component: Layout,
+  //   redirect: "/nested/menu1",
+  //   name: "Nested",
+  //   meta: {
+  //     title: "嵌套",
+  //     icon: "nested",
+  //   },
+  //   children: [
+  //     {
+  //       path: "menu1",
+  //       component: () => import("@/views/nested/menu1/index"), // Parent router-view
+  //       name: "Menu1",
+  //       meta: { title: "Menu1" },
+  //       children: [
+  //         {
+  //           path: "menu1-1",
+  //           component: () => import("@/views/nested/menu1/menu1-1"),
+  //           name: "Menu1-1",
+  //           meta: { title: "Menu1-1" },
+  //         },
+  //         {
+  //           path: "menu1-2",
+  //           component: () => import("@/views/nested/menu1/menu1-2"),
+  //           name: "Menu1-2",
+  //           meta: { title: "Menu1-2" },
+  //           children: [
+  //             {
+  //               path: "menu1-2-1",
+  //               component: () =>
+  //                 import("@/views/nested/menu1/menu1-2/menu1-2-1"),
+  //               name: "Menu1-2-1",
+  //               meta: { title: "Menu1-2-1" },
+  //             },
+  //             {
+  //               path: "menu1-2-2",
+  //               component: () =>
+  //                 import("@/views/nested/menu1/menu1-2/menu1-2-2"),
+  //               name: "Menu1-2-2",
+  //               meta: { title: "Menu1-2-2" },
+  //             },
+  //           ],
+  //         },
+  //         {
+  //           path: "menu1-3",
+  //           component: () => import("@/views/nested/menu1/menu1-3"),
+  //           name: "Menu1-3",
+  //           meta: { title: "Menu1-3" },
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       path: "menu2",
+  //       component: () => import("@/views/nested/menu2/index"),
+  //       name: "Menu2",
+  //       meta: { title: "menu2" },
+  //     },
+  //     {
+  //       path: "corn1",
+  //       component: () => import("@/views/nested/corn/corn1"),
+  //       name: "Corn1",
+  //       meta: { title: "corn表达式" },
+  //     },
+  //     {
+  //       path: "corn2",
+  //       component: () => import("@/views/nested/corn/corn2"),
+  //       name: "Corn2",
+  //       meta: { title: "corn表达式" },
+  //     },
+  //   ],
+  // },
   {
     path: "/demo",
     component: Layout,
@@ -745,50 +745,50 @@ export const constantRoutes = [
       },
     ],
   },
-  {
-    path: "/zhangyu",
-    component: Layout,
-    redirect: "/zhangyu/dashboard",
-    name: "Zhangyu",
-    meta: {
-      title: "章鱼",
-      icon: "el-icon-s-help",
-    },
-    children: [
-      {
-        path: "dashboard",
-        name: "Dashboard",
-        component: () => import("@/views/zhangyu/dashboard"),
-        meta: { title: "首页" },
-      },
-      {
-        path: "house",
-        name: "House",
-        component: () => import("@/views/zhangyu/house"),
-        meta: { title: "房源管理" },
-        children: [
-          {
-            path: "list",
-            name: "List",
-            component: () => import("@/views/zhangyu/house/list"),
-            meta: { title: "房源列表" },
-          },
-          {
-            path: "create",
-            name: "Create",
-            component: () => import("@/views/zhangyu/house/create"),
-            meta: { title: "房源创建" },
-          },
-          {
-            path: "edit",
-            name: "Edit",
-            component: () => import("@/views/zhangyu/house/edit"),
-            meta: { title: "房源编辑" },
-          },
-        ],
-      },
-    ],
-  },
+  // {
+  //   path: "/zhangyu",
+  //   component: Layout,
+  //   redirect: "/zhangyu/dashboard",
+  //   name: "Zhangyu",
+  //   meta: {
+  //     title: "章鱼",
+  //     icon: "el-icon-s-help",
+  //   },
+  //   children: [
+  //     {
+  //       path: "dashboard",
+  //       name: "Dashboard",
+  //       component: () => import("@/views/zhangyu/dashboard"),
+  //       meta: { title: "首页" },
+  //     },
+  //     {
+  //       path: "house",
+  //       name: "House",
+  //       component: () => import("@/views/zhangyu/house"),
+  //       meta: { title: "房源管理" },
+  //       children: [
+  //         {
+  //           path: "list",
+  //           name: "List",
+  //           component: () => import("@/views/zhangyu/house/list"),
+  //           meta: { title: "房源列表" },
+  //         },
+  //         {
+  //           path: "create",
+  //           name: "Create",
+  //           component: () => import("@/views/zhangyu/house/create"),
+  //           meta: { title: "房源创建" },
+  //         },
+  //         {
+  //           path: "edit",
+  //           name: "Edit",
+  //           component: () => import("@/views/zhangyu/house/edit"),
+  //           meta: { title: "房源编辑" },
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
   {
     path: "/elTable",
     component: Layout,
