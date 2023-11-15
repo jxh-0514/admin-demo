@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2022-08-23 20:06:43
  * @LastEditors: 杭
- * @LastEditTime: 2023-11-02 17:37:46
+ * @LastEditTime: 2023-11-15 11:19:54
  */
 import Vue from "vue";
 import Router from "vue-router";
@@ -384,6 +384,12 @@ export const constantRoutes = [
             name: "TrackPlayBack",
             component: () => import("@/views/demo/leaflet/trackPlayBack"),
             meta: { title: "轨迹回放", icon: "table" },
+          },
+          {
+            path: "leafletHeat",
+            name: "LeafletHeat",
+            component: () => import("@/views/demo/leaflet/leafletHeat"),
+            meta: { title: "热力图", icon: "table" },
           },
         ],
       },
