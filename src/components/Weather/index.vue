@@ -4,12 +4,12 @@
  * @Author: 杭
  * @Date: 2023-01-30 15:12:49
  * @LastEditors: 杭
- * @LastEditTime: 2023-10-13 13:23:00
+ * @LastEditTime: 2023-11-17 00:14:42
 -->
 <!-- 天气组件 -->
 <template>
   <div class="box" @click="navigateTo">
-    {{ city + " " + weatcherData.textDay }}
+    <div>{{ weather }}</div>
   </div>
 </template>
 
@@ -24,12 +24,18 @@ export default {
       weatcherData: {
         wea: "",
         textDay: "",
+        tempMin: "",
+        tempMax: "",
       },
       hfurl: "",
     };
   },
 
-  computed: {},
+  computed: {
+    weather() {
+      return `${this.city} ${this.weatcherData.textDay}/${this.weatcherData.tempMin}~${this.weatcherData.tempMax}℃`;
+    },
+  },
 
   watch: {},
 
@@ -109,7 +115,7 @@ export default {
     },
     // 跳转和风天气
     navigateTo() {
-      if(!this.hfurl) return;
+      if (!this.hfurl) return;
       window.open(this.hfurl);
     },
     // http://ip.360.cn/IPShare/info

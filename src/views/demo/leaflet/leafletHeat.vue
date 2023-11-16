@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2023-11-14 17:11:35
  * @LastEditors: 杭
- * @LastEditTime: 2023-11-15 14:53:46
+ * @LastEditTime: 2023-11-17 01:04:35
 -->
 <!-- 热力图 -->
 <template>
@@ -212,7 +212,9 @@ export default {
       this.imageOverLay = L.imageOverlay(image, this.bounds, {
         interactive: true, //允许地图触发事件
       }).addTo(this.map);
+      // 使用下面这两个方法，可以让图片在最底层，但是热力图层级也是0，所以会被覆盖
       this.imageOverLay.bringToBack();
+      // this.imageOverLay.setZIndex(0);
     },
     getData() {
       // const url =
@@ -230,8 +232,10 @@ export default {
 
       const data = [];
       for (let i = 0; i < 100; i++) {
-        const lat = Math.random() * 180 - 90; // 生成-90到90之间的随机数
-        const lng = Math.random() * 360 - 180; // 生成-180到180之间的随机数
+        const min = 0;
+        const max = 697;
+        const lat = Math.floor(Math.random() * (max - min + 1)) + min;
+        const lng = Math.floor(Math.random() * (max - min + 1)) + min;
         const count = Math.floor(Math.random() * 1000); // 生成0到1000之间的随机数
         data.push({ lat, lng, count });
       }
@@ -240,8 +244,8 @@ export default {
         data: data,
       };
       this.heatmapLayer.setData(test);
-      // this.heatmapLayer.addTo(this.map);
-      this.map.addLayer(this.heatmapLayer);
+      this.heatmapLayer.addTo(this.map);
+      // this.map.addLayer(this.heatmapLayer);
     },
   },
 };
