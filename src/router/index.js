@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2022-08-23 20:06:43
  * @LastEditors: 杭
- * @LastEditTime: 2023-11-15 11:19:54
+ * @LastEditTime: 2023-12-08 16:07:29
  */
 import Vue from "vue";
 import Router from "vue-router";
@@ -390,6 +390,12 @@ export const constantRoutes = [
             name: "LeafletHeat",
             component: () => import("@/views/demo/leaflet/leafletHeat"),
             meta: { title: "热力图", icon: "table" },
+          },
+          {
+            path: "leafletHeatB",
+            name: "LeafletHeatB",
+            component: () => import("@/views/demo/leaflet/leafletHeatB"),
+            meta: { title: "热力图2", icon: "table" },
           },
         ],
       },

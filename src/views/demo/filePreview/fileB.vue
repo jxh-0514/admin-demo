@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2023-08-31 09:55:54
  * @LastEditors: 杭
- * @LastEditTime: 2023-09-10 00:08:41
+ * @LastEditTime: 2023-12-08 13:31:08
 -->
 <!-- 文件预览 -->
 <template>
@@ -87,7 +87,7 @@ export default {
         },
         {
           name: "图片.jpg",
-          url: "http://g.hiphotos.baidu.com/image/pic/item/6d81800a19d8bc3e770bd00d868ba61ea9d345f2.jpg",
+          url: "https://pic2.zhimg.com/80/v2-091b257ea061b4edd1d9399ae36c58f1_720w.webp",
         },
         {
           name: "excel",
@@ -131,6 +131,7 @@ export default {
           item.url.includes(".JPG") ||
           item.url.includes(".PNG") ||
           item.url.includes(".JPEG") ||
+          item.url.includes(".webp") ||
           item.url.includes(".BMP") ||
           item.url.includes(".pdf") ||
           item.url.includes(".txt") ||
@@ -138,7 +139,7 @@ export default {
           item.url.includes(".doc")
         )
       ) {
-        this.$message.warn("文件类型不支持预览");
+        this.$message.warning("文件类型不支持预览");
         return false;
       }
       if (item.url.includes(".pdf") || item.url.includes(".txt")) {
