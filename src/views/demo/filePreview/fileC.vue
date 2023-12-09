@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-loading.fullscreen.lock="fullscreenLoading">
     <!-- <div ref="preview"></div> -->
     <!-- 用于选择文件 -->
 
@@ -14,7 +14,7 @@
     <input type="file" @change="previewText" />
     <p>PDF</p>
     <input type="file" @change="previewPdf" />
-    <p>word,excel,ppt</p>
+    <p>word</p>
     <input type="file" @change="previewOffice" />
     <!-- <input type="file" @change="previewFile" /> -->
   </div>
@@ -38,6 +38,7 @@ export default {
       fileUrl: null,
       fileType: null,
       preview: null,
+      fullscreenLoading: false,
     };
   },
   mounted() {
@@ -69,32 +70,44 @@ export default {
     previewPdf(event) {
       const files = event.target.files;
       if (files && files.length > 0) {
+        this.fullscreenLoading = true;
         const file = files[0];
         const reader = new FileReader();
         reader.onload = (e) => {
+          console.log("加载...");
           const pdfData = new Uint8Array(e.target.result);
-          pdfjsLib.getDocument(pdfData).promise.then((pdf) => {
-            const pages = pdf.numPages;
-            for (let i = 1; i <= pages; i++) {
-              pdf.getPage(i).then((page) => {
-                const viewport = page.getViewport({ scale: 1.0 });
-                const canvas = document.createElement("canvas");
-                const context = canvas.getContext("2d");
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-                const renderContext = {
-                  canvasContext: context,
-                  viewport: viewport,
-                };
-                page.render(renderContext).promise.then(() => {
-                  const imageData = canvas.toDataURL("image/png");
-                  const img = document.createElement("img");
-                  img.src = imageData;
-                  this.preview.appendChild(img);
+          pdfjsLib
+            .getDocument(pdfData)
+            .promise.then((pdf) => {
+              const pages = pdf.numPages;
+              console.log("加载222----", pages);
+              for (let i = 1; i <= pages; i++) {
+                pdf.getPage(i).then((page) => {
+                  const viewport = page.getViewport({ scale: 1.0 });
+                  const canvas = document.createElement("canvas");
+                  const context = canvas.getContext("2d");
+                  canvas.height = viewport.height;
+                  canvas.width = viewport.width;
+                  const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport,
+                  };
+                  page.render(renderContext).promise.then(() => {
+                    const imageData = canvas.toDataURL("image/png");
+                    const img = document.createElement("img");
+                    img.src = imageData;
+                    this.preview.appendChild(img);
+                  });
                 });
-              });
-            }
-          });
+                if (i === pages) {
+                  this.fullscreenLoading = false;
+                }
+              }
+            })
+            .catch((error) => {
+              this.fullscreenLoading = false;
+              console.log("加载 PDF 时出错:", error);
+            });
         };
         reader.readAsArrayBuffer(file);
       }
@@ -106,8 +119,8 @@ export default {
         const file = files[0];
         const reader = new FileReader();
         reader.onload = (e) => {
-          console.log("-----2222------", e.target.result);
           const fileData = new Uint8Array(e.target.result);
+          console.log("-----2222------", e.target.result, fileData);
           // const zip = new JSZip();
           // zip.loadAsync(fileData).then((zip) => {
           //   const entries = Object.values(zip.files);
@@ -152,7 +165,7 @@ export default {
             this.preview.appendChild(div);
           }),
             (error) => {
-              console.log(error);
+              console.log("读取失败", error);
             };
         };
         reader.readAsArrayBuffer(file);
@@ -225,42 +238,61 @@ export default {
     //   };
     //   reader.readAsText(file);
     // },
+    // mammoth无法直接读取jszip的文件
     // previewOffice(file) {
     //   const reader = new FileReader();
+
     //   reader.onload = (e) => {
-    //     const fileData = new Uint8Array(e.target.result);
-    //     const zip = new JSZip();
-    //     zip.loadAsync(fileData).then((zip) => {
-    //       const entries = Object.values(zip.files);
-    //       Promise.all(
-    //         entries.map((entry) => {
-    //           return entry.async("arraybuffer").then((data) => {
-    //             return {
-    //               name: entry.name,
-    //               data,
-    //             };
+    //     try {
+    //       const fileData = e.target.result;
+    //       console.log("fileData: ", fileData);
+
+    //       const zip = new JSZip();
+
+    //       zip.loadAsync(fileData).then((zip) => {
+    //         console.log("zip: ", zip);
+
+    //         const entries = Object.values(zip.files);
+    //         console.log("entries: ", entries);
+
+    //         Promise.all(
+    //           entries.map((entry) => {
+    //             return entry.async("arraybuffer").then((data) => {
+    //               console.log("data: ", data);
+    //               return {
+    //                 name: entry.name,
+    //                 data,
+    //               };
+    //             });
+    //           })
+    //         ).then((files) => {
+    //           const extractedData = {};
+    //           files.forEach((file) => {
+    //             extractedData[file.name] = file.data;
     //           });
-    //         })
-    //       ).then((files) => {
-    //         const fileData = {};
-    //         files.forEach((file) => {
-    //           fileData[file.name] = file.data;
-    //         });
-    //         mammoth
-    //           .convertToHtml({ arrayBuffer: fileData["word/document.xml"] })
-    //           .then(
-    //             (result) => {
-    //               this.previewContent = result.value;
-    //               this.preview.show();
+
+    //           const documentXmlData = new Uint8Array(
+    //             extractedData["word/document.xml"]
+    //           );
+    //           console.log("documentXmlData: ", documentXmlData);
+
+    //           mammoth.convertToHtml({ arrayBuffer: documentXmlData }).then(
+    //             (res) => {
+    //               console.log("读取成功---", res);
+    //               // 处理HTML内容，例如显示在页面上
     //             },
     //             (error) => {
-    //               console.log(error);
+    //               console.log("读取失败---", error);
     //             }
     //           );
+    //         });
     //       });
-    //     });
+    //     } catch (error) {
+    //       console.error("发生错误：", error);
+    //     }
     //   };
-    //   reader.readAsArrayBuffer(file);
+
+    //   reader.readAsArrayBuffer(file.target.files[0]);
     // },
   },
 };

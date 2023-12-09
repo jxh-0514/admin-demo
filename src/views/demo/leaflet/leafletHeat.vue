@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2023-11-14 17:11:35
  * @LastEditors: 杭
- * @LastEditTime: 2023-12-08 11:53:10
+ * @LastEditTime: 2023-12-09 11:13:37
 -->
 <!-- 热力图 -->
 <template>
@@ -129,9 +129,9 @@ export default {
         ],
       },
       cfg: {
-        radius: 50,
+        radius: 20,
         maxOpacity: 0.8,
-        scaleRadius: true,
+        scaleRadius: false, // 根据缩放级别缩放半径
         useLocalExtrema: true,
         latField: "lat",
         lngField: "lng",
