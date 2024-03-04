@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2022-08-23 20:06:43
  * @LastEditors: 杭
- * @LastEditTime: 2023-12-09 11:12:57
+ * @LastEditTime: 2024-02-21 11:06:53
  */
 import Vue from "vue";
 import Router from "vue-router";
@@ -354,6 +354,12 @@ export const constantRoutes = [
             name: "LeafletC",
             component: () => import("@/views/demo/leaflet/leafletC"),
             meta: { title: "leafletC", icon: "table" },
+          },
+          {
+            path: "leafletD",
+            name: "LeafletD",
+            component: () => import("@/views/demo/leaflet/leafletD"),
+            meta: { title: "leafletD", icon: "table" },
           },
           {
             path: "leafletCanvas",
