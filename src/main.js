@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2022-11-18 08:20:26
  * @LastEditors: 杭
- * @LastEditTime: 2023-09-01 13:41:12
+ * @LastEditTime: 2024-04-08 09:08:15
  */
 import Vue from "vue";
 
@@ -35,6 +35,9 @@ import "vue-super-flow/lib/index.css";
 import rules from "@/utils/formCheck.js";
 // 引入自定义拖动盒子move.js
 import move from "@/utils/move";
+// 引入ng-form-element动态表单库
+import NgFormElement from "ng-form-element";
+import "ng-form-element/lib/ng-form-element.css";
 
 // 全局引入自定义表单
 // import VueFormGenerator from "vue-form-generator";
@@ -47,6 +50,7 @@ Vue.use(VueSignaturePad);
 Vue.use(mavonEditor);
 Vue.use(SuperFlow);
 Vue.use(move);
+Vue.use(NgFormElement);
 
 // 引入rem.js
 // import '@/utils/rem.js'
@@ -83,8 +87,8 @@ Vue.prototype.bus = new Vue();
 // })
 Vue.prototype.$axios = axios;
 if (process.env.NODE_ENV === "production") {
-  const { mockXHR } = require("../mock");
-  mockXHR();
+	const { mockXHR } = require("../mock");
+	mockXHR();
 }
 // set ElementUI lang to EN
 // Vue.use(ElementUI, { locale })
@@ -97,8 +101,8 @@ Vue.use(ElementUI);
 Vue.config.productionTip = false;
 
 new Vue({
-  el: "#app",
-  router,
-  store,
-  render: (h) => h(App),
+	el: "#app",
+	router,
+	store,
+	render: (h) => h(App),
 });
