@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2024-03-25 14:21:43
  * @LastEditors: 杭
- * @LastEditTime: 2024-04-08 09:20:19
+ * @LastEditTime: 2024-06-14 15:04:14
  */
 /*
  * @Descripttion:
@@ -350,6 +350,12 @@ export const constantRoutes = [
 						name: "LeafletBD2",
 						component: () => import("@/views/demo/leaflet/leafletBD2"),
 						meta: { title: "leafletBD2", icon: "table" },
+					},
+					{
+						path: "leafletBD3",
+						name: "LeafletBD3",
+						component: () => import("@/views/demo/leaflet/leafletBD3"),
+						meta: { title: "leafletBD3", icon: "table" },
 					},
 					{
 						path: "leafletB",
