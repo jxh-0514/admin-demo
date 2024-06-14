@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2024-03-25 14:21:42
  * @LastEditors: 杭
- * @LastEditTime: 2024-06-14 14:29:47
+ * @LastEditTime: 2024-06-14 15:56:17
 -->
 <template>
 	<div class="tinymce-container">
@@ -27,7 +27,7 @@ import "tinymce/plugins/table"; //引入表格插件
 import "tinymce/plugins/lists";
 import "tinymce/plugins/wordcount";
 import "tinymce/plugins/paste"; //拖拽图片进富文本
-import "tinymce/plugins/indent2em"; //首行缩进
+import "tinymce/plugins/indent2em"; //首行缩进 github actions打包会报错
 // import { uploadImg } from "@/api/common";
 //下面的插件是自带的,不需要引入
 // import "tinymce/plugins/contextmenu";
