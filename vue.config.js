@@ -82,7 +82,6 @@ module.exports = {
 		resolve: {
 			alias: {
 				"@": resolve("src"),
-				"tinymce-plugins-indent2em": path.resolve(__dirname, "./node_modules/tinymce/plugins/indent2em"),
 				// 'cesium': path.resolve(__dirname, cesiumSource)
 			},
 		},

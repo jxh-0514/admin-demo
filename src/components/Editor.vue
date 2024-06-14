@@ -4,7 +4,7 @@
  * @Author: 杭
  * @Date: 2024-03-25 14:21:42
  * @LastEditors: 杭
- * @LastEditTime: 2024-06-14 15:56:17
+ * @LastEditTime: 2024-06-14 16:07:10
 -->
 <template>
 	<div class="tinymce-container">
@@ -27,7 +27,7 @@ import "tinymce/plugins/table"; //引入表格插件
 import "tinymce/plugins/lists";
 import "tinymce/plugins/wordcount";
 import "tinymce/plugins/paste"; //拖拽图片进富文本
-import "tinymce/plugins/indent2em"; //首行缩进 github actions打包会报错
+// import "tinymce/plugins/indent2em"; //首行缩进 github actions打包会报错
 // import { uploadImg } from "@/api/common";
 //下面的插件是自带的,不需要引入
 // import "tinymce/plugins/contextmenu";
@@ -54,8 +54,8 @@ export default {
 				language: "zh_CN",
 				skin_url: "/tinymce/skins/ui/oxide", //编辑器需要一个skin才能正常工作，所以要设置一个skin_url指向之前复制出来的skin文件
 				height: this.tinymceHeight,
-				plugins: "image link code table lists wordcount paste indent2em", //引入插件
-				toolbar: "fontselect fontsizeselect link lineheight forecolor backcolor bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | image quicklink h2 h3 blockquote table numlist bullist indent2em preview fullscreen", //工具栏
+				plugins: "image link code table lists wordcount paste", //引入插件
+				toolbar: "fontselect fontsizeselect link lineheight forecolor backcolor bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | image quicklink h2 h3 blockquote table numlist bullist preview fullscreen", //工具栏
 				browser_spellcheck: true, // 拼写检查
 				branding: false, // 去水印
 				elementpath: false, //禁用编辑器底部的状态栏
