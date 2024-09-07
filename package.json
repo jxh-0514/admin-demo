@@ -62,6 +62,7 @@
     "vue-cron": "^1.0.9",
     "vue-easy-print": "0.0.8",
     "vue-esign": "^1.1.4",
+    "vue-grid-layout": "^2.4.0",
     "vue-i18n": "^5.0.3",
     "vue-material-year-calendar": "^1.2.6",
     "vue-print-nb": "^1.7.5",
