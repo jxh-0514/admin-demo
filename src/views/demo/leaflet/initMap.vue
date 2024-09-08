@@ -12,8 +12,6 @@
 </template>
 
 <script>
-import L from "leaflet";
-import "@/utils/tileLayer.baidu.js";
 export default {
 	name: "",
 	components: {},
@@ -55,9 +53,6 @@ export default {
 				// minZoom: 1,
 				zoomSnap: 0.1,
 			});
-			// 创建底图对象
-			this.tileLayer = L.tileLayer.baidu({ layer: "vec" }).addTo(map);
-
 			this.$emit("mapLoad", map); // 地图初始化完成发送事件
 			return map;
 		},

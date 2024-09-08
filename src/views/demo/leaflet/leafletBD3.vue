@@ -16,6 +16,7 @@
 
 <script>
 import L from "leaflet";
+import "@/utils/tileLayer.baidu.js";
 // import "leaflet-plugin-trackplayback";
 // import "leaflet-plugin-trackplayback/dist/control.trackplayback";
 // import "leaflet-plugin-trackplayback/dist/control.playback.css";
@@ -31,6 +32,7 @@ export default {
 	data() {
 		return {
 			map: null,
+			tileLayer: null,
 			imageOverLay: null,
 			//mapType: 3, // mapType:3 --- 百度  mapType:0 --- 室内图
 			bounds: [
@@ -121,6 +123,7 @@ export default {
 	methods: {
 		mapLoad(map) {
 			this.map = map;
+			this.onSwitchMapMode();
 		},
 		// 获取底图信息并设置
 		getMapInfo(data) {
@@ -147,10 +150,12 @@ export default {
 					}).addTo(this.map);
 					console.log("首次加载地图---", this.bounds);
 				}
-				// this.map.fitBounds(this.bounds);
+				this.map.fitBounds(this.bounds);
 			};
 		},
 		drawLine(lineData) {
+			console.log("轨迹数据---", lineData);
+
 			if (this.polyline) {
 				console.log("清除上一条轨迹线");
 				this.map.removeLayer(this.polyline);
@@ -161,6 +166,7 @@ export default {
 				for (let i = 0; i < this.startAndEndMarkers.length; i++) {
 					this.startAndEndMarkers[i].removeFrom(this.map);
 				}
+				this.startAndEndMarkers = [];
 			}
 			this.polyline = L.polyline(lineData, {
 				weight: 4,
@@ -188,15 +194,21 @@ export default {
 			this.startAndEndMarkers = [startMarker, endMarker];
 
 			// 缩放至轨迹范围
-			this.map.fitBounds(this.polyline.getBounds());
+			// this.map.fitBounds(this.polyline.getBounds());
 		},
 		onSwitchMapMode() {
-			console.log("切换地图模式");
+			this.lineData = [];
 			// 清除地图上的所有图层和标记
 			this.clearMapLayers();
 			// 每次调用的时候随机mapList中的数据
 			const randomIndex = Math.floor(Math.random() * this.mapList.length);
 			const mapData = this.mapList[randomIndex];
+
+			// 检查 mapData 是否有效
+			if (!mapData) {
+				console.error("Invalid mapData:", mapData);
+				return;
+			}
 			if (mapData.mapType === 0) {
 				this.switchToSimpleMode(mapData);
 				this.lineData = this.generateIndoorTrackData(20);
@@ -222,13 +234,13 @@ export default {
 
 			// 清除地图瓦片图层
 			if (this.tileLayer) {
-				this.tileLayer.remove();
+				this.map.removeLayer(this.tileLayer);
 				this.tileLayer = null;
 			}
 
 			// 清除图片图层
 			if (this.imageOverLay) {
-				this.imageOverLay.remove();
+				this.map.removeLayer(this.imageOverLay);
 				this.imageOverLay = null;
 			}
 		},
@@ -237,12 +249,12 @@ export default {
 			this.map.setMinZoom(-3);
 			this.getMapInfo(mapData);
 		},
-		switchToBaiduMode(mapData) {
+		switchToBaiduMode() {
 			this.map.options.crs = L.CRS.Baidu;
-			this.map.setMinZoom(1);
+			this.map.setMinZoom(6);
 			// this.map.setMaxZoom(12);
-			this.map.setView([39.904211, 116.407395], 12);
 			this.tileLayer = L.tileLayer.baidu({ layer: "vec" }).addTo(this.map);
+			this.map.setView([39.904211, 116.407395], 12);
 		},
 		clearTime() {
 			clearInterval(this.timer);
@@ -254,7 +266,7 @@ export default {
 		// 模拟轨迹点
 		generateTrackData(numPoints) {
 			const trackData = [];
-			const startTime = Date.now(); // 当前时间戳作为起始时间
+			// const startTime = Date.now(); // 当前时间戳作为起始时间
 
 			// 初始经纬度坐标，可以根据需要调整
 			let lat = 39.904211;
@@ -264,12 +276,12 @@ export default {
 				trackData.push({
 					lat: lat,
 					lng: lng,
-					time: startTime + i * 1, // 每个点时间间隔1秒
+					// time: startTime + i * 1, // 每个点时间间隔1秒
 				});
 
 				// 模拟轨迹移动，可以根据需要调整移动步长
-				lat += (Math.random() - 0.5) * 0.1; // 随机在[-0.0005, 0.0005]范围内变化
-				lng += (Math.random() - 0.5) * 0.1; // 随机在[-0.0005, 0.0005]范围内变化
+				lat += Math.random() - 0.5; // 随机在[-0.0005, 0.0005]范围内变化
+				lng += Math.random() - 0.5; // 随机在[-0.0005, 0.0005]范围内变化
 			}
 
 			return trackData;
@@ -277,22 +289,22 @@ export default {
 		// 模拟室内图轨迹点
 		generateIndoorTrackData(numPoints) {
 			const trackData = [];
-			const startTime = Date.now(); // 当前时间戳作为起始时间
+			// const startTime = Date.now(); // 当前时间戳作为起始时间
 
 			// 初始坐标，可以根据需要调整，假设这是室内地图的某个中心点
-			let lat = 1500;
-			let lng = 2500;
+			let lat = 1000;
+			let lng = 2000;
 
 			for (let i = 0; i < numPoints; i++) {
 				trackData.push({
-					lat,
-					lng,
-					time: startTime + i * 1, // 每个点时间间隔1秒
+					lat: Math.round(lat),
+					lng: Math.round(lng),
+					// time: startTime + i * 1, // 每个点时间间隔1秒
 				});
 
 				// 模拟室内轨迹移动，步长更小，变化范围更有限
-				lat += Math.random() * 100;
-				lng += Math.random() * 100;
+				lat += Math.floor(Math.random() * 10);
+				lng += Math.floor(Math.random() * 10);
 			}
 
 			return trackData;
