@@ -693,6 +693,26 @@ export const constantRoutes = [
 					},
 				],
 			},
+			{
+				path: "dragScreen",
+				name: "dragScreen",
+				component: () => import("@/views/demo/dragScreen"),
+				meta: { title: "拖拽大屏", icon: "table" },
+				children: [
+					{
+						path: "preview",
+						name: "Preview",
+						component: () => import("@/views/demo/dragScreen/preview"),
+						meta: { title: "拖拽大屏", icon: "table" },
+					},
+					{
+						path: "editScreen",
+						name: "EditScreen",
+						component: () => import("@/views/demo/dragScreen/editScreen"),
+						meta: { title: "编辑大屏", icon: "table" },
+					},
+				],
+			},
 		],
 	},
 	{
