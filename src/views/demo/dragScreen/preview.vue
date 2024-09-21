@@ -2,8 +2,8 @@
 <template>
 	<div>
 		<GridLayout @layout-ready="layoutReadyEvent" ref="gridlayout" :layout.sync="layout" :col-num="12" :row-height="30" :is-draggable="draggable" :is-resizable="resizable" :responsive="responsive" :vertical-compact="true" :use-css-transforms="true">
-			<GridItem v-for="item in layout" :key="item.id" :static="item.static" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" @moved="movedEvent">
-				<component :ref="`componentRef_${item.i}`" :is="item.i" :item="item"></component>
+			<GridItem v-for="item in layout" :key="item.id" :static="item.static" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i">
+				<component :ref="`componentRef_${item.n}_${item.i}`" :is="item.n" :item="item"></component>
 			</GridItem>
 		</GridLayout>
 	</div>
@@ -12,22 +12,23 @@
 <script>
 import { GridLayout, GridItem } from "vue-grid-layout"; //拖拽组件
 import TestEcharts from "./components/testEcharts";
-import LineChart from "./components/lineChart.vue";
+// import LineChart from "./components/lineChart.vue";
 export default {
 	name: "index",
 	components: {
 		GridLayout,
 		GridItem,
 		BarChart: TestEcharts,
-		LineChart,
-		// LineChart: TestEcharts,
+		LineChart: TestEcharts,
+		PieChart: TestEcharts,
+		// LineChart,
 	},
 	props: {},
 	data() {
 		return {
-			// xy为坐标 wh对应宽高 i代表组件名称 在上方import的时候
+			// xy为坐标 wh对应宽高 n代表组件名称 在上方import的时候
 			layout: [
-				// { x: 0, y: 0, w: 4, h: 2, i: "TestEcharts" }
+				// { x: 0, y: 0, w: 4, h: 2, i: "1", n: "PieChart" }
 			],
 			draggable: false,
 			resizable: false,
@@ -58,19 +59,14 @@ export default {
 
 	methods: {
 		layoutReadyEvent(newLayout) {
-			setTimeout(() => {
-				this.layout.length > 0 &&
-					this.layout.forEach((item) => {
-						const refName = "componentRef_" + item.i;
-						console.log("ref---", refName, this.$refs[refName][0]);
+			this.layout.length > 0 &&
+				this.layout.forEach((item) => {
+					const refName = `componentRef_${item.n}_${item.i}`;
+					console.log("ref---", refName, this.$refs[refName][0]);
 
-						this.$refs[refName][0].resizeChart();
-					});
-				console.log("当完成mount中所有操作时生成的事件", newLayout);
-			}, 1000);
-		},
-		movedEvent(move) {
-			console.log("移动时的事件", move);
+					this.$refs[refName][0].resizeChart();
+				});
+			console.log("当完成mount中所有操作时生成的事件", newLayout);
 		},
 	},
 };

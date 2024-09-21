@@ -9,24 +9,24 @@ import { debounce } from "@/utils/debounce.js";
 export default {
 	name: "BarChart",
 	props: {
-		// item: {
-		// 	type: Object,
-		// 	default: () => {
-		// 		return {
-		// 			x: 0,
-		// 			y: 0,
-		// 			w: 2,
-		// 			h: 2,
-		// 			i: "BarChart",
-		// 			config: {
-		// 				name: "BarChart",
-		// 				previewImage: "https://echarts.apache.org/examples/data/thumb/bar-simple.webp?_v_=1724900876815", // 静态预览图
-		// 				component: "BarChart",
-		// 				chartType: "bar",
-		// 			},
-		// 		};
-		// 	},
-		// },
+		item: {
+			type: Object,
+			default: () => {
+				return {
+					x: 0,
+					y: 0,
+					w: 2,
+					h: 2,
+					i: "BarChart",
+					config: {
+						name: "BarChart",
+						previewImage: "https://echarts.apache.org/examples/data/thumb/bar-simple.webp?_v_=1724900876815", // 静态预览图
+						component: "BarChart",
+						chartType: "bar",
+					},
+				};
+			},
+		},
 	},
 	data() {
 		return {
@@ -35,16 +35,16 @@ export default {
 		};
 	},
 	mounted() {
-		// setTimeout(() => {
-		// 初始化图表
-		this.initChart();
-		// 创建防抖后的 resize 方法
-		this.resizeHandler = this.resizeChart;
-		// 监听窗口大小变化，重新渲染图表
-		window.addEventListener("resize", () => {
-			this.resizeChart();
-		});
-		// }, 1000);
+		setTimeout(() => {
+			// 初始化图表
+			this.initChart();
+			// 创建防抖后的 resize 方法
+			this.resizeHandler = this.resizeChart;
+			// 监听窗口大小变化，重新渲染图表
+			window.addEventListener("resize", () => {
+				this.resizeChart();
+			});
+		}, 0);
 	},
 	beforeDestroy() {
 		// 移除监听器
@@ -77,8 +77,8 @@ export default {
 		updateChart() {
 			const option = {
 				title: {
-					text: "大屏数据展示 - 柱状图",
-					// text: `大屏数据展示 - ${this.item.i}`,
+					// text: "大屏数据展示 - 柱状图",
+					text: `大屏数据展示 - ${this.item.n}`,
 					left: "center",
 					textStyle: {
 						color: "#fff",
@@ -113,12 +113,12 @@ export default {
 				series: [
 					{
 						name: "Sales",
-						// type: this.item.config.chartType || "bar",
-						type: "bar",
+						type: this.item.config.chartType || "bar",
+						// type: "bar",
 						data: [120, 200, 150, 80, 70, 110, 130],
-						itemStyle: {
-							color: "#3398DB",
-						},
+						// itemStyle: {
+						// 	color: "#3398DB",
+						// },
 					},
 				],
 				backgroundColor: "#2c343c",
