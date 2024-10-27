@@ -7,6 +7,16 @@
 
 <script>
 import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+// 修复 Leaflet 默认图标路径问题
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+	iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+	iconUrl: require("leaflet/dist/images/marker-icon.png"),
+	shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
+});
+import "@geoman-io/leaflet-geoman-free";
+import "@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css";
 import geojson from "@/views/demo/leaflet/map.json";
 export default {
 	name: "leaflet-geojson",
@@ -62,6 +72,15 @@ export default {
 			this.map.setMinZoom(-3);
 			// this.getMapInfo();
 			this.addGeojson();
+			// 设置语言为中文
+			this.map.pm.setLang("zh");
+			this.addControls();
+			this.customDrawingStyle();
+			// 监听绘制完成事件
+			this.map.on("pm:create", this.pmCreate);
+
+			// 监听图形删除事件
+			this.map.on("pm:remove", this.pmRemove);
 		},
 		// 获取底图信息并设置
 		getMapInfo() {
@@ -199,6 +218,62 @@ export default {
 			area *= 0.5;
 			const factor = 1 / (6 * area);
 			return [y * factor, x * factor];
+		},
+		// 添加控件
+		addControls() {
+			this.map.pm.addControls({
+				position: "topright",
+				drawCircleMarker: false, // 禁用绘制圆标记
+				rotateMode: false, // 禁用旋转模式
+			});
+		},
+		// 自定义绘制样式
+		customDrawingStyle() {
+			this.map.pm.setPathOptions(
+				{
+					color: "orange", // 线的颜色
+					fillColor: "green", // 填充的颜色
+					fillOpacity: 0.4, // 填充的透明度
+				},
+				{
+					ignoreShapes: ["Circle"], // 忽略某些图形的更改
+				}
+			);
+		},
+		// 绘制完成事件
+		pmCreate(event) {
+			console.log("绘制完成事件", event);
+
+			const layer = event.layer;
+			const shapeType = event.shape; // 获取绘制图形的类型
+
+			let coordinates = [];
+
+			// 根据绘制图形的类型获取坐标集合
+			switch (shapeType) {
+				case "Polygon":
+					coordinates = layer._latlngs[0];
+					break;
+				case "Rectangle":
+					coordinates = layer._latlngs[0];
+					break;
+				case "Circle":
+					const center = layer._latlngs;
+					const radius = layer.getRadius();
+					console.log("圆形", center, radius);
+					// 这里可以根据需要将圆形转换为多边形，以便获得更多点的坐标
+					// coordinates = convertCircleToPolygon(center, radius, numPoints);
+					break;
+				default:
+					break;
+			}
+
+			console.log("绘制图形点位", coordinates);
+		},
+		// 图形删除事件
+		pmRemove(e) {
+			// 关闭全局删除模式
+			this.map.pm.disableGlobalRemovalMode();
 		},
 	},
 };
