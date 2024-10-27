@@ -44,7 +44,7 @@ export default {
 			const dom = this.$refs.Lmap;
 			const map = L.map(dom, {
 				center: this.center,
-				crs: L.CRS.Baidu,
+				// crs: L.CRS.Baidu,
 				attributionControl: false,
 				zoomControl: false,
 				doubleClickZoom: false,

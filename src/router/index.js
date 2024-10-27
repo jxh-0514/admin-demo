@@ -411,6 +411,12 @@ export const constantRoutes = [
 						component: () => import("@/views/demo/leaflet/leafletHeat"),
 						meta: { title: "热力图", icon: "table" },
 					},
+					{
+						path: "leafletGeojson",
+						name: "LeafletGeojson",
+						component: () => import("@/views/demo/leaflet/leaflet-geojson"),
+						meta: { title: "leaflet-geojson", icon: "table" },
+					},
 				],
 			},
 			{
