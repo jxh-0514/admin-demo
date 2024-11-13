@@ -171,4 +171,5 @@ module.exports = {
 			config.optimization.runtimeChunk("single");
 		});
 	},
+	transpileDependencies: ["ol", "color-parse"],
 };

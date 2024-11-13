@@ -48,6 +48,7 @@
     "ng-form-element": "^2.3.4",
     "normalize.css": "7.0.0",
     "nprogress": "0.2.0",
+    "ol": "^10.2.1",
     "path-to-regexp": "2.4.0",
     "pdfjs-dist": "^2.5.207",
     "proj4": "^2.8.0",
